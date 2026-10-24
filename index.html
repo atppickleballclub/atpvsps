@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="images/atp-logo.png">
+<meta property="og:title" content="Defend the Kitchen: Interclub II">
+<meta property="og:description" content="ATP vs Port Stephens Pickleball Club, Sunday 31 January 2027, Jonas Bradley Park">
+<meta property="og:image" content="images/trophy-tug.jpg">
+<title>Defend the Kitchen</title>
+
+<meta name="description" content="Defend the Kitchen: Interclub II. ATP Pickleball Club vs Port Stephens Pickleball Club, Sunday 31 January 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: the page is a pickleball court seen from above. ATP holds one half, Port Stephens the other,
+   and the event name sits in the kitchen (the 7 ft non-volley zone either side of the net). */
+:root{
+  color-scheme: dark;
+  --ground:#081826;        /* court surround, night navy */
+  --ground-2:#0e2436;
+  --line:#f4f6f2;          /* court line white */
+  --ink:#eef2ee;
+  --ink-soft:#a9b8c4;
+  --atp-navy:#0b3149;
+  --atp-lime:#c3d22b;
+  --atp-sky:#29a9e0;
+  --ps-blue:#2f5fcf;
+  --ps-gold:#f2cd2e;
+  --ps-navy:#1a2a6c;
+  --kitchen:#e9ecdf;
+  --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);line-height:.95;margin:0;text-wrap:balance;letter-spacing:.01em}
+p{margin:0}
+.eyebrow{font-family:var(--body);font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+
+/* ---------- top bar ---------- */
+.top{padding-block:18px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top .eyebrow{color:var(--ink-soft)}
+.top .pill{border:1px solid rgba(244,246,242,.25);border-radius:99px;padding:5px 12px;font-size:.8rem;color:var(--ink)}
+
+/* ---------- hero court ---------- */
+.court-band{padding-block:8px 40px}
+.court{
+  display:grid;grid-template-columns:15fr 14fr 15fr;
+  border:4px solid var(--line);border-radius:6px;overflow:hidden;
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.7);
+}
+.half{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px 18px;text-align:center;min-width:0}
+.half.atp{background:linear-gradient(135deg,var(--atp-navy),#0f4462)}
+.half.ps{background:linear-gradient(225deg,var(--ps-blue),var(--ps-navy))}
+/* centre service line on each half */
+.half::before{content:"";position:absolute;top:50%;height:4px;background:var(--line);opacity:.85}
+.half.atp::before{left:0;right:0}
+.half.ps::before{left:0;right:0}
+.half img{position:relative;width:min(190px,70%);height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
+.half .tag{position:relative;font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:3px}
+.atp .tag{background:var(--atp-lime);color:var(--atp-navy)}
+.ps .tag{background:var(--ps-gold);color:var(--ps-navy)}
+
+.kitchen{
+  position:relative;background:var(--kitchen);color:var(--ground);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:40px 14px;border-left:4px solid var(--line);border-right:4px solid var(--line);min-width:0;
+}
+/* the net */
+.kitchen::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:6px;transform:translateX(-50%);
+  background:repeating-linear-gradient(180deg,#1b2733 0 3px,transparent 3px 9px);opacity:.28}
+.kitchen > *{position:relative}
+.kitchen .eyebrow{color:#5c6a52;margin-bottom:10px}
+.kitchen h1{font-weight:900;font-size:clamp(2.6rem,6.4vw,5.4rem);text-transform:uppercase;color:var(--ground)}
+.kitchen h1 span{display:block}
+.kitchen h1 .the{font-size:.42em;letter-spacing:.2em;color:#4a5848;font-weight:800}
+.kitchen .sub{margin-top:14px;font-family:var(--display);font-weight:800;font-size:clamp(1.2rem,2.2vw,1.6rem);letter-spacing:.14em;text-transform:uppercase;background:var(--ground);color:var(--kitchen);padding:4px 14px;border-radius:3px}
+.kitchen .zone{margin-top:16px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#6b7666}
+
+.matchline{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(1.3rem,3vw,2rem)}
+.matchline .vs{font-size:.7em;color:var(--ink-soft)}
+.matchline .a{color:var(--atp-lime)}
+.matchline .p{color:var(--ps-gold)}
+
+@media (max-width:760px){
+  .court{grid-template-columns:1fr}
+  .kitchen{border-left:0;border-right:0;border-top:4px solid var(--line);border-bottom:4px solid var(--line);padding:34px 14px}
+  .kitchen::before{top:50%;bottom:auto;left:0;right:0;width:auto;height:6px;transform:translateY(-50%);
+    background:repeating-linear-gradient(90deg,#1b2733 0 3px,transparent 3px 9px)}
+  .half{padding:26px 16px}
+  .half::before{top:0;bottom:0;left:50%;right:auto;width:4px;height:auto;transform:translateX(-50%)}
+  .half img{width:min(140px,45%)}
+}
+
+/* ---------- day countdown ---------- */
+.when{padding-block:16px 48px}
+.when .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+.days{display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap}
+.days b{font-family:var(--display);font-weight:900;font-size:clamp(5rem,16vw,9rem);line-height:.9;font-variant-numeric:tabular-nums;color:var(--atp-lime)}
+.days span{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,4vw,2.6rem);text-transform:uppercase;letter-spacing:.06em;color:var(--ink)}
+.when .date{margin-top:10px;font-family:var(--display);font-weight:800;font-size:clamp(1.2rem,2.6vw,1.6rem);letter-spacing:.08em;text-transform:uppercase;color:var(--ps-gold)}
+.when .venue{color:var(--ink-soft)}
+
+/* ---------- trophy photo ---------- */
+.photo-band{padding-block:24px 64px}
+.photo{margin:0 auto;max-width:920px}
+.photo img{display:block;width:100%;height:auto;border-radius:6px;border:4px solid var(--line);transform:rotate(-1deg);box-shadow:0 24px 60px -24px rgba(0,0,0,.8)}
+.photo figcaption{margin-top:20px;text-align:center;color:var(--ink-soft)}
+.photo figcaption b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,3.6vw,2.4rem);text-transform:uppercase;color:var(--ink);line-height:1;margin-bottom:6px}
+
+footer{padding-block:40px;border-top:1px solid rgba(244,246,242,.12)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--ink-soft)}
+footer .logos{display:flex;gap:14px;align-items:center}
+footer .logos img{height:44px;width:auto}
+a{color:var(--atp-sky)}
+a:focus-visible{outline:2px solid var(--ps-gold);outline-offset:3px}
+<title>Defend the Kitchen</title>
+
+<meta name="description" content="Defend the Kitchen: Interclub II. ATP Pickleball Club vs Port Stephens Pickleball Club, Sunday 31 January 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: the page is a pickleball court seen from above. ATP holds one half, Port Stephens the other,
+   and the event name sits in the kitchen (the 7 ft non-volley zone either side of the net). */
+:root{
+  color-scheme: dark;
+  --ground:#081826;        /* court surround, night navy */
+  --ground-2:#0e2436;
+  --line:#f4f6f2;          /* court line white */
+  --ink:#eef2ee;
+  --ink-soft:#a9b8c4;
+  --atp-navy:#0b3149;
+  --atp-lime:#c3d22b;
+  --atp-sky:#29a9e0;
+  --ps-blue:#2f5fcf;
+  --ps-gold:#f2cd2e;
+  --ps-navy:#1a2a6c;
+  --kitchen:#e9ecdf;
+  --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);line-height:.95;margin:0;text-wrap:balance;letter-spacing:.01em}
+p{margin:0}
+.eyebrow{font-family:var(--body);font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+
+/* ---------- top bar ---------- */
+.top{padding-block:18px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top .eyebrow{color:var(--ink-soft)}
+.top .pill{border:1px solid rgba(244,246,242,.25);border-radius:99px;padding:5px 12px;font-size:.8rem;color:var(--ink)}
+
+/* ---------- hero court ---------- */
+.court-band{padding-block:8px 40px}
+.court{
+  display:grid;grid-template-columns:15fr 14fr 15fr;
+  border:4px solid var(--line);border-radius:6px;overflow:hidden;
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.7);
+}
+.half{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px 18px;text-align:center;min-width:0}
+.half.atp{background:linear-gradient(135deg,var(--atp-navy),#0f4462)}
+.half.ps{background:linear-gradient(225deg,var(--ps-blue),var(--ps-navy))}
+/* centre service line on each half */
+.half::before{content:"";position:absolute;top:50%;height:4px;background:var(--line);opacity:.85}
+.half.atp::before{left:0;right:0}
+.half.ps::before{left:0;right:0}
+.half img{position:relative;width:min(190px,70%);height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
+.half .tag{position:relative;font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:3px}
+.atp .tag{background:var(--atp-lime);color:var(--atp-navy)}
+.ps .tag{background:var(--ps-gold);color:var(--ps-navy)}
+
+.kitchen{
+  position:relative;background:var(--kitchen);color:var(--ground);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:40px 14px;border-left:4px solid var(--line);border-right:4px solid var(--line);min-width:0;
+}
+/* the net */
+.kitchen::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:6px;transform:translateX(-50%);
+  background:repeating-linear-gradient(180deg,#1b2733 0 3px,transparent 3px 9px);opacity:.28}
+.kitchen > *{position:relative}
+.kitchen .eyebrow{color:#5c6a52;margin-bottom:10px}
+.kitchen h1{font-weight:900;font-size:clamp(2.6rem,6.4vw,5.4rem);text-transform:uppercase;color:var(--ground)}
+.kitchen h1 span{display:block}
+.kitchen h1 .the{font-size:.42em;letter-spacing:.2em;color:#4a5848;font-weight:800}
+.kitchen .sub{margin-top:14px;font-family:var(--display);font-weight:800;font-size:clamp(1.2rem,2.2vw,1.6rem);letter-spacing:.14em;text-transform:uppercase;background:var(--ground);color:var(--kitchen);padding:4px 14px;border-radius:3px}
+.kitchen .zone{margin-top:16px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#6b7666}
+
+.matchline{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(1.3rem,3vw,2rem)}
+.matchline .vs{font-size:.7em;color:var(--ink-soft)}
+.matchline .a{color:var(--atp-lime)}
+.matchline .p{color:var(--ps-gold)}
+
+@media (max-width:760px){
+  .court{grid-template-columns:1fr}
+  .kitchen{border-left:0;border-right:0;border-top:4px solid var(--line);border-bottom:4px solid var(--line);padding:34px 14px}
+  .kitchen::before{top:50%;bottom:auto;left:0;right:0;width:auto;height:6px;transform:translateY(-50%);
+    background:repeating-linear-gradient(90deg,#1b2733 0 3px,transparent 3px 9px)}
+  .half{padding:26px 16px}
+  .half::before{top:0;bottom:0;left:50%;right:auto;width:4px;height:auto;transform:translateX(-50%)}
+  .half img{width:min(140px,45%)}
+}
+
+footer{padding-block:40px;border-top:1px solid rgba(244,246,242,.12)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--ink-soft)}
+footer .logos{display:flex;gap:14px;align-items:center}
+footer .logos img{height:44px;width:auto}
+a{color:var(--atp-sky)}
+a:focus-visible{outline:2px solid var(--ps-gold);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">Interclub II · Hosted by ATP at Jonas Bradley Park</span>
+    <span class="pill">Sun 31 Jan 2027</span>
+  </div>
+</header>
+
+<section class="court-band" aria-label="Event title">
+  <div class="wrap">
+    <div class="court">
+      <div class="half atp">
+        <img src="images/atp-logo.png" alt="ATP Pickleball Club logo" width="470" height="512">
+        <span class="tag">Defending champions</span>
+      </div>
+      <div class="kitchen">
+        <span class="eyebrow">Non-volley zone · 7 ft each side</span>
+        <h1><span class="the">Defend the</span><span>Kitchen</span></h1>
+        <span class="sub">Interclub II</span>
+      </div>
+      <div class="half ps">
+        <img src="images/ps-logo.png" alt="Port Stephens Pickleball Club logo" width="512" height="422">
+        <span class="tag">Challengers</span>
+      </div>
+    </div>
+    <div class="matchline"><span class="a">ATP Pickleball Club</span><span class="vs">vs</span><span class="p">Port Stephens Pickleball Club</span></div>
+  </div>
+</section>
+
+<section class="when" aria-label="Countdown">
+  <div class="wrap">
+    <div class="days" id="countdown" aria-live="polite"><b id="cd-d">–</b><span id="cd-l">days to go</span></div>
+    <p class="date">Sunday 31 January 2027</p>
+    <p class="venue">Jonas Bradley Park · ATP's home courts</p>
+  </div>
+</section>
+
+<section class="photo-band" aria-label="The trophy">
+  <div class="wrap">
+    <figure class="photo">
+      <img src="images/trophy-tug.jpg" alt="The two club presidents playfully pulling the trophy in opposite directions in front of a Port Stephens Pickleball backdrop" width="1400" height="1004" loading="lazy">
+      <figcaption><b>ATP has it. Port Stephens wants it.</b>The club presidents are already arguing over whose cabinet it lives in. More details coming soon.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logos">
+      <img src="images/atp-logo.png" alt="ATP Pickleball Club" width="470" height="512">
+      <img src="images/ps-logo.png" alt="Port Stephens Pickleball Club" width="512" height="422">
+    </div>
+    <p>Defend the Kitchen · Interclub II · Sunday 31 January 2027 · Jonas Bradley Park</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Midnight starting Sunday 31 January 2027, Sydney time (AEDT, UTC+11)
+  var gameDay = Date.UTC(2027,0,30,13,0,0);
+  var dayMs = 86400000;
+  var num = document.getElementById('cd-d'), label = document.getElementById('cd-l');
+  function update(){
+    var diff = gameDay - Date.now();
+    if (diff > 0) {
+      var d = Math.ceil(diff / dayMs);
+      num.textContent = d;
+      label.textContent = d === 1 ? 'day to go' : 'days to go';
+    } else if (diff > -dayMs) {
+      num.textContent = 'Game';
+      label.textContent = 'day';
+    } else {
+      num.textContent = 'Final';
+      label.textContent = 'thanks for playing';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+</script>
+</body>
+</html>
