@@ -45,32 +45,30 @@ h1,p{margin:0}
 .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
 
 /* ---------- court ---------- */
+/* Built without overflow clipping, filters or %-height images: iPhone Safari skipped painting the old version. */
 .court{
   display:grid;grid-template-columns:15fr 14fr 15fr;
   height:clamp(170px,40vh,400px);
-  border:3px solid var(--line);border-radius:6px;overflow:hidden;
+  border:3px solid var(--line);border-radius:6px;
+  background:var(--line);gap:3px;
   box-shadow:0 24px 60px -30px rgba(0,0,0,.7);
 }
-.half{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:10px;text-align:center;min-width:0}
-.half.atp{background:linear-gradient(135deg,var(--atp-navy),#0f4462)}
-.half.ps{background:linear-gradient(225deg,var(--ps-blue),var(--ps-navy))}
-.half::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;background:var(--line);opacity:.85}
-.half img{position:relative;height:62%;width:auto;max-width:85%;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.45))}
-.half .tag{position:relative;font-family:var(--display);font-weight:800;font-size:clamp(.7rem,1.6vh,.95rem);letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:3px;white-space:nowrap}
+.half,.kitchen{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0;min-height:0}
+.half{gap:8px;padding:10px}
+.half.atp{background:linear-gradient(135deg,var(--atp-navy),#0f4462);border-radius:3px 0 0 3px}
+.half.ps{background:linear-gradient(225deg,var(--ps-blue),var(--ps-navy));border-radius:0 3px 3px 0}
+.half::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:50%;height:3px;margin-top:-1px;background:rgba(244,246,242,.85)}
+.half img{display:block;height:clamp(80px,24vh,250px);width:auto;max-width:85%;object-fit:contain}
+.half .tag{font-family:var(--display);font-weight:800;font-size:clamp(.7rem,1.6vh,.95rem);letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:3px;white-space:nowrap}
 .atp .tag{background:var(--atp-lime);color:var(--atp-navy)}
 .ps .tag{background:var(--ps-gold);color:var(--ps-navy)}
-.kitchen{
-  position:relative;background:var(--kitchen);color:var(--ground);
-  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  padding:10px 6px;border-left:3px solid var(--line);border-right:3px solid var(--line);min-width:0;
-}
-.kitchen::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:5px;transform:translateX(-50%);
-  background:repeating-linear-gradient(180deg,#1b2733 0 3px,transparent 3px 9px);opacity:.28}
-.kitchen > *{position:relative}
-.kitchen h1{font-family:var(--display);font-weight:900;line-height:.9;text-transform:uppercase;color:var(--ground);font-size:min(9.5vh,6.2vw,4.8rem)}
+.kitchen{background:var(--kitchen);color:var(--ground);padding:10px 6px}
+.kitchen::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:5px;margin-left:-2px;
+  background:repeating-linear-gradient(180deg,rgba(27,39,51,.28) 0 3px,transparent 3px 9px)}
+.kitchen h1{font-family:var(--display);font-weight:900;line-height:.9;text-transform:uppercase;color:var(--ground);font-size:4.8rem;font-size:min(9.5vh,6.2vw,4.8rem)}
 .kitchen h1 span{display:block}
 .kitchen h1 .the{font-size:.42em;letter-spacing:.2em;color:#4a5848}
-.kitchen .sub{margin-top:clamp(6px,1.2vh,12px);font-family:var(--display);font-weight:800;font-size:min(3vh,3.2vw,1.4rem);letter-spacing:.14em;text-transform:uppercase;background:var(--ground);color:var(--kitchen);padding:2px 10px;border-radius:3px;white-space:nowrap}
+.kitchen .sub{margin-top:8px;font-family:var(--display);font-weight:800;font-size:1.2rem;font-size:min(3vh,3.2vw,1.4rem);letter-spacing:.14em;text-transform:uppercase;background:var(--ground);color:var(--kitchen);padding:2px 10px;border-radius:3px;white-space:nowrap}
 
 .matchline{display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1rem,2.6vh,1.5rem);text-align:center}
 .matchline .vs{font-size:.7em;color:var(--ink-soft)}
@@ -93,9 +91,12 @@ footer{font-size:.75rem;color:var(--ink-soft);text-align:center}
 
 @media (max-width:700px){
   .court{height:clamp(150px,26vh,230px)}
-  .half .tag{font-size:.62rem;padding:2px 6px}
-  .kitchen h1{font-size:min(9vw,5.5vh)}
-  .kitchen .sub{font-size:.8rem}
+  .half img{height:clamp(70px,15vh,140px)}
+  .half{padding:8px 4px}
+  .half .tag{font-size:.6rem;padding:2px 5px;white-space:normal;max-width:100%}
+  .kitchen{padding:8px 4px}
+  .kitchen h1{font-size:1.7rem;font-size:min(7vw,5.5vh)}
+  .kitchen .sub{font-size:.7rem;padding:2px 6px}
   .lower{grid-template-columns:1fr;gap:14px;align-content:start}
   .when{align-items:center;text-align:center}
   .days{justify-content:center}
@@ -110,7 +111,7 @@ footer{font-size:.75rem;color:var(--ink-soft);text-align:center}
 <div class="page">
   <span class="eyebrow">Interclub II · Hosted by ATP at Jonas Bradley Park</span>
 
-  <div class="court" role="img" aria-label="ATP versus Port Stephens">
+  <div class="court" aria-label="ATP versus Port Stephens">
     <div class="half atp">
       <img src="images/atp-logo.png" alt="ATP Pickleball Club logo" width="470" height="512">
       <span class="tag">Defending champs</span>
