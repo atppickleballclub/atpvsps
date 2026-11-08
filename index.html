@@ -2,159 +2,2311 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="images/atp-logo.png">
-<meta property="og:title" content="Defend the Kitchen: Interclub II">
-<meta property="og:description" content="ATP vs Port Stephens Pickleball Club, Sunday 31 January 2027, Jonas Bradley Park">
-<meta property="og:image" content="images/trophy-tug.jpg">
-<title>Defend the Kitchen</title>
-
-<meta name="description" content="Defend the Kitchen: Interclub II. ATP Pickleball Club vs Port Stephens Pickleball Club, Sunday 31 January 2027, Jonas Bradley Park.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Defend the Kitchen · Interclub II</title>
+<meta name="description" content="Defend the Kitchen: Interclub II. ATP Pickleball Club vs Port Stephens Pickleball Club, Sunday 31 January 2027, Jonas Bradley Park. Draws, live scores and standings.">
+<meta name="theme-color" content="#081826">
+<link rel="icon" type="image/png" href="images/atp-logo.png">
+<link rel="apple-touch-icon" href="images/atp-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Instrument+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one screen. A pickleball court from above (ATP half | kitchen | Port Stephens half),
-   then the day countdown beside the trophy photo. Sizes scale with screen height so it all fits. */
+/* Layout: event-day desk. Centred header (ATP logo | title + games | PSPC logo), tabs below.
+   Single dark theme to match the countdown page and read well on the club TV. */
 :root{
   color-scheme: dark;
   --ground:#081826;
+  --panel:#0f2436;
+  --panel-2:#143049;
+  --rule:rgba(244,246,242,.12);
   --line:#f4f6f2;
   --ink:#eef2ee;
   --ink-soft:#a9b8c4;
-  --atp-navy:#0b3149;
-  --atp-lime:#c3d22b;
-  --ps-blue:#2f5fcf;
-  --ps-gold:#f2cd2e;
-  --ps-navy:#1a2a6c;
-  --kitchen:#e9ecdf;
+  --atp:#c3d22b;
+  --atp-deep:#0b3149;
+  --ps:#f2cd2e;
+  --ps-deep:#1a2a6c;
+  --ps-chip:#189cd8;
+  --good:#5fd38a;
+  --warn:#f0a35b;
   --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 *{box-sizing:border-box}
-img{max-width:100%}
-html,body{height:100%}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-h1,p{margin:0}
-.page{
-  min-height:100%;max-width:1100px;margin:0 auto;
-  display:flex;flex-direction:column;gap:clamp(10px,2.2vh,22px);
-  padding-block:clamp(10px,2vh,20px);
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
-}
-.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
-
-/* ---------- court ---------- */
-/* Built without overflow clipping, filters or %-height images: iPhone Safari skipped painting the old version. */
-.court{
-  display:grid;grid-template-columns:15fr 14fr 15fr;
-  height:clamp(170px,40vh,400px);
-  border:3px solid var(--line);border-radius:6px;
-  background:var(--line);gap:3px;
-  box-shadow:0 24px 60px -30px rgba(0,0,0,.7);
-}
-.half,.kitchen{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0;min-height:0}
-.half{gap:8px;padding:10px}
-.half.atp{background:linear-gradient(135deg,var(--atp-navy),#0f4462);border-radius:3px 0 0 3px}
-.half.ps{background:linear-gradient(225deg,var(--ps-blue),var(--ps-navy));border-radius:0 3px 3px 0}
-.half::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:50%;height:3px;margin-top:-1px;background:rgba(244,246,242,.85)}
-.half img{display:block;height:clamp(80px,24vh,250px);width:auto;max-width:85%;object-fit:contain}
-.half .tag{font-family:var(--display);font-weight:800;font-size:clamp(.7rem,1.6vh,.95rem);letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:3px;white-space:nowrap}
-.atp .tag{background:var(--atp-lime);color:var(--atp-navy)}
-.ps .tag{background:var(--ps-gold);color:var(--ps-navy)}
-.kitchen{background:var(--kitchen);color:var(--ground);padding:10px 6px}
-.kitchen::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:5px;margin-left:-2px;
-  background:repeating-linear-gradient(180deg,rgba(27,39,51,.28) 0 3px,transparent 3px 9px)}
-.kitchen h1{font-family:var(--display);font-weight:900;line-height:.9;text-transform:uppercase;color:var(--ground);font-size:4.8rem;font-size:min(9.5vh,6.2vw,4.8rem)}
-.kitchen h1 span{display:block}
-.kitchen h1 .the{font-size:.42em;letter-spacing:.2em;color:#4a5848}
-.kitchen .sub{margin-top:8px;font-family:var(--display);font-weight:800;font-size:1.2rem;font-size:min(3vh,3.2vw,1.4rem);letter-spacing:.14em;text-transform:uppercase;background:var(--ground);color:var(--kitchen);padding:2px 10px;border-radius:3px;white-space:nowrap}
-
-.matchline{display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1rem,2.6vh,1.5rem);text-align:center}
-.matchline .vs{font-size:.7em;color:var(--ink-soft)}
-.matchline .a{color:var(--atp-lime)}
-.matchline .p{color:var(--ps-gold)}
-
-/* ---------- countdown + photo ---------- */
-.lower{flex:1;display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(16px,3vw,36px);align-items:center;min-height:0}
-.when{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;min-width:0}
-.days{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap}
-.days b{font-family:var(--display);font-weight:900;font-size:clamp(3.6rem,13vh,8rem);line-height:.85;font-variant-numeric:tabular-nums;color:var(--atp-lime)}
-.days span{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3.6vh,2.2rem);text-transform:uppercase;letter-spacing:.05em}
-.date{margin-top:6px;font-family:var(--display);font-weight:800;font-size:clamp(1.1rem,2.8vh,1.6rem);letter-spacing:.07em;text-transform:uppercase;color:var(--ps-gold)}
-.venue{color:var(--ink-soft)}
-.photo{margin:0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px}
-.photo img{display:block;max-width:100%;max-height:clamp(150px,33vh,380px);width:auto;height:auto;border-radius:6px;border:3px solid var(--line);transform:rotate(-1deg);box-shadow:0 18px 44px -20px rgba(0,0,0,.8)}
-.photo figcaption{font-size:.85rem;color:var(--ink-soft);text-align:center}
-
-footer{font-size:.75rem;color:var(--ink-soft);text-align:center}
-
-@media (max-width:700px){
-  .court{height:clamp(150px,26vh,230px)}
-  .half img{height:clamp(70px,15vh,140px)}
-  .half{padding:8px 4px}
-  .half .tag{font-size:.6rem;padding:2px 5px;white-space:normal;max-width:100%}
-  .kitchen{padding:8px 4px}
-  .kitchen h1{font-size:1.7rem;font-size:min(7vw,5.5vh)}
-  .kitchen .sub{font-size:.7rem;padding:2px 6px}
-  .lower{grid-template-columns:1fr;gap:14px;align-content:start}
-  .when{align-items:center;text-align:center}
-  .days{justify-content:center}
-  .days b{font-size:clamp(3.2rem,10vh,5rem)}
-  .photo img{max-height:30vh}
-}
+html,body{margin:0}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.display{font-family:var(--display);text-transform:uppercase;letter-spacing:.03em;line-height:.95}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.atp-c{color:var(--atp)} .ps-c{color:var(--ps)} .psb-c{color:var(--ps-chip)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.chip.atp{background:var(--atp);color:var(--atp-deep)}
+.chip.ps{background:var(--ps-chip);color:#0d1a4a}
+/* team badge: club logo + team letter */
+.tchip{display:inline-flex;align-items:center;gap:5px;padding:2px 9px 2px 3px;border-radius:99px;font-family:var(--display);font-weight:900;font-size:1rem;line-height:1;white-space:nowrap;vertical-align:middle}
+.tchip img{height:1.45em;width:auto;display:block}
+.tchip.atp{background:rgba(195,210,43,.14);border:1px solid rgba(195,210,43,.6);color:var(--atp)}
+.tchip.ps{background:rgba(24,156,216,.16);border:1px solid rgba(24,156,216,.7);color:var(--ps-chip)}
+.chip.rest img{height:1.4em;width:auto;vertical-align:middle}
+.tv-call .t img{height:1.15em;width:auto;vertical-align:-.15em;margin-right:.25vw}
+.chip.rest{background:transparent;border:1px solid var(--rule);color:var(--ink-soft)}
+.chip.sample{background:var(--warn);color:#2b1606}
+:focus-visible{outline:2px solid var(--ps);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- header (centred) ---------- */
+/* front page (countdown) */
+body.frontmode header,body.frontmode main,body.frontmode .cmte-foot,body.frontmode .status,body.frontmode .fpctl,body.frontmode .pvbar{display:none!important}
+#front{min-height:100vh;min-height:100dvh}
+.fp-page{min-height:100vh;min-height:100dvh;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(10px,2.2vh,22px);padding:clamp(10px,2vh,20px) 16px}
+.fp-court{display:grid;grid-template-columns:15fr 14fr 15fr;height:clamp(170px,40vh,400px);border:3px solid #f4f6f2;border-radius:6px;background:#f4f6f2;gap:3px;box-shadow:0 24px 60px -30px rgba(0,0,0,.7)}
+.fp-half,.fp-kitchen{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0;min-height:0}
+.fp-half{gap:8px;padding:10px}
+.fp-half.atp{background:linear-gradient(135deg,#0b3149,#0f4462);border-radius:3px 0 0 3px}
+.fp-half.ps{background:linear-gradient(225deg,#2f5fcf,#1a2a6c);border-radius:0 3px 3px 0}
+.fp-half::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:50%;height:3px;margin-top:-1px;background:rgba(244,246,242,.85)}
+.fp-half img{display:block;height:clamp(80px,24vh,250px);width:auto;max-width:85%;object-fit:contain}
+.fp-tag{font-family:var(--display);font-weight:800;font-size:clamp(.7rem,1.6vh,.95rem);letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:3px;white-space:nowrap}
+.atp .fp-tag{background:var(--atp);color:#0b3149} .ps .fp-tag{background:#f2cd2e;color:#1a2a6c}
+.fp-kitchen{background:#e9ecdf;color:#081826;padding:10px 6px}
+.fp-kitchen::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:5px;margin-left:-2px;background:repeating-linear-gradient(180deg,rgba(27,39,51,.28) 0 3px,transparent 3px 9px)}
+.fp-kitchen h1{font-family:var(--display);font-weight:900;line-height:.9;text-transform:uppercase;color:#081826;font-size:min(9.5vh,6.2vw,4.8rem);margin:0}
+.fp-kitchen h1 span{display:block} .fp-kitchen h1 .the{font-size:.42em;letter-spacing:.2em;color:#4a5848}
+.fp-sub{margin-top:8px;font-family:var(--display);font-weight:800;font-size:min(3vh,3.2vw,1.4rem);letter-spacing:.14em;text-transform:uppercase;background:#081826;color:#e9ecdf;padding:2px 10px;border-radius:3px;white-space:nowrap}
+.fp-match{display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1rem,2.6vh,1.5rem)}
+.fp-match .vs{font-size:.7em;color:var(--ink-soft)} .fp-match .a{color:var(--atp)} .fp-match .p{color:#f2cd2e}
+.fp-lower{flex:1;display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(16px,3vw,36px);align-items:center;min-height:0}
+.fp-when{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.fp-days{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap}
+.fp-days b{font-family:var(--display);font-weight:900;font-size:clamp(3.6rem,13vh,8rem);line-height:.85;font-variant-numeric:tabular-nums;color:var(--atp)}
+.fp-days span{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3.6vh,2.2rem);text-transform:uppercase;letter-spacing:.05em}
+.fp-date{margin:6px 0 0;font-family:var(--display);font-weight:800;font-size:clamp(1.1rem,2.8vh,1.6rem);letter-spacing:.07em;text-transform:uppercase;color:#f2cd2e}
+.fp-venue{margin:0;color:var(--ink-soft)}
+.fp-photo{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.fp-photo img{display:block;max-width:100%;max-height:clamp(150px,33vh,380px);width:auto;height:auto;border-radius:6px;border:3px solid #f4f6f2;transform:rotate(-1deg);box-shadow:0 18px 44px -20px rgba(0,0,0,.8)}
+.fp-photo figcaption{font-size:.85rem;color:var(--ink-soft);text-align:center}
+.fp-foot{display:flex;justify-content:center;gap:12px;padding-bottom:8px}
+@media (max-width:700px){
+  .fp-court{height:clamp(150px,26vh,230px);grid-template-columns:1fr 1.2fr 1fr} .fp-half img{height:clamp(70px,15vh,140px)} .fp-half{padding:8px 4px}
+  .fp-tag{font-size:.6rem;padding:2px 5px;white-space:normal}
+  .fp-kitchen h1{font-size:min(7vw,5.5vh)} .fp-sub{font-size:.7rem;padding:2px 6px}
+  .fp-lower{grid-template-columns:1fr;gap:14px;align-content:start} .fp-photo img{max-height:30vh}
+}
+/* committee front-page controls + player view bar */
+.fpctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding-top:10px}
+.fpswitch{display:inline-flex;align-items:center;gap:10px;background:none;border:0;padding:4px 6px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer}
+.fpswitch .knob{position:relative;width:46px;height:26px;border-radius:99px;background:var(--rule);transition:background .15s}
+.fpswitch .knob::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
+.fpswitch[aria-checked="true"] .knob{background:var(--atp)}
+.fpswitch[aria-checked="true"] .knob::after{transform:translateX(20px)}
+.fp-state{font-size:.85rem;font-weight:700;padding:4px 10px;border-radius:99px}
+.fp-state.on{background:#3a2f08;color:#f7c520} .fp-state.off{background:#123b22;color:#4ade80}
+.btn.sm{padding:6px 12px;font-size:.85rem}
+.pvbar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:12px;background:#081826;border:2px solid var(--atp);border-radius:99px;padding:6px 8px 6px 16px;box-shadow:0 10px 30px rgba(0,0,0,.6);font-weight:700;white-space:nowrap}
+body.tvmode .pvbar{bottom:auto;top:10px}
+header{padding-block:14px 0;border-bottom:1px solid var(--rule)}
+/* court header */
+.chead{display:grid;grid-template-columns:15fr 12fr 15fr;max-width:900px;margin:0 auto;border:3px solid #f4f6f2;border-radius:6px;background:#f4f6f2;gap:3px;box-shadow:0 18px 40px -24px rgba(0,0,0,.8)}
+.ch-half{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,22px);padding:clamp(8px,1.6vw,14px) clamp(6px,1.6vw,16px);min-width:0}
+.ch-half::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:rgba(244,246,242,.55)}
+.ch-half.atp{background:linear-gradient(135deg,#0b3149,#0f4462);border-radius:3px 0 0 3px}
+.ch-half.ps{background:linear-gradient(225deg,#2f5fcf,#1a2a6c);border-radius:0 3px 3px 0}
+.ch-half img{height:clamp(44px,8vw,78px);width:auto;max-width:42%;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
+.ch-sc{display:flex;flex-direction:column;align-items:center;line-height:.9;font-family:var(--display);font-weight:900;text-transform:uppercase}
+.ch-sc span{font-size:clamp(.7rem,1.6vw,1rem);letter-spacing:.08em;padding:2px 7px;border-radius:3px;margin-bottom:4px}
+.ch-sc b{font-size:clamp(2.2rem,6vw,3.6rem);font-variant-numeric:tabular-nums;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.atp .ch-sc span{background:var(--atp);color:#0b3149} .atp .ch-sc b{color:var(--atp)}
+.ps .ch-sc span{background:#f2cd2e;color:#1a2a6c} .ps .ch-sc b{color:#fff}
+.ch-kitchen{position:relative;isolation:isolate;background:#e9ecdf;color:#081826;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 4px;min-width:0}
+.ch-kitchen::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:4px;margin-left:-2px;background:repeating-linear-gradient(180deg,rgba(27,39,51,.3) 0 3px,transparent 3px 8px)}
+.ch-kitchen h1{font-weight:900;line-height:.88;text-transform:uppercase;color:#081826;font-size:clamp(1.5rem,4.4vw,2.9rem);margin:0}
+.ch-kitchen h1 span{display:block}
+.ch-kitchen h1 .the{font-size:.42em;letter-spacing:.2em;color:#4a5848}
+.ch-tag{margin-top:6px;font-family:var(--display);font-weight:800;font-size:clamp(.6rem,1.4vw,.85rem);letter-spacing:.14em;text-transform:uppercase;background:#081826;color:#e9ecdf;padding:2px 9px;border-radius:3px;white-space:nowrap}
+.ch-meta{text-align:center;font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+@media (max-width:560px){
+  .chead{grid-template-columns:1fr 1.15fr 1fr}
+  .ch-half{flex-direction:column;gap:4px}
+  .ch-half.ps img{order:-1}
+  .ch-half img{max-width:80%;height:40px}
+  .ch-tag{padding:2px 5px}
+}
+.head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.head .lg{height:64px;width:auto}
+.head .lg.l{justify-self:end}
+.head .lg.r{justify-self:start}
+.title{text-align:center;min-width:0}
+.title h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900}
+.title p{font-size:.82rem;color:var(--ink-soft);margin-top:4px}
+.mini{display:inline-flex;align-items:baseline;gap:10px;margin-top:6px;font-family:var(--display);font-weight:900;font-size:1.6rem;font-variant-numeric:tabular-nums}
+.mini small{font-size:.72rem;letter-spacing:.12em;color:var(--ink-soft);font-weight:800}
+nav{display:flex;justify-content:center;gap:2px;margin-top:10px;overflow-x:auto}
+nav button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 12px 10px;font-weight:600;color:var(--ink-soft);cursor:pointer;white-space:nowrap}
+nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--atp)}
+nav button:hover{color:var(--ink)}
+@media (max-width:480px){nav{justify-content:flex-start}nav button{padding:8px 8px 10px;font-size:.88rem}}
+@media (max-width:600px){
+  .head{gap:8px}
+  .head .lg{height:44px}
+  nav{justify-content:flex-start}
+}
+.status{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;padding-block:10px;font-size:.82rem;color:var(--ink-soft);text-align:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ink-soft);display:inline-block}
+.dot.live{background:var(--good)}
+.dot.off{background:var(--warn)}
+
+main{padding-block:18px 60px}
+section[hidden],[hidden]{display:none!important}
+.note{font-size:.86rem;color:var(--ink-soft);max-width:72ch}
+
+/* ---------- controls ---------- */
+.divpick-wrap{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.divpick{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.divpick button{background:var(--panel);border:2px solid var(--rule);border-radius:10px;padding:12px 8px;font:inherit;font-weight:700;font-size:.95rem;color:var(--ink);cursor:pointer;line-height:1.2}
+.divpick button:hover{border-color:var(--ink-soft)}
+.divpick button[aria-pressed="true"]{background:var(--atp);border-color:var(--atp);color:var(--ground)}
+.divpick-wrap .search{width:100%;max-width:none}
+@media (max-width:700px){.divpick{grid-template-columns:1fr 1fr}.divpick button:first-child{grid-column:1/-1}}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.seg{display:inline-flex;background:var(--panel);border:1px solid var(--rule);border-radius:99px;padding:3px;flex-wrap:wrap}
+.seg button{background:none;border:0;border-radius:99px;padding:5px 12px;font-weight:600;font-size:.85rem;color:var(--ink-soft);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--line);color:var(--ground)}
+.search{flex:1;min-width:200px;max-width:340px;background:var(--panel);border:1px solid var(--rule);border-radius:99px;padding:7px 14px}
+.btn{background:var(--line);color:var(--ground);border:0;border-radius:6px;padding:8px 14px;font-weight:700;cursor:pointer}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+.btn.go{background:var(--atp);color:var(--atp-deep)}
+.btn.danger{background:#d9534f;color:#fff}
+.msg{font-size:.8rem;color:var(--ink-soft)}
+.msg.err{color:var(--warn)}
+.msg.ok{color:var(--good)}
+.tools{margin-top:28px;padding-top:18px;border-top:1px dashed var(--rule);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* ---------- scoreboard ---------- */
+.totals{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;background:var(--panel);border-radius:8px;padding:22px 20px;border:1px solid var(--rule)}
+.side{display:flex;align-items:center;gap:16px;min-width:0}
+.side.right{justify-content:flex-end;text-align:right}
+.side img{height:clamp(56px,10vw,110px);width:auto}
+.side .num{font-family:var(--display);font-weight:900;font-size:clamp(3.4rem,10vw,7rem);line-height:.85;font-variant-numeric:tabular-nums}
+.side .lbl{font-size:.82rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.side .club{font-family:var(--display);font-weight:800;font-size:clamp(1.1rem,2.4vw,1.6rem);text-transform:uppercase}
+.mid{text-align:center}
+.mid .vs{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--ink-soft)}
+.mid .played{font-size:.8rem;color:var(--ink-soft);margin-top:4px;white-space:nowrap}
+.lead{margin-top:10px;text-align:center;font-weight:600}
+.bar{height:10px;border-radius:99px;background:var(--ps-chip);overflow:hidden;margin-top:14px}
+.bar span{display:block;height:100%;background:var(--atp)}
+.divgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.divcard{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px;min-width:0}
+.divcard .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.divcard h3{font-size:1.5rem;font-weight:900}
+.divcard .score{font-family:var(--display);font-weight:900;font-size:1.8rem;font-variant-numeric:tabular-nums}
+.divcard .sub{font-size:.78rem;color:var(--ink-soft)}
+.tablewrap{overflow-x:auto}
+table.teams{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums;font-size:.86rem;table-layout:fixed}
+table.teams th{font-size:.66rem;text-transform:uppercase;color:var(--ink-soft);text-align:center;font-weight:700;padding:4px 2px;white-space:nowrap;width:3.4em}
+table.teams th:first-child{width:auto;letter-spacing:.1em}
+table.teams th:first-child,table.teams td:first-child{text-align:left;padding-left:6px}
+table.teams td{padding:6px 2px;border-top:1px solid var(--rule);text-align:center}
+table.teams td .who{display:block;color:var(--ink-soft);font-size:.76rem}
+@media (max-width:820px){.divgrid{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .totals{grid-template-columns:1fr 1fr;padding:16px}
+  .mid{grid-column:1/-1;order:-1}
+  .mid .tug{width:100%}
+  .side,.side.right{flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:6px}
+  .side.right img{order:-1}
+}
+/* ---------- court calls ---------- */
+#tab-court .calls{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){#tab-court .calls{grid-template-columns:1fr}}
+.login{max-width:380px;margin:30px auto;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:22px 20px;display:flex;flex-direction:column;gap:8px}
+.login h2{font-size:1.6rem;font-weight:900;margin:0 0 6px}
+.login label{font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-top:4px}
+.login input{font:inherit;color:var(--ink);background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:10px 12px}
+.login input:focus{outline:2px solid var(--atp);outline-offset:1px}
+.login .btn{margin-top:8px;justify-content:center}
+.linkbtn{background:none;border:0;padding:4px;color:var(--ink-soft);font:inherit;font-size:.85rem;text-decoration:underline;cursor:pointer}
+.linkbtn:hover{color:var(--ink)}
+.cmte-foot{text-align:center;padding:24px 16px 30px}
+.status .who-in{margin-left:auto;font-size:.82rem;color:var(--ink-soft)}
+.tvmode .cmte-foot{display:none}
+.callbox{margin-top:18px;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 16px}
+.callbox .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.callbox h3{font-size:1.4rem;font-weight:900}
+.calls{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.call{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:8px 10px}
+.call b.ct{font-family:var(--display);font-weight:900;font-size:1.8rem;line-height:1;min-width:2ch;text-align:center}
+.call .t{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-weight:600}
+.call .sub{font-size:.74rem;color:var(--ink-soft)}
+.call.new{border-color:var(--atp);box-shadow:0 0 0 1px var(--atp)}
+.flag{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background:var(--atp);color:var(--atp-deep)}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.st.go{background:rgba(95,211,138,.18);color:var(--good)}
+.st.wait{background:rgba(242,205,46,.14);color:var(--ps)}
+.st.later{background:transparent;border:1px solid var(--rule);color:var(--ink-soft)}
+.st.done{background:transparent;color:var(--ink-soft)}
+.st.slow{background:rgba(240,163,91,.18);color:var(--warn)}
+.nextup{margin-top:12px;border-radius:8px;padding:12px 14px;border:1px solid var(--rule);background:var(--ground)}
+.nextup.go{border-color:var(--good);background:rgba(95,211,138,.1)}
+.nextup b{font-family:var(--display);font-weight:900;font-size:1.4rem;text-transform:uppercase;display:block;line-height:1.05}
+
+/* ---------- tug of war (the presidents pull the trophy toward the leading club) ---------- */
+/* the frame is wider than the photo, so the photo can slide either way without anyone leaving the frame;
+   the frame colour matches the backdrop so the photo's faded edges blend in */
+.tug{position:relative;overflow:hidden;aspect-ratio:2.4;border-radius:10px;border:3px solid var(--line);background:radial-gradient(ellipse at 50% 40%,#6589cf 0%,#5a7ec6 65%,#4a6db6 100%);box-shadow:0 14px 40px -18px rgba(0,0,0,.8)}
+.tug img.ph{position:absolute;top:0;left:50%;height:100%;width:auto;max-width:none;transform:translateX(-50%);transition:transform 1.6s cubic-bezier(.34,1.45,.5,1);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+.tug .kline{position:absolute;top:0;bottom:0;left:50%;width:0;border-left:3px dashed rgba(244,246,242,.9);transform:translateX(-50%);filter:drop-shadow(0 0 2px rgba(0,0,0,.6))}
+.tug .end{position:absolute;bottom:6px;font-family:var(--display);font-weight:900;font-size:.85rem;letter-spacing:.06em;padding:1px 7px;border-radius:4px}
+.tug .end.a{left:6px;background:var(--atp);color:var(--atp-deep)}
+.tug .end.p{right:6px;background:var(--ps-chip);color:#0d1a4a}
+.tugcap{font-size:.8rem;color:var(--ink-soft);margin-top:6px;text-align:center}
+.mid .tug{width:clamp(200px,26vw,320px);max-width:100%;margin:6px auto 0}
+.tv-mid .tug{height:23vh;margin:1vh auto 0}
+.tv-mid .tug .end{font-size:1.7vh;bottom:.8vh}
+@media (prefers-reduced-motion:reduce){.tug img.ph{transition:none}}
+
+/* ---------- on court (committee) ---------- */
+.startbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--panel-2);border:1px solid var(--rule);border-radius:8px;padding:12px 16px;margin-bottom:14px}
+.startbar b{font-family:var(--display);font-weight:900;font-size:1.5rem;text-transform:uppercase}
+.startbar .btn.go{font-size:1.05rem;padding:10px 20px}
+.csum{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+/* ---------- game timer (committee) ---------- */
+.tkhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+body.tkmode header,body.tkmode .status,body.tkmode .cmte-foot{display:none}
+body.tkmode #tab-timer{max-width:680px;margin:0 auto;padding-top:14px}
+body.tkmode .tbig{font-size:clamp(6rem,30vw,11rem)}
+.tclock-link{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
+.tclock-link:hover{color:var(--ink)}
+.tpanel{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:22px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.tlabel{font-family:var(--display);font-weight:900;font-size:1.6rem;text-transform:uppercase}
+.tbig{font-family:var(--display);font-weight:900;font-size:clamp(4.5rem,18vw,9rem);line-height:.9;font-variant-numeric:tabular-nums}
+body.tkflash::after{content:'';position:fixed;inset:0;background:rgba(255,70,50,.35);pointer-events:none;z-index:9999;animation:tkflash .5s steps(2) 8 forwards}
+@keyframes tkflash{50%{opacity:0}}
+.tbig.playing{color:var(--good)} .tbig.paused{color:var(--warn)} .tbig.time{color:#ff6b5a}
+.tstate{color:var(--ink-soft);max-width:52ch}
+.tbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.tbtns .btn{font-size:1.1rem;padding:12px 22px}
+.tadj{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule)}
+.tadj select{background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:6px 8px;margin-left:4px}
+.tadj label{font-size:.85rem;color:var(--ink-soft)}
+.tclock{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+/* TV clock */
+.tv-timer{display:flex;justify-content:space-between;align-items:center;gap:1vw}
+.tv-timer .lab{font-family:var(--display);font-weight:900;font-size:3.2vh;text-transform:uppercase;line-height:1}
+.tv-timer .st2{display:block;font-family:var(--body);font-size:1.6vh;font-weight:600;color:var(--ink-soft);margin-top:.4vh;text-transform:none}
+.tv-timer .clock{font-family:var(--display);font-weight:900;font-size:7.5vh;line-height:.9;font-variant-numeric:tabular-nums}
+.tv-timer .clock.playing{color:var(--good)} .tv-timer .clock.paused{color:var(--warn)} .tv-timer .clock.time{color:#ff6b5a;animation:pulse 1s ease-in-out infinite}
+.csum div{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;min-width:120px}
+.csum b{display:block;font-family:var(--display);font-weight:900;font-size:1.8rem;line-height:1;font-variant-numeric:tabular-nums}
+.csum span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.cdiv{margin-bottom:16px}
+.cdiv .eyebrow{margin-bottom:8px;display:block}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:900px){.cgrid{grid-template-columns:1fr}}
+.ccard{background:var(--panel);border:1px solid var(--rule);border-left:5px solid var(--rule);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ccard.go{border-left-color:var(--good)}
+.ccard.new{border-left-color:var(--atp);box-shadow:0 0 0 1px var(--atp)}
+.ccard.free{border-left-color:var(--ps)}
+.ccard.long{border-left-color:var(--warn);box-shadow:0 0 0 1px var(--warn)}
+.ccard .slow{font-size:.8rem;font-weight:700;color:var(--warn)}
+.csum div.warn{border-color:var(--warn)}
+.csum div.warn b{color:var(--warn)}
+.ccard.fin{opacity:.7}
+.ccard .hd{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ccard .hd b{font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1}
+.ccard .who{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-weight:600}
+.ccard .gm{display:flex;gap:6px;flex-wrap:wrap}
+.ccard .gm span{font-size:.78rem;font-variant-numeric:tabular-nums;border:1px solid var(--rule);border-radius:4px;padding:1px 7px;color:var(--ink-soft)}
+.ccard .gm span.in{color:var(--ink);border-color:rgba(244,246,242,.35)}
+.ccard .nx{font-size:.8rem;color:var(--ink-soft);border-top:1px solid var(--rule);padding-top:7px}
+.ccard .ft{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.ecard.jump{box-shadow:0 0 0 2px var(--atp)}
+
+/* ---------- TV screen ---------- */
+body.tvmode header,body.tvmode .status{display:none}
+body.tvmode{margin:0}
+body.tvmode main{max-width:none;padding:0}
+.tv{height:100vh;display:grid;grid-template-rows:auto 1fr auto;gap:1.8vh;padding:2vh 2.4vw;overflow:hidden;background:radial-gradient(ellipse at 50% -20%, #12304a 0%, var(--ground) 60%)}
+.tv-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2vw}
+.tv-side{display:flex;align-items:center;gap:1.6vw}
+.tv-side.r{justify-content:flex-end;text-align:right}
+.tv-side img{height:12vh;width:auto}
+.tv-side .club{font-family:var(--display);font-weight:800;font-size:3.4vh;text-transform:uppercase;letter-spacing:.04em}
+.tv-side .num{font-family:var(--display);font-weight:900;font-size:12.5vh;line-height:.82;font-variant-numeric:tabular-nums}
+.tv-side .pts{font-size:1.9vh;color:var(--ink-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tv-mid{text-align:center}
+.tv-mid h1{font-size:5vh;font-weight:900;white-space:nowrap}
+.tv-mid .k{font-size:1.9vh;color:var(--ink-soft);letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-top:.6vh}
+.tv-mid .lead{font-family:var(--display);font-weight:800;font-size:2.8vh;text-transform:uppercase;margin-top:.8vh}
+.tv-mid .bar{height:1.2vh;width:min(36vw,520px);margin:1.2vh auto 0}
+.tv-body{display:grid;grid-template-columns:1.55fr 1fr;gap:2vw;min-height:0}
+.tv-panel{background:rgba(15,36,54,.85);border:1px solid var(--rule);border-radius:1.2vh;padding:1.8vh 1.6vw;min-height:0;display:flex;flex-direction:column;gap:1.4vh;overflow:hidden}
+.tv-panel h2{font-size:3.2vh;font-weight:900;display:flex;justify-content:space-between;align-items:baseline;gap:1vw}
+.tv-panel h2 span{font-family:var(--body);font-size:1.7vh;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.tv-calls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:1.2vh 1vw;flex:1;min-height:0}
+.tv-call{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.8vw;background:var(--ground);border:1px solid var(--rule);border-radius:1vh;padding:.4vh .7vw;min-height:0;overflow:hidden}
+.tv-call .ct{font-family:var(--display);font-weight:900;font-size:4.4vh;line-height:1;min-width:2ch;text-align:center}
+.tv-call .t{font-family:var(--display);font-weight:800;font-size:2.3vh;text-transform:uppercase;display:flex;gap:.6vw;align-items:center;flex-wrap:wrap;line-height:1}
+.tv-call .t .a{color:var(--atp)} .tv-call .t .p{color:var(--ps-chip)} .tv-call .t .v{color:var(--ink-soft);font-size:.7em}
+.tv-call .sub{font-size:1.4vh;color:var(--ink-soft);margin-top:.3vh;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tv-call.fin,.call.fin{opacity:.6}
+.tv-call.new{border-color:var(--atp);background:rgba(195,210,43,.12);animation:pulse 1.6s ease-in-out infinite}
+.tv-call .flag{font-size:1.4vh}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(195,210,43,.0)}50%{box-shadow:0 0 0 .5vh rgba(195,210,43,.45)}}
+.tv-divs{display:grid;gap:1vh;flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
+.tv-div{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;align-items:center;column-gap:1vw;row-gap:.5vh;border-bottom:1px solid var(--rule);padding-bottom:.8vh;min-height:0}
+.tv-div:last-child{border-bottom:0}
+.tv-div .nx{grid-column:1/-1;display:flex;align-items:center;gap:.6vw;font-size:1.6vh;color:var(--ink-soft);white-space:nowrap;overflow:hidden}
+.tv-div .nx>b{font-family:var(--display);font-weight:900;font-size:2.2vh;color:var(--ink)}
+.tv-div .nx .tchip{font-size:1.75vh}
+.tv-div .nx .go{color:var(--good);font-weight:800}
+.tv-div b{font-family:var(--display);font-weight:900;font-size:2.3vh;text-transform:uppercase}
+.tv-div .sc{font-family:var(--display);font-weight:900;font-size:3.3vh;font-variant-numeric:tabular-nums}
+.tv-div .sub{font-size:1.35vh;color:var(--ink-soft)}
+.tv-foot{display:flex;align-items:center;justify-content:flex-end;gap:1.4vw;font-size:1.9vh;color:var(--ink-soft);white-space:nowrap;overflow:hidden}
+.tv-foot .lab{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-size:1.5vh}
+.tv-foot .res{display:flex;gap:2vw;overflow:hidden;flex:1}
+.tv-foot .res span b{color:var(--ink)}
+.tv-ctl{flex:none;display:flex;gap:6px;opacity:.35;transition:opacity .2s}
+.tv-ctl:hover,.tv-ctl:focus-within{opacity:1}
+.tv-ctl button{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:5px 10px;font-size:.78rem;cursor:pointer}
+.tv-empty{display:grid;place-items:center;flex:1;font-family:var(--display);font-weight:900;font-size:5vh;text-transform:uppercase;color:var(--ink-soft);text-align:center}
+
+/* ---------- draw ---------- */
+.round{margin-top:22px}
+.round h2{font-size:1.8rem;font-weight:900;margin-bottom:10px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.round h2 span{font-family:var(--body);font-size:.8rem;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.courts{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.court{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;min-width:0}
+.court.hit{border-color:var(--atp);box-shadow:0 0 0 1px var(--atp)}
+.court .ct{display:flex;justify-content:space-between;gap:6px 8px;align-items:center;flex-wrap:wrap}
+.court .ct b{font-family:var(--display);font-weight:900;font-size:1.25rem;text-transform:uppercase;white-space:nowrap}
+.court .ct span{font-size:.75rem;color:var(--ink-soft)}
+.matchup{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:6px 0 8px;font-weight:600}
+.games{list-style:none;margin:0;padding:0;font-size:.84rem}
+.games li{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;padding:5px 0;border-top:1px solid var(--rule);align-items:center}
+.games li .r{text-align:right}
+.games li .s{font-variant-numeric:tabular-nums;font-weight:700;min-width:54px;text-align:center;color:var(--ink-soft)}
+.games li .s.done{color:var(--ink)}
+mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2px}
+.won{font-weight:700}
+/* draw: ring the pair that won each game in their club colour */
+.games .pr{justify-self:start;border:2px solid transparent;border-radius:14px;padding:3px 9px;line-height:1.3}
+.games .pr.r{justify-self:end}
+.games .pr.won{color:var(--ink)}
+.games .pr.wa{border-color:var(--atp);background:rgba(195,210,43,.12)}
+.games .pr.wp{border-color:var(--ps-chip);background:rgba(24,156,216,.14)}
+.round h2 .rhead{display:inline-flex;gap:6px;align-items:center;font-size:.85rem}
+.resting.top{margin-bottom:2px}
+.resting{grid-column:1/-1;font-size:.8rem;color:var(--ink-soft);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.divlabel{grid-column:1/-1;margin-top:6px}
+.rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.rclubs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.rclub-h{display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:900;font-size:1.05rem;text-transform:uppercase;margin-bottom:6px}
+.rclub-h img{height:22px;width:auto}
+.rclub-h.atp{color:var(--atp)} .rclub-h.ps{color:var(--ps-chip)}
+.rteam{display:grid;grid-template-columns:auto 1fr;column-gap:8px;align-items:start;padding:8px 0;border-top:1px solid var(--rule)}
+.rteam ol{margin:0;padding:0;list-style:none;font-size:.88rem;line-height:1.35}
+.rteam small{font-size:.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
+.rteam .rest{grid-column:2;font-size:.7rem;color:var(--ink-soft);margin-top:2px}
+.rteam.hit{background:rgba(195,210,43,.08);border-radius:6px}
+@media (max-width:820px){.rgrid{grid-template-columns:1fr}}
+@media (max-width:400px){.rclubs{grid-template-columns:1fr}}
+/* division colours */
+.dv{border-left:6px solid var(--dc)!important}
+.dvt{color:var(--dc);display:inline-flex;align-items:center;gap:.35em}
+.dvdot{display:inline-block;width:.7em;height:.7em;border-radius:50%;background:var(--dc);flex:none;font-style:normal}
+.divpick button.dvb{border-bottom:4px solid var(--dc);display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.divpick button.dvb[aria-pressed="true"]{background:var(--dc);border-color:var(--dc);color:#fff}
+.divpick button.dvb[aria-pressed="true"] .dvdot{background:#fff}
+.seg button.dvb{display:inline-flex;align-items:center;gap:5px}
+.tv-call.dv{border-left-width:.6vw!important}
+
+/* ---------- my games ---------- */
+.finder{max-width:720px;margin:0 auto}
+.finder .search{max-width:none;width:100%;font-size:1.05rem;padding:12px 18px}
+.picks{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.picks button{background:var(--panel);border:1px solid var(--rule);border-radius:99px;padding:6px 12px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.picks button:hover{border-color:var(--ink-soft)}
+.me{margin-top:18px;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:18px}
+.me h2{font-size:2rem;font-weight:900}
+.me .who{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px;font-size:.88rem;color:var(--ink-soft)}
+.me .tally{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-variant-numeric:tabular-nums}
+.me .tally div b{display:block;font-family:var(--display);font-weight:900;font-size:1.8rem;line-height:1}
+.me .tally div span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.mround{border-top:1px solid var(--rule);margin-top:14px;padding-top:12px}
+.mround .rt{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mround .rt b{font-family:var(--display);font-weight:900;font-size:1.3rem;text-transform:uppercase}
+.mgame{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:10px;align-items:center;padding:6px 0;font-size:.88rem}
+.mgame .gn{font-size:.72rem;color:var(--ink-soft);font-weight:700}
+.mgame .sc{font-weight:800;font-variant-numeric:tabular-nums;text-align:center;min-width:56px}
+.mgame .r{text-align:right}
+.mgame.off{color:var(--ink-soft);font-size:.8rem}
+.res{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:6px}
+.res.w{background:rgba(95,211,138,.18);color:var(--good)}
+.res.l{background:rgba(240,163,91,.16);color:var(--warn)}
+
+/* ---------- enter scores ---------- */
+.savebar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--panel-2);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin-bottom:14px}
+.entry{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:980px){.entry{grid-template-columns:1fr}}
+.ecard{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ecard.saved{border-color:rgba(95,211,138,.5)}
+.ecard.dirty{border-color:var(--ps)}
+.ecard.bad{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn)}
+.egame{display:grid;grid-template-columns:1fr auto auto auto 1fr;gap:6px;align-items:center;font-size:.84rem}
+.egame .r{text-align:right}
+.egame input{width:56px;text-align:center;background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:8px 4px;font-size:1.1rem;font-weight:700;font-variant-numeric:tabular-nums}
+.egame input.atp-in{border-color:rgba(195,210,43,.5)}
+.egame input.ps-in{border-color:rgba(24,156,216,.6)}
+.egame .dash{color:var(--ink-soft)}
+.erow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* ---------- teams ---------- */
+.upload{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;background:var(--panel);border:1px dashed rgba(244,246,242,.3);border-radius:8px;padding:16px;margin-bottom:16px}
+.upload h3{font-size:1.3rem;font-weight:900}
+.upload .acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.upload code{font-size:.8rem;background:var(--ground);padding:1px 5px;border-radius:4px}
+@media (max-width:700px){.upload{grid-template-columns:1fr}.upload .acts{justify-content:flex-start}}
+.filebtn{position:relative;overflow:hidden}
+.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.tdiv{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px;margin-bottom:14px}
+.tdiv .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.tdiv .top input{background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:6px 10px;font-family:var(--display);font-weight:800;font-size:1.2rem;text-transform:uppercase;min-width:0;flex:1;max-width:340px}
+.tclubs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.tclubs{grid-template-columns:1fr}}
+.tteam{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:6px;align-items:center;margin-top:6px}
+.tteam input{min-width:0;background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:6px 8px;font-size:.86rem}
+
+/* ---------- print ---------- */
+.printgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:820px){.printgrid{grid-template-columns:1fr}}
+.pcard{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.pcard h3{font-size:1.5rem;font-weight:900}
+.pcard select{background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:7px 10px}
+.pcard .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pcard label{font-size:.82rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:4px}
+.sketch{background:#f4f6f2;color:#111;border-radius:6px;padding:10px;font-size:.7rem;line-height:1.3}
+.sketch b{font-size:.8rem}
+.sketch .ln{border-top:1px solid #bbb;margin-top:5px;padding-top:4px;display:flex;justify-content:space-between}
+.sketch .box{display:inline-block;width:20px;height:13px;border:1px solid #444;vertical-align:middle}
 </style>
 </head>
 <body>
 
-<div class="page">
-  <span class="eyebrow">Interclub II · Hosted by ATP at Jonas Bradley Park</span>
+<header>
+  <div class="wrap">
+    <!-- Header drawn as a pickleball court from above: ATP half | kitchen | PSPC half -->
+    <div class="chead" aria-label="Games won">
+      <div class="ch-half atp">
+        <img src="images/atp-logo.png" alt="ATP Pickleball Club" width="470" height="512">
+        <div class="ch-sc"><span>ATP</span><b id="mini-atp">0</b></div>
+      </div>
+      <div class="ch-kitchen">
+        <h1 class="display"><span class="the">Defend the</span><span>Kitchen</span></h1>
+        <span class="ch-tag">Interclub II</span>
+      </div>
+      <div class="ch-half ps">
+        <div class="ch-sc"><span>PSPC</span><b id="mini-ps">0</b></div>
+        <img src="images/ps-logo.png" alt="Port Stephens Pickleball Club" width="512" height="422">
+      </div>
+    </div>
+    <p class="ch-meta">ATP vs Port Stephens · Jonas Bradley Park · Sunday 31 January 2027</p>
+    <nav role="tablist" aria-label="Sections">
+      <button role="tab" data-tab="draw" aria-selected="true">Draw</button>
+      <button role="tab" data-tab="board" aria-selected="false">Standings</button>
+      <button role="tab" data-tab="court" aria-selected="false">On court</button>
+      <button role="tab" data-tab="me" aria-selected="false">My games</button>
+      <button role="tab" data-tab="teams" aria-selected="false">Teams</button>
+      <button role="tab" data-tab="timer" aria-selected="false" class="cmte">Timer</button>
+      <button role="tab" data-tab="scores" aria-selected="false" class="cmte">Enter scores</button>
+      <button role="tab" data-tab="print" aria-selected="false" class="cmte">Print</button>
+      <button role="tab" data-tab="tv" aria-selected="false" class="cmte">TV screen</button>
+    </nav>
+  </div>
+</header>
 
-  <div class="court" aria-label="ATP versus Port Stephens">
-    <div class="half atp">
-      <img src="images/atp-logo.png" alt="ATP Pickleball Club logo" width="470" height="512">
-      <span class="tag">Defending champs</span>
+<div class="wrap fpctl" id="fpctl" hidden>
+  <button type="button" class="fpswitch" id="fp-toggle" role="switch" aria-checked="true"><span class="knob"></span><span class="lbl">Front page</span></button>
+  <button type="button" class="btn ghost sm" id="fp-preview">Preview front page</button>
+  <button type="button" class="btn ghost sm" id="pv-on">Player view</button>
+</div>
+<div class="wrap status" id="status"><span class="dot" id="dot"></span><span id="status-text">Connecting…</span><span id="sample-flag" class="chip sample" hidden>Sample teams</span><span class="who-in"><span id="who-in"></span> <button class="linkbtn" type="button" id="logout-btn">Log out</button></span></div>
+
+<!-- FRONT PAGE: shown to players until the committee releases the draws -->
+<div id="front" hidden>
+  <div class="fp-page">
+    <span class="eyebrow">Interclub II · Hosted by ATP at Jonas Bradley Park</span>
+    <div class="fp-court" aria-label="ATP versus Port Stephens">
+      <div class="fp-half atp"><img src="images/atp-logo.png" alt="ATP Pickleball Club logo" width="470" height="512"><span class="fp-tag">Defending champs</span></div>
+      <div class="fp-kitchen"><h1><span class="the">Defend the</span><span>Kitchen</span></h1><span class="fp-sub">Interclub II</span></div>
+      <div class="fp-half ps"><img src="images/ps-logo.png" alt="Port Stephens Pickleball Club logo" width="512" height="422"><span class="fp-tag">Challengers</span></div>
     </div>
-    <div class="kitchen">
-      <h1><span class="the">Defend the</span><span>Kitchen</span></h1>
-      <span class="sub">Interclub II</span>
+    <div class="fp-match"><span class="a">ATP</span><span class="vs">vs</span><span class="p">Port Stephens</span></div>
+    <div class="fp-lower">
+      <div class="fp-when">
+        <div class="fp-days" aria-live="polite"><b id="cd-d">–</b><span id="cd-l">days to go</span></div>
+        <p class="fp-date">Sunday 31 January 2027</p>
+        <p class="fp-venue">Jonas Bradley Park · ATP's home courts</p>
+      </div>
+      <figure class="fp-photo">
+        <img src="images/tug.jpg" alt="The two club presidents playfully pulling the trophy in opposite directions">
+        <figcaption>ATP has it. Port Stephens wants it. Draws coming soon.</figcaption>
+      </figure>
     </div>
-    <div class="half ps">
-      <img src="images/ps-logo.png" alt="Port Stephens Pickleball Club logo" width="512" height="422">
-      <span class="tag">Challengers</span>
+    <div class="fp-foot">
+      <button class="linkbtn" type="button" id="fp-login">Committee log in</button>
+      <button class="btn" type="button" id="fp-back" hidden>Back to the app</button>
     </div>
   </div>
-
-  <div class="matchline"><span class="a">ATP</span><span class="vs">vs</span><span class="p">Port Stephens</span></div>
-
-  <div class="lower">
-    <div class="when">
-      <div class="days" aria-live="polite"><b id="cd-d">–</b><span id="cd-l">days to go</span></div>
-      <p class="date">Sunday 31 January 2027</p>
-      <p class="venue">Jonas Bradley Park · ATP's home courts</p>
-    </div>
-    <figure class="photo">
-      <img src="images/trophy-tug.jpg" alt="The two club presidents playfully pulling the trophy in opposite directions" width="1400" height="1004">
-      <figcaption>ATP has it. Port Stephens wants it. More details soon.</figcaption>
-    </figure>
-  </div>
-
-  <footer>Defend the Kitchen · ATP Pickleball Club vs Port Stephens Pickleball Club</footer>
 </div>
 
+<div class="pvbar" id="pvbar" hidden><span>Player view</span><button type="button" class="btn go sm" id="pv-off">Back to committee</button></div>
+
+<main class="wrap">
+
+  <!-- SCOREBOARD -->
+  <section id="tab-board" aria-label="Standings" hidden>
+    <div class="totals">
+      <div class="side">
+        <img src="images/atp-logo.png" alt="" width="470" height="512">
+        <div><div class="club atp-c">ATP</div><div class="num atp-c" id="tot-atp">0</div><div class="lbl" id="pts-atp">Points scored 0</div></div>
+      </div>
+      <div class="mid"><div class="vs">Games won</div>
+        <div class="tug" id="tug-board" role="img" aria-label="Tug of war for the trophy"><img class="ph" src="images/tug.jpg" alt="" width="990" height="530"><span class="kline"></span><span class="end a">ATP</span><span class="end p">PSPC</span></div></div>
+      <div class="side right">
+        <div><div class="club psb-c">PSPC</div><div class="num psb-c" id="tot-ps">0</div><div class="lbl" id="pts-ps">Points scored 0</div></div>
+        <img src="images/ps-logo.png" alt="" width="512" height="422">
+      </div>
+    </div>
+    <div class="bar" aria-hidden="true"><span id="bar" style="width:50%"></span></div>
+    <p class="lead" id="lead">All square. No games played yet.</p>
+    <div class="divgrid" id="divgrid"></div>
+  </section>
+
+  <!-- COMMITTEE LOG IN -->
+  <section id="tab-login" aria-label="Committee log in" hidden>
+    <form class="login" id="login-form" novalidate>
+      <h2 class="display">Committee log in</h2>
+      <label for="login-email">Email</label>
+      <input id="login-email" type="email" autocomplete="username" inputmode="email" required>
+      <label for="login-pass">Password</label>
+      <input id="login-pass" type="password" autocomplete="current-password" required>
+      <span class="msg" id="login-msg" role="alert"></span>
+      <button class="btn go" type="submit">Log in</button>
+      <button class="linkbtn" type="button" id="login-forgot">Forgot password?</button>
+      <button class="linkbtn" type="button" id="login-back">Back to the draw</button>
+    </form>
+  </section>
+
+  <!-- ON COURT -->
+  <section id="tab-court" aria-label="On court" hidden>
+    <div class="callbox" id="callbox" style="margin-top:0"></div>
+  </section>
+
+  <!-- TV SCREEN -->
+  <section id="tab-tv" aria-label="TV screen" hidden>
+    <div class="tv">
+      <div class="tv-top">
+        <div class="tv-side"><img src="images/atp-logo.png" alt="ATP Pickleball Club" width="470" height="512"><div><div class="club atp-c">ATP</div><div class="num atp-c" id="tv-atp">0</div><div class="pts" id="tv-atp-pts"></div></div></div>
+        <div class="tv-mid"><h1 class="display">Defend the Kitchen</h1><div class="k" id="tv-played">Games won</div>
+          <div class="tug" id="tug-tv" role="img" aria-label="Tug of war for the trophy"><img class="ph" src="images/tug.jpg" alt="" width="990" height="530"><span class="kline"></span><span class="end a">ATP</span><span class="end p">PSPC</span></div>
+          <div class="lead" id="tv-lead"></div></div>
+        <div class="tv-side r"><div><div class="club psb-c">PSPC</div><div class="num psb-c" id="tv-ps">0</div><div class="pts" id="tv-ps-pts"></div></div><img src="images/ps-logo.png" alt="Port Stephens Pickleball Club" width="512" height="422"></div>
+      </div>
+      <div class="tv-body">
+        <div class="tv-panel"><div class="tv-timer"><div class="lab"><span id="tv-tlabel">Starting soon</span><span class="st2" id="tv-tstate"></span></div><div class="clock" id="tv-clock">12:00</div></div><div class="tv-calls" id="tv-calls"></div></div>
+        <div class="tv-panel"><h2 class="display">Divisions</h2><div class="tv-divs" id="tv-divs"></div></div>
+      </div>
+      <div class="tv-foot">
+        <div class="tv-ctl"><button type="button" id="tv-sound">Turn on sound</button><button type="button" id="tv-full">Full screen</button><button type="button" id="tv-exit">Exit</button></div></div>
+    </div>
+  </section>
+
+  <!-- MY GAMES -->
+  <section id="tab-me" aria-label="My games" hidden>
+    <div class="finder">
+      <input class="search" id="me-search" type="search" placeholder="Type your name" aria-label="Type your name" autocomplete="off">
+      <div class="picks" id="me-picks"></div>
+      <div id="me-card"></div>
+    </div>
+  </section>
+
+  <!-- DRAW -->
+  <section id="tab-draw" aria-label="Draw">
+    <div class="divpick-wrap">
+      <span class="eyebrow">Pick your division</span>
+      <div class="divpick" id="draw-div" role="group" aria-label="Division"></div>
+      <input class="search" id="draw-search" type="search" placeholder="Or find a player by name" aria-label="Find a player">
+    </div>
+    <div id="draw-body"></div>
+  </section>
+
+  <!-- TIMER (committee) -->
+  <section id="tab-timer" aria-label="Game timer" hidden>
+    <div class="tkhead"><button type="button" class="btn ghost" id="t-back">← Back</button><button type="button" class="btn go" id="t-sound">🔕 Tap to turn sound on</button></div>
+    <div class="tpanel">
+      <div class="tlabel" id="t-label">Not started</div>
+      <div class="tbig" id="t-clock">12:00</div>
+      <div class="tstate" id="t-state">Every court plays the same round. Start Round 1 when everyone is on court.</div>
+      <div class="tbtns" id="t-btns"></div>
+    </div>
+    <div class="tadj">
+      <span class="eyebrow">Adjust</span>
+      <label for="t-set-round">Round <select id="t-set-round"><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option></select></label>
+      <label for="t-set-game">Game <select id="t-set-game"><option value="0">1</option><option value="1">2</option><option value="2">3</option></select></label>
+      <button class="btn ghost" id="t-set">Go to this game</button>
+      <button class="btn ghost" id="t-minus">− 1 min</button>
+      <button class="btn ghost" id="t-plus">+ 1 min</button>
+      <button class="btn ghost" id="t-reset">Reset timer</button>
+      <span class="msg" id="t-msg"></span>
+    </div>
+    <p class="note" style="margin-top:12px">Games are 12 minutes. When the clock runs out, play the golden point on any court that’s level, then press <b>Next game</b>. With sound on, this page and the TV give two short pips at 10 seconds left, then beep loudly at time (phones also vibrate). Turn sound on here and on the TV. Every phone and the TV follow this timer.</p>
+  </section>
+
+  <!-- ENTER SCORES -->
+  <section id="tab-scores" aria-label="Enter scores" hidden>
+    <div class="filters">
+      <div class="seg" id="sc-round" role="group" aria-label="Round"></div>
+      <div class="seg" id="sc-div" role="group" aria-label="Division"></div>
+      <input class="search" id="sc-search" type="search" placeholder="Find a court, team or player" aria-label="Find a court, team or player">
+    </div>
+    <div class="savebar">
+      <span id="sc-summary" class="msg">12-minute games. Golden point if level at time.</span>
+      <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span id="saveall-msg" class="msg"></span><button class="btn go" id="saveall-btn" disabled>Save all changes</button></span>
+    </div>
+    <div class="entry" id="entry"></div>
+    <div class="tools">
+      <span class="eyebrow">Testing</span>
+      <button class="btn ghost" id="fill-btn">Fill random scores</button>
+      <button class="btn ghost" id="clear-btn">Clear all scores</button>
+      <button class="btn ghost" id="reset-btn">Reset for the real day</button>
+      <span id="tools-msg" class="msg"></span>
+    </div>
+  </section>
+
+  <!-- TEAMS -->
+  <section id="tab-teams" aria-label="Teams" hidden>
+    <div id="teams-view">
+      <div class="divpick-wrap">
+        <input class="search" id="tv-search" type="search" placeholder="Find a player by name" aria-label="Find a player">
+      </div>
+      <div class="rgrid" id="roster"></div>
+    </div>
+    <div id="teams-edit">
+    <div class="upload">
+      <div>
+        <h3 class="display">Upload teams from Excel</h3>
+        <p class="note" style="margin-top:6px">Download the template, type the names in the white cells and upload it here. It has one row per team: <code>Division</code>, <code>Club</code>, <code>Team</code>, then <code>Player 1 (captain)</code>, <code>Player 2</code> and <code>Player 3</code>. The template also works as a backup of the current names. A .csv with the same columns works too.</p>
+        <p class="msg" id="up-msg" style="margin-top:8px"></p>
+      </div>
+      <div class="acts">
+        <button class="btn ghost" id="tpl-btn">Download template</button>
+        <span class="btn filebtn">Upload file<input type="file" id="up-file" accept=".xlsx,.xls,.csv" aria-label="Upload teams file"></span>
+      </div>
+    </div>
+    <p class="note" style="margin-bottom:14px">Player 1 in each team is the captain and signs the score card. Team A rests in round 1, Team B in round 2, Team C in round 3 and Team D in round 4. ATP's Team A never plays PSPC's Team A, and the same goes for B, C and D.</p>
+    <div id="teams-body"></div>
+    <div class="erow"><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="teams-save">Save teams</button><button class="btn ghost" id="teams-sample">Reset to sample names</button></span><span class="msg" id="teams-msg"></span></div>
+    </div>
+  </section>
+
+  <!-- PRINT -->
+  <section id="tab-print" aria-label="Print" hidden>
+    <div class="pcard">
+      <h3 class="display">Printable sheets</h3>
+      <p class="note">A4 PDFs built from the current names and courts, the same set as the Dural interclub. Print them after the teams are entered. (C) marks each team's captain.</p>
+      <div class="row">
+        <button class="btn go" data-pdf="all">All sheets (one PDF)</button>
+        <button class="btn ghost" data-pdf="schedule">Game schedule + teams</button>
+        <button class="btn ghost" data-pdf="cards">Score cards (1 page per court)</button>
+        <button class="btn ghost" data-pdf="courts">Court sheets (1 page per court)</button>
+        <button class="btn ghost" data-pdf="results">Final results</button>
+      </div>
+      <p class="msg" id="pdf-msg"></p>
+      <ul class="note" style="margin:4px 0 0;padding-left:18px">
+        <li><b>Game schedule:</b> one page per round, every court's three games in order, plus a page with all the teams.</li>
+        <li><b>Score cards:</b> one page per court with a card for each of its four rounds. Score boxes, games won and both captains' signatures.</li>
+        <li><b>Court sheets:</b> one page per court to pin up, listing who plays there each round, game by game.</li>
+        <li><b>Final results:</b> club totals, team and player standings, and every score.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<div class="wrap cmte-foot"><button class="linkbtn" type="button" id="cmte-link">Committee log in</button></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script>
 (function(){
-  // Midnight starting Sunday 31 January 2027, Sydney time (AEDT, UTC+11)
-  var gameDay = Date.UTC(2027,0,30,13,0,0), dayMs = 86400000;
-  var num = document.getElementById('cd-d'), label = document.getElementById('cd-l');
-  function update(){
-    var diff = gameDay - Date.now();
-    if (diff > 0) { var d = Math.ceil(diff/dayMs); num.textContent = d; label.textContent = d === 1 ? 'day to go' : 'days to go'; }
-    else if (diff > -dayMs) { num.textContent = 'Game'; label.textContent = 'day'; }
+  // ---------- fixed format ----------
+  // 4 divisions x 3 courts. Each club: 4 teams of 3 per division. 4 rounds; team k rests in round k.
+  // Each court match is 3 doubles games: players 1+2, 1+3, 2+3 from each side. 12-minute timed games; golden point if level at time.
+  var DIVS = 4, ROUNDS = 4, COURTS = 3, TEAMS = 4;
+  // [atpTeam, pspcTeam] per court, per round. ATP B, C and D each keep one court all day;
+  // ATP A (rests round 1) fills the court of whichever ATP team is resting. PSPC teams move around.
+  var DRAW = [
+    [[1,2],[2,3],[3,1]],
+    [[0,3],[2,0],[3,2]],
+    [[1,3],[0,1],[3,0]],
+    [[1,0],[2,1],[0,2]]
+  ];
+  var PAIRS = [[0,1],[0,2],[1,2]];
+  var LET = ['A','B','C','D'];
+  var DIV_BANDS = ['2.49 & under', '2.5\u20132.99', '3.0\u20133.49', '3.5\u20133.99'];   // DUPR bands, divisions 1 to 4
+  var CLUB = {atp:'ATP', ps:'PSPC'};
+  var TOTAL_GAMES = DIVS*ROUNDS*COURTS*3;
+  var EVENT = 'Defend the Kitchen · Interclub II';
+
+  // Sample names: invented, for testing only
+  var FIRST = ['Sam','Jo','Kim','Lee','Alex','Chris','Pat','Robin','Jess','Mel','Tony','Kate','Ben','Lisa','Nick','Amy','Dave','Sue','Mark','Jen','Paul','Rae','Greg','Tash','Rob','Liz','Phil','Dee','Matt','Bec','Steve','Kerry','Andy','Fi','Jim','Nat','Ross','Anna','Tim','Kylie','Gary','Lou','Craig','Meg','Wes','Bree','Doug','Cath'];
+  var LAST = 'BCDFGHJKLMNPRSTW';
+  function sampleSetup(){
+    var divs = [], n = 0;
+    for (var d=0; d<DIVS; d++){
+      var div = {name:defaultDivName(d), atp:[], ps:[]};
+      ['atp','ps'].forEach(function(club, ci){
+        for (var t=0; t<TEAMS; t++){
+          var tm = [];
+          for (var p=0; p<3; p++){ tm.push(FIRST[(n*7+ci*13)%FIRST.length]+' '+LAST[(n*5+ci*3)%LAST.length]+'.'); n++; }
+          div[club].push(tm);
+        }
+      });
+      divs.push(div);
+    }
+    return {divisions:divs, sample:true};
+  }
+
+  // ---------- state ----------
+  var setup = sampleSetup();
+  var teamsDraft = null;   // uploaded teams waiting to be saved
+  var scores = {};         // id -> {games:[{a,p}|null x3]}
+  var drafts = {};         // id -> games being typed, not yet saved
+  var db = null, downloads = null, canWrite = false, connected = false, fbAuth = null;
+  // Committee log in: committee tabs only show after logging in (players go straight to the draw)
+  var loggedIn = '', afterLogin = 'draw';
+  // Front page: players see the countdown page until the committee turns it off (shared via event/front)
+  var frontOn = true, asPlayer = false, previewFront = false, fpArmed = false;
+  function realCmte(){ return canWrite && !!loggedIn; }
+  function isCmte(){ return realCmte() && !asPlayer; }
+  function frontShowing(){ return previewFront || (frontOn && !realCmte() && view.tab!=='login'); }
+  function applyFront(){
+    var on = frontShowing();
+    document.body.classList.toggle('frontmode', on);
+    $('front').hidden = !on;
+    $('fp-login').hidden = realCmte();
+    $('fp-back').hidden = !previewFront;
+    $('fpctl').hidden = !isCmte();
+    $('pvbar').hidden = !(realCmte() && asPlayer) || on;
+    $('fp-toggle').setAttribute('aria-checked', String(frontOn));
+    $('fp-preview').hidden = !frontOn; $('pv-on').hidden = !frontOn;
+    $('fp-toggle').querySelector('.lbl').textContent = 'Front page '+(frontOn ? 'on' : 'off');
+    if (on) updateCountdown();
+  }
+  function updateCountdown(){
+    var gameDay = Date.UTC(2027,0,30,13,0,0), dayMs = 86400000, diff = gameDay - Date.now(), num = $('cd-d'), label = $('cd-l');
+    if (diff > 0){ var dd = Math.ceil(diff/dayMs); num.textContent = dd; label.textContent = dd===1 ? 'day to go' : 'days to go'; }
+    else if (diff > -dayMs){ num.textContent = 'Game'; label.textContent = 'day'; }
     else { num.textContent = 'Final'; label.textContent = 'thanks for playing'; }
   }
-  update(); setInterval(update, 60000);
+  setInterval(function(){ if (frontShowing()) updateCountdown(); }, 60000);
+  function saveFront(on){
+    if (db) return db.doc('event/front').set({on:on, at:new Date().toISOString()});
+    frontOn = on; applyFront(); return Promise.resolve();
+  }
+  var startedAt = null;    // ISO time the committee started the tournament
+  var GAME_MS = 12*60*1000;  // 12-minute games, golden point if level at time
+  // round: -1 before the start, 0-3 during play. phase: idle | ready | playing | paused | time | finished
+  var timer = {round:-1, game:0, phase:'idle', endsAt:null, remainMs:GAME_MS, roundAt:null};
+  var view = {tab:'board', drawDiv:-1, search:'', scDiv:-1, scRound:0, scSearch:'', mePick:null};
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function mid(d,r,c){ return 'd'+(d+1)+'-r'+(r+1)+'-c'+(c+1); }
+  function parseId(id){ var m = id.match(/^d(\d)-r(\d)-c(\d)$/); return m ? {d:+m[1]-1, r:+m[2]-1, c:+m[3]-1} : null; }
+  function logo(club){ return '<img src="images/'+(club==='atp'?'atp':'ps')+'-mini.png" alt="'+CLUB[club]+'" width="'+(club==='atp'?88:96)+'" height="'+(club==='atp'?96:79)+'">'; }
+  function tc(club, t){ return '<span class="tchip '+club+'">'+logo(club)+LET[t]+'</span>'; }
+  function courtNo(d,c){ return (DIVS-1-d)*COURTS + c + 1; }  // lowest DUPR on courts 10-12
+  function team(d, club, t){ var dv = setup.divisions[d]; return (dv && dv[club] && dv[club][t]) || ['','','']; }
+  function pname(d, club, t, i){ return team(d,club,t)[i] || (CLUB[club]+' '+LET[t]+(i+1)); }
+  function pair(d, club, t, gi){ return pname(d,club,t,PAIRS[gi][0])+' & '+pname(d,club,t,PAIRS[gi][1]); }
+  // the pair as two lines, one name each (optionally highlighting a search)
+  function pairH(d, club, t, gi, q){ return hl(pname(d,club,t,PAIRS[gi][0]),q||'')+'<br>'+hl(pname(d,club,t,PAIRS[gi][1]),q||''); }
+  function defaultDivName(d){ return 'DUPR '+DIV_BANDS[d]; }
+  // a stored name still at the old "Division N" default shows as the DUPR band
+  function divName(d){ var n = setup.divisions[d] && setup.divisions[d].name; return (n && !/^Division \d$/.test(n)) ? n : defaultDivName(d); }
+  function divShort(d){ return DIV_BANDS[d]; }
+  // Division colours (trial): green, orange, red, purple — kept clear of ATP lime and PSPC blue
+  var DIV_COLORS = ['#22c55e','#f97316','#ef4444','#a855f7'];
+  function dcs(d){ return ' style="--dc:'+DIV_COLORS[d]+'"'; }
+  function dname(d){ return '<span class="dvt"'+dcs(d)+'><i class="dvdot"></i>'+esc(divName(d))+'</span>'; }
+  function gameValid(g){ return g && typeof g.a==='number' && typeof g.p==='number' && !isNaN(g.a) && !isNaN(g.p) && g.a!==g.p; }
+  function validateGame(g){
+    if (!g) return null;
+    if (isNaN(g.a) || isNaN(g.p)) return 'needs both scores';
+    if (g.a<0 || g.p<0 || g.a>30 || g.p>30 || g.a%1 || g.p%1) return 'scores must be whole numbers from 0 to 30';
+    if (g.a===g.p) return 'can\u2019t be a tie. If it was level at time, add the golden point';
+    return null;
+  }
+  function validateGames(games){
+    for (var i=0;i<3;i++){ var e = validateGame(games[i]); if (e) return 'Game '+(i+1)+': '+e+'.'; }
+    return null;
+  }
+
+  // ---------- totals ----------
+  function compute(){
+    // Club score: 1 point per game won (3 games a round, so up to 3 points a round). Points scored break a tie.
+    var res = {atp:{rw:0,g:0,pf:0,pa:0}, ps:{rw:0,g:0,pf:0,pa:0}, played:0, matches:0, divs:[]};
+    for (var d=0; d<DIVS; d++){
+      var dv = {atp:{rw:0,g:0,pf:0,pa:0}, ps:{rw:0,g:0,pf:0,pa:0}, played:0, matches:0, teams:{atp:[], ps:[]}};
+      for (var t=0;t<TEAMS;t++){ dv.teams.atp.push({t:t,rw:0,rl:0,g:0,l:0,pf:0,pa:0}); dv.teams.ps.push({t:t,rw:0,rl:0,g:0,l:0,pf:0,pa:0}); }
+      for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++){
+        var m = scores[mid(d,r,c)]; if (!m || !m.games) continue;
+        var at = dv.teams.atp[DRAW[r][c][0]], pt = dv.teams.ps[DRAW[r][c][1]];
+        m.games.forEach(function(g){
+          if (!gameValid(g)) return;
+          dv.played++; dv.atp.pf += g.a; dv.atp.pa += g.p; dv.ps.pf += g.p; dv.ps.pa += g.a;
+          at.pf += g.a; at.pa += g.p; pt.pf += g.p; pt.pa += g.a;
+          if (g.a > g.p){ dv.atp.g++; at.g++; pt.l++; } else { dv.ps.g++; pt.g++; at.l++; }
+        });
+        if (m.games.filter(gameValid).length===3){
+          var aw = m.games.filter(function(g){ return g.a>g.p; }).length;
+          dv.matches++;
+          if (aw>=2){ dv.atp.rw++; at.rw++; pt.rl++; } else { dv.ps.rw++; pt.rw++; at.rl++; }
+        }
+      }
+      ['atp','ps'].forEach(function(k){ res[k].rw += dv[k].rw; res[k].g += dv[k].g; res[k].pf += dv[k].pf; res[k].pa += dv[k].pa; });
+      res.played += dv.played; res.matches += dv.matches;
+      res.divs.push(dv);
+    }
+    return res;
+  }
+
+  // ---------- court calls: who is ready to play ----------
+  // A match is called once both teams have handed in their last score card and the court is free.
+  function matchDone(d,r,c){ var m = scores[mid(d,r,c)]; return !!(m && m.games && m.games.filter(gameValid).length===3); }
+  function courtFor(club, t, r){ for (var c=0;c<COURTS;c++) if (DRAW[r][c][club==='atp'?0:1]===t) return c; return -1; }
+  // Matches follow the game timer: every court plays the current round together.
+  function mstat(d,r,c){
+    var id = mid(d,r,c);
+    if (matchDone(d,r,c)) return {s:'done', at:(scores[id].updatedAt||'')};
+    var cur = timer.round;
+    if (cur<0) return {s:'pre', waits:[]};
+    if (r<cur || (r===cur && timer.phase==='finished')) return {s:'due', waits:[]};
+    if (r===cur) return {s:'go', since: timer.roundAt||''};
+    return {s:'later', waits:[]};
+  }
+  function waitText(st, d, r, c){
+    if (st.s==='pre') return 'Starts when the committee starts the tournament';
+    if (st.s==='due') return 'Played · result to come';
+    return 'Plays in Round '+(r+1);
+  }
+  function isNew(st){ return st.since && (Date.now() - Date.parse(st.since)) < 3*60*1000; }
+  function allStatus(){
+    var list = [];
+    for (var d=0; d<DIVS; d++) for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++){ var st = mstat(d,r,c); st.d=d; st.r=r; st.c=c; list.push(st); }
+    return list;
+  }
+  function stChip(st, d, r, c){
+    if (st.s==='go') return '<span class="st go">'+(isNew(st)?'Round '+(r+1)+' \u00b7 go now':'On court')+'</span>';
+    if (st.s==='done') return '<span class="st done">Card in</span>';
+    if (st.s==='pre') return '<span class="st later">Waiting for start</span>';
+    if (st.s==='due') return '<span class="st wait">Result to come</span>';
+    return '<span class="st later">Round '+(r+1)+'</span>';
+  }
+  // every court in the round on now (round 1 before the start), in court order
+  function roundList(){
+    var r = Math.max(0, Math.min(timer.round, ROUNDS-1)), list = [];
+    for (var d=0; d<DIVS; d++) for (var c=0; c<COURTS; c++){ var st = mstat(d,r,c); st.d=d; st.r=r; st.c=c; list.push(st); }
+    return list.sort(function(x,y){ return courtNo(x.d,x.c)-courtNo(y.d,y.c); });
+  }
+  function gamesWon(d,r,c){ var m = scores[mid(d,r,c)], a = 0, p = 0; if (m && m.games) m.games.forEach(function(g){ if (gameValid(g)){ if (g.a>g.p) a++; else p++; } }); return a+'\u2013'+p; }
+  function callCard(st){
+    var at = DRAW[st.r][st.c][0], pt = DRAW[st.r][st.c][1], nw = isNew(st);
+    var fin = st.s==='done';
+    return '<div class="call dv'+(nw&&!fin?' new':'')+(fin?' fin':'')+'"'+dcs(st.d)+'><b class="ct">'+courtNo(st.d,st.c)+'</b><div><div class="t">'+tc('atp',at)+'vs'+tc('ps',pt)+''+(nw&&!fin?'<span class="flag">Go now</span>':'')+'</div><div class="sub">'+dname(st.d)+' \u00b7 Round '+(st.r+1)+(fin?' \u00b7 card in, games '+gamesWon(st.d,st.r,st.c):'')+'</div></div></div>';
+  }
+  function renderCalls(){
+    var all = allStatus(), go = roundList(), done = all.filter(function(x){ return x.s==='done'; }).length;
+    var html = '<div class="top"><h3 class="display">On court now</h3><span class="msg">'+(isCmte() ? '<button type="button" class="tclock-link" data-go="timer">' : '<span>')+'<b class="tclock-label"></b> <span class="tclock"></span>'+(isCmte() ? '</button>' : '</span>')+' \u00b7 '+done+' of 48 score cards in</span></div>';
+    html += go.length ? '<div class="calls">'+go.map(callCard).join('')+'</div>' : '<p class="note">'+(done===48?'All matches finished.':!startedAt?'Play starts when the committee starts the tournament. Round 1 is on every court.':'No courts called right now.')+'</p>';
+    $('callbox').innerHTML = html;
+  }
+
+  // ---------- tug of war ----------
+  // The photo slides toward the leading club: the trophy (centre of the photo) moves past the kitchen line.
+  function setTug(id, a, p){
+    var el = $(id); if (!el) return;
+    // 144 games = 144 points available; 73 wins outright. The pull is measured against the games still to play,
+    // so the trophy only reaches the edge once the leader can't be caught. Square root keeps early leads visible.
+    var left = TOTAL_GAMES - a - p, lead = a - p;
+    var frac = lead ? Math.min(1, Math.sqrt(Math.abs(lead) / (left + 1))) * (lead>0?1:-1) : 0;
+    var x = frac * 13.5;   // up to 13.5% of the photo either way; the frame has room for it
+    el.querySelector('img.ph').style.transform = 'translateX(calc(-50% - ' + x.toFixed(2) + '%))';
+    el.setAttribute('aria-label', 'Tug of war for the trophy: ' + (a===p ? 'level' : (a>p?'ATP':'PSPC')+' pulling it their way by '+Math.abs(a-p)+' game'+(Math.abs(a-p)===1?'':'s')));
+  }
+
+  // ---------- scoreboard ----------
+  function renderMini(R){ R = R || compute(); $('mini-atp').textContent = R.atp.g; $('mini-ps').textContent = R.ps.g; }
+  var WIN_AT = Math.floor(TOTAL_GAMES/2) + 1;   // 73 of 144
+  function leadText(R, short){
+    if (!R.played) return short ? 'All square \u00b7 first to '+WIN_AT+' wins' : 'All square. No games played yet. First to '+WIN_AT+' games wins.';
+    if (R.atp.g>=WIN_AT || R.ps.g>=WIN_AT) return (R.atp.g>R.ps.g?'ATP':'PSPC')+(short?' win the Kitchen!':' have won the Kitchen. They can\u2019t be caught.');
+    var d = R.atp.g - R.ps.g;
+    if (d) return (d>0?'ATP':'PSPC')+' lead by '+Math.abs(d)+(short?'':' game'+(Math.abs(d)===1?'':'s')+'. '+(d>0?'ATP':'PSPC')+' need '+(WIN_AT-Math.max(R.atp.g,R.ps.g))+' more to clinch it.');
+    var pd = R.atp.pf - R.ps.pf;
+    if (pd) return short ? 'Level \u00b7 '+(pd>0?'ATP':'PSPC')+' ahead on points' : 'Level on games. '+(pd>0?'ATP':'PSPC')+' ahead on points scored.';
+    return short ? 'Level' : 'Level on games and points.';
+  }
+  function renderBoard(){
+    var R = compute(); renderMini(R);
+    $('tot-atp').textContent = R.atp.g; $('tot-ps').textContent = R.ps.g;
+    $('pts-atp').textContent = 'Points scored ' + R.atp.pf;
+    $('pts-ps').textContent = 'Points scored ' + R.ps.pf;
+    var tot = R.atp.g + R.ps.g;
+    $('bar').style.width = (tot ? (R.atp.g/tot*100) : 50) + '%';
+    setTug('tug-board', R.atp.g, R.ps.g);
+    var lead = leadText(R, false);
+    $('lead').textContent = lead;
+
+    var html = '';
+    R.divs.forEach(function(dv, d){
+      var rows = [];
+      ['atp','ps'].forEach(function(club){ dv.teams[club].forEach(function(x){ rows.push({club:club, x:x}); }); });
+      rows.sort(function(a,b){ return (b.x.g-a.x.g) || ((b.x.pf-b.x.pa)-(a.x.pf-a.x.pa)) || (b.x.pf-a.x.pf); });
+      html += '<div class="divcard dv"'+dcs(d)+'><div class="top"><h3 class="display">'+dname(d)+'</h3>'+
+        '<div class="score"><span class="atp-c">'+dv.atp.g+'</span> <span style="color:var(--ink-soft);font-size:.7em">–</span> <span class="psb-c">'+dv.ps.g+'</span></div></div>'+
+        '<div class="tablewrap"><table class="teams"><thead><tr><th>Team</th><th title="Games won">W</th><th title="Games lost">L</th><th title="Points scored">For</th><th title="Points against">Agst</th><th>+/−</th></tr></thead><tbody>';
+      rows.forEach(function(r){
+        var diff = r.x.pf - r.x.pa;
+        html += '<tr><td>'+tc(r.club,r.x.t)+''+
+          '<span class="who">'+esc(team(d,r.club,r.x.t).filter(Boolean).join(', '))+'</span></td>'+
+          '<td><b>'+r.x.g+'</b></td><td>'+r.x.l+'</td><td>'+r.x.pf+'</td><td>'+r.x.pa+'</td><td>'+(diff>0?'+':'')+diff+'</td></tr>';
+      });
+      html += '</tbody></table></div></div>';
+    });
+    $('divgrid').innerHTML = html;
+  }
+
+  // ---------- shared bits ----------
+  function segButtons(el, items, current, onPick){
+    el.innerHTML = items.map(function(it){ var col = (it.v>=0 && it.dc) ? ' class="dvb"'+dcs(it.v) : ''; return '<button type="button"'+col+' aria-pressed="'+(it.v===current)+'" data-v="'+it.v+'">'+(col?'<i class="dvdot"></i>':'')+esc(it.label)+'</button>'; }).join('');
+    el.onclick = function(e){ var b = e.target.closest('button'); if (b) onPick(+b.dataset.v); };
+  }
+  function divItems(all){ var a = all ? [{v:-1,label:'All'}] : []; for (var d=0; d<DIVS; d++) a.push({v:d, label:divShort(d), dc:1}); return a; }
+  function hl(name, q){
+    var s = esc(name); if (!q) return s;
+    var i = name.toLowerCase().indexOf(q); if (i<0) return s;
+    return esc(name.slice(0,i))+'<mark>'+esc(name.slice(i,i+q.length))+'</mark>'+esc(name.slice(i+q.length));
+  }
+  function courtText(d,r,c){
+    var at = DRAW[r][c][0], pt = DRAW[r][c][1];
+    return ('court '+courtNo(d,c)+' atp '+LET[at]+' pspc '+LET[pt]+' '+team(d,'atp',at).join(' ')+' '+team(d,'ps',pt).join(' ')).toLowerCase();
+  }
+
+  // ---------- draw ----------
+  function renderDraw(){
+    segButtons($('draw-div'), divItems(true).map(function(it){ return it.v<0 ? {v:-1,label:'All divisions'} : {v:it.v,label:'DUPR '+it.label,dc:1}; }), view.drawDiv, function(v){ view.drawDiv=v; renderDraw(); });
+    var q = view.search.trim().toLowerCase(), html = '';
+    for (var r=0; r<ROUNDS; r++){
+      html += '<div class="round"><h2 class="display">Round '+(r+1)+' <span class="rhead">Resting '+tc('atp',r)+tc('ps',r)+'</span></h2><div class="courts">';
+      for (var di=0; di<DIVS; di++){ var d = DIVS-1-di;   // court order: courts 1-3 first
+        if (view.drawDiv>=0 && view.drawDiv!==d) continue;
+        if (view.drawDiv<0) html += '<div class="divlabel eyebrow">'+dname(d)+'</div>';
+        html += '<div class="resting top">Resting: <span class="chip rest">'+logo('atp')+' '+LET[r]+' · '+esc(team(d,'atp',r).filter(Boolean).join(', '))+'</span><span class="chip rest">'+logo('ps')+' '+LET[r]+' · '+esc(team(d,'ps',r).filter(Boolean).join(', '))+'</span></div>';
+        for (var c=0; c<COURTS; c++){
+          var at = DRAW[r][c][0], pt = DRAW[r][c][1], m = scores[mid(d,r,c)];
+          var hit = q && courtText(d,r,c).indexOf(q)>=0;
+          html += '<div class="court dv'+(hit?' hit':'')+'"'+dcs(d)+'><div class="ct"><b>Court '+courtNo(d,c)+'</b>'+stChip(mstat(d,r,c),d,r,c)+'</div>'+
+            '<div class="matchup">'+tc('atp',at)+' vs '+tc('ps',pt)+'</div><ul class="games">';
+          for (var gi=0; gi<3; gi++){
+            var g = m && m.games && m.games[gi], done = gameValid(g);
+            html += '<li><span class="pr'+(done&&g.a>g.p?' won wa':'')+'">'+pairH(d,'atp',at,gi,q)+'</span><span class="s'+(done?' done':'')+'">'+(done? g.a+'–'+g.p : 'G'+(gi+1))+'</span><span class="pr r'+(done&&g.p>g.a?' won wp':'')+'">'+pairH(d,'ps',pt,gi,q)+'</span></li>';
+          }
+          html += '</ul></div>';
+        }
+      }
+      html += '</div></div>';
+    }
+    $('draw-body').innerHTML = html;
+  }
+  $('draw-search').addEventListener('input', function(e){ view.search = e.target.value; renderDraw(); });
+
+  // ---------- my games ----------
+  function allPlayers(){
+    var list = [];
+    for (var d=0; d<DIVS; d++) ['atp','ps'].forEach(function(club){
+      for (var t=0;t<TEAMS;t++) for (var p=0;p<3;p++){ var n = team(d,club,t)[p]; if (n) list.push({name:n, d:d, club:club, t:t, p:p}); }
+    });
+    return list;
+  }
+  function renderMe(){
+    var q = $('me-search').value.trim().toLowerCase();
+    var picks = q.length ? allPlayers().filter(function(x){ return x.name.toLowerCase().indexOf(q)>=0; }) : [];
+    var cur = view.mePick;
+    if (picks.length===1) cur = picks[0];
+    if (cur && !picks.some(function(x){ return x.d===cur.d && x.club===cur.club && x.t===cur.t && x.p===cur.p; }) && q) cur = picks.length===1 ? picks[0] : null;
+    if (!q) cur = null;
+    view.mePick = cur;
+    var ph = '';
+    if (q && !picks.length) ph = '<span class="msg">No player matches “'+esc(q)+'”. Check the spelling or try your first name.</span>';
+    else if (view.meChosen && cur) ph = '';
+    else if (picks.length>1) ph = picks.slice(0,12).map(function(x, i){
+      var on = cur && x.d===cur.d && x.club===cur.club && x.t===cur.t && x.p===cur.p;
+      return '<button type="button" data-i="'+i+'" aria-pressed="'+!!on+'">'+tc(x.club,x.t)+'<span>'+hl(x.name,q)+'</span><span class="msg">'+esc(divShort(x.d))+'</span></button>';
+    }).join('') + (picks.length>12 ? '<span class="msg">'+(picks.length-12)+' more. Keep typing to narrow it down.</span>' : '');
+    $('me-picks').innerHTML = ph;
+    $('me-picks').onclick = function(e){ var b = e.target.closest('button[data-i]'); if (!b) return; view.mePick = picks[+b.dataset.i]; view.meChosen = true; $('me-search').value = view.mePick.name; renderMe(); };
+    if (!cur){
+      $('me-card').innerHTML = q ? '' : '<p class="note" style="margin-top:14px;text-align:center">Find your court, partners and scores for every round.</p>';
+      return;
+    }
+    var d = cur.d, club = cur.club, other = club==='atp'?'ps':'atp', t = cur.t, p = cur.p;
+    var mates = team(d,club,t).filter(function(n,i){ return i!==p && n; });
+    var w = 0, l = 0, pf = 0, pa = 0, html = '';
+    for (var r=0; r<ROUNDS; r++){
+      if (r===t){ html += '<div class="mround"><div class="rt"><b>Round '+(r+1)+'</b><span class="msg">Rest and cheer on the team</span></div></div>'; continue; }
+      var c = -1, ot = -1;
+      for (var k=0;k<COURTS;k++){ var dr = DRAW[r][k]; if ((club==='atp'?dr[0]:dr[1])===t){ c = k; ot = club==='atp'?dr[1]:dr[0]; } }
+      var m = scores[mid(d,r,c)];
+      html += '<div class="mround"><div class="rt"><b>Round '+(r+1)+' · Court '+courtNo(d,c)+'</b><span>vs '+tc(other,ot)+'</span></div>';
+      for (var gi=0; gi<3; gi++){
+        var inIt = PAIRS[gi].indexOf(p)>=0;
+        if (!inIt){ html += '<div class="mgame off"><span class="gn">G'+(gi+1)+'</span><span>You sit this one out</span><span></span><span></span></div>'; continue; }
+        var partner = pname(d,club,t,PAIRS[gi][0]===p?PAIRS[gi][1]:PAIRS[gi][0]);
+        var opp = pairH(d,other,ot,gi);
+        var g = m && m.games && m.games[gi], done = gameValid(g), mine = 0, theirs = 0;
+        if (done){ mine = club==='atp'?g.a:g.p; theirs = club==='atp'?g.p:g.a; pf += mine; pa += theirs; if (mine>theirs) w++; else l++; }
+        html += '<div class="mgame"><span class="gn">G'+(gi+1)+'</span><span>with <b>'+esc(partner)+'</b></span><span class="sc">'+(done? mine+'–'+theirs+'<span class="res '+(mine>theirs?'w':'l')+'">'+(mine>theirs?'W':'L')+'</span>' : 'vs')+'</span><span class="r">'+opp+'</span></div>';
+      }
+      html += '</div>';
+    }
+    var nx = '';
+    for (var r2=Math.max(0, timer.round); r2<ROUNDS; r2++){
+      if (r2===t) continue;
+      var c2 = courtFor(club, t, r2), st2 = mstat(d, r2, c2); if (st2.s==='done' || st2.s==='due') continue;
+      var ot2 = club==='atp' ? DRAW[r2][c2][1] : DRAW[r2][c2][0];
+      if (st2.s==='go') nx = '<div class="nextup go"><b>'+(isNew(st2)?'Go now: ':'Playing now: ')+'Court '+courtNo(d,c2)+'</b>Round '+(r2+1)+' vs '+CLUB[other]+' '+LET[ot2]+'. You play games '+PAIRS.map(function(pp,gi){ return pp.indexOf(p)>=0 ? (gi+1) : null; }).filter(Boolean).join(' and ')+'.</div>';
+      else nx = '<div class="nextup"><b>Next: Round '+(r2+1)+' on Court '+courtNo(d,c2)+'</b>vs '+CLUB[other]+' '+LET[ot2]+(st2.s==='later' ? '' : ' \u00b7 '+esc(waitText(st2,d,r2,c2)))+'.</div>';
+      break;
+    }
+    if (!nx) nx = '<div class="nextup"><b>All your games are done</b>Thanks for playing. Check Standings for the final result.</div>';
+    $('me-card').innerHTML = '<div class="me"><h2 class="display">'+esc(cur.name)+'</h2>'+
+      '<div class="who">'+tc(club,t)+dname(d)+'<span>· Team with '+esc(mates.join(' & ')||'two teammates')+'</span></div>'+
+      nx + '<div class="tally"><div><b>'+w+'</b><span>Won</span></div><div><b>'+l+'</b><span>Lost</span></div><div><b>'+pf+'</b><span>Points for</span></div><div><b>'+pa+'</b><span>Against</span></div></div>'+
+      html + '</div>';
+  }
+  $('me-search').addEventListener('input', function(){ view.mePick = null; view.meChosen = false; renderMe(); });
+
+  // ---------- enter scores ----------
+  function draftCount(){ return Object.keys(drafts).length; }
+  function cardGames(card){
+    var games = [];
+    for (var gi=0; gi<3; gi++){
+      var a = card.querySelector('[data-g="'+gi+'"][data-s="a"]').value.trim();
+      var p = card.querySelector('[data-g="'+gi+'"][data-s="p"]').value.trim();
+      if (a==='' && p===''){ games.push(null); continue; }
+      games.push({a: a===''?NaN:+a, p: p===''?NaN:+p});
+    }
+    return games;
+  }
+  function savedMsg(id){
+    var m = scores[id], n = m && m.games ? m.games.filter(gameValid).length : 0;
+    return n ? n+' of 3 games saved' : 'No scores yet';
+  }
+  function updateSaveBar(){
+    var n = draftCount();
+    $('saveall-btn').disabled = !n || !canWrite;
+    $('saveall-btn').textContent = n ? 'Save all changes ('+n+' court'+(n===1?'':'s')+')' : 'Save all changes';
+    var done = 0, total = 0;
+    for (var d=0; d<DIVS; d++) for (var c=0;c<COURTS;c++){ total++; var m = scores[mid(d,view.scRound,c)]; if (m && m.games && m.games.filter(gameValid).length===3) done++; }
+    $('sc-summary').textContent = 'Round '+(view.scRound+1)+': '+done+' of '+total+' courts complete. 12-minute games, golden point if level.';
+  }
+  function renderScores(){
+    if (!view.scRoundPicked && timer.round>=0) view.scRound = Math.min(timer.round, ROUNDS-1);
+    var rItems = []; for (var r=0; r<ROUNDS; r++) rItems.push({v:r, label:'Round '+(r+1)});
+    segButtons($('sc-round'), rItems, view.scRound, function(v){ view.scRound=v; view.scRoundPicked=true; renderScores(); });
+    segButtons($('sc-div'), divItems(true), view.scDiv, function(v){ view.scDiv=v; renderScores(); });
+    var R = view.scRound, q = view.scSearch.trim().toLowerCase(), html = '', shown = 0;
+    for (var di=0; di<DIVS; di++){ var d = DIVS-1-di;   // court order
+      if (view.scDiv>=0 && view.scDiv!==d) continue;
+      var block = '';
+      for (var c=0; c<COURTS; c++){
+        if (q && courtText(d,R,c).indexOf(q)<0) continue;
+        var id = mid(d,R,c), at = DRAW[R][c][0], pt = DRAW[R][c][1], m = scores[id], dr = drafts[id];
+        var nDone = m && m.games ? m.games.filter(gameValid).length : 0;
+        block += '<div class="ecard dv'+(dr?' dirty':(nDone===3?' saved':''))+'"'+dcs(d)+' data-id="'+id+'">'+
+          '<div class="erow"><b class="display" style="font-size:1.3rem">Court '+courtNo(d,c)+'</b><span>'+tc('atp',at)+' vs '+tc('ps',pt)+'</span></div>'+
+          '<div data-st>'+stChip(mstat(d,R,c),d,R,c)+'</div>';
+        for (var gi=0; gi<3; gi++){
+          var src = dr ? dr[gi] : (m && m.games ? m.games[gi] : null);
+          var av = src && !isNaN(src.a) ? src.a : '', pv = src && !isNaN(src.p) ? src.p : '';
+          block += '<div class="egame"><span>'+pairH(d,'atp',at,gi,q)+'</span>'+
+            '<input class="atp-in" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="Court '+courtNo(d,c)+' game '+(gi+1)+' ATP score" id="in-'+id+'-'+gi+'-a" data-g="'+gi+'" data-s="a" value="'+av+'"'+(canWrite?'':' disabled')+'>'+
+            '<span class="dash">–</span>'+
+            '<input class="ps-in" inputmode="numeric" pattern="[0-9]*" maxlength="2" aria-label="Court '+courtNo(d,c)+' game '+(gi+1)+' PSPC score" id="in-'+id+'-'+gi+'-p" data-g="'+gi+'" data-s="p" value="'+pv+'"'+(canWrite?'':' disabled')+'>'+
+            '<span class="r">'+pairH(d,'ps',pt,gi,q)+'</span></div>';
+        }
+        block += '<div class="erow"><span class="msg" data-msg>'+(dr?'Unsaved changes':savedMsg(id))+'</span>'+
+          '<button class="btn" data-save="'+id+'"'+(canWrite?'':' disabled')+'>Save court '+courtNo(d,c)+'</button></div></div>';
+        shown++;
+      }
+      if (block) html += (view.scDiv<0 ? '<div class="divlabel eyebrow" style="grid-column:1/-1">'+dname(d)+' · courts '+courtNo(d,0)+'–'+courtNo(d,2)+'</div>' : '') + block;
+    }
+    $('entry').innerHTML = html || '<p class="note">No courts match “'+esc(view.scSearch)+'” in this round.</p>';
+    updateSaveBar();
+  }
+  // refresh saved values in place when someone else saves, without wiping what's being typed
+  function refreshScoreCards(){
+    document.querySelectorAll('#entry .ecard').forEach(function(card){
+      var id = card.dataset.id; if (drafts[id]) return;
+      var m = scores[id];
+      for (var gi=0; gi<3; gi++){
+        var g = m && m.games ? m.games[gi] : null;
+        var a = card.querySelector('[data-g="'+gi+'"][data-s="a"]'), p = card.querySelector('[data-g="'+gi+'"][data-s="p"]');
+        if (document.activeElement!==a) a.value = g && !isNaN(g.a) ? g.a : '';
+        if (document.activeElement!==p) p.value = g && !isNaN(g.p) ? g.p : '';
+      }
+      var pi = parseId(id), stEl = card.querySelector('[data-st]');
+      if (stEl) stEl.innerHTML = stChip(mstat(pi.d,pi.r,pi.c),pi.d,pi.r,pi.c);
+      var msg = card.querySelector('[data-msg]');
+      if (!msg.classList.contains('ok') && !msg.classList.contains('err')) msg.textContent = savedMsg(id);
+      card.classList.toggle('saved', !!(m && m.games && m.games.filter(gameValid).length===3));
+    });
+    updateSaveBar();
+  }
+  $('sc-search').addEventListener('input', function(e){ view.scSearch = e.target.value; renderScores(); });
+  $('entry').addEventListener('input', function(e){
+    var card = e.target.closest('.ecard'); if (!card) return;
+    var id = card.dataset.id;
+    drafts[id] = cardGames(card);
+    card.classList.add('dirty'); card.classList.remove('saved','bad');
+    var msg = card.querySelector('[data-msg]'); msg.textContent = 'Unsaved changes'; msg.className = 'msg';
+    updateSaveBar();
+  });
+  function docFor(id, games){
+    var pi = parseId(id);
+    return {div:pi.d+1, round:pi.r+1, court:courtNo(pi.d,pi.c), games:games, updatedAt:new Date().toISOString()};
+  }
+  function cardMsg(id, text, cls){
+    var card = document.querySelector('.ecard[data-id="'+id+'"]'); if (!card) return;
+    var msg = card.querySelector('[data-msg]'); msg.textContent = text; msg.className = 'msg '+(cls||'');
+    if (cls==='err') card.classList.add('bad');
+    if (cls==='ok'){ card.classList.remove('dirty','bad'); if (scores[id] && scores[id].games && scores[id].games.filter(gameValid).length===3) card.classList.add('saved'); }
+  }
+  function saveOne(id){
+    var games = drafts[id]; if (!games) return Promise.resolve(true);
+    var err = validateGames(games);
+    if (err){ cardMsg(id, err, 'err'); return Promise.resolve(false); }
+    cardMsg(id, 'Saving…', '');
+    return saveScore(id, docFor(id, games)).then(function(){
+      delete drafts[id]; cardMsg(id, 'Saved', 'ok'); return true;
+    }, function(e){
+      cardMsg(id, (e && e.code==='invalid_argument') ? 'You don’t have permission to enter scores.' : 'Couldn’t save. Check the connection and try again.', 'err');
+      return false;
+    });
+  }
+  // Changing or clearing a game that is already saved needs a second tap.
+  function savedChanges(id){
+    var m = scores[id], dr = drafts[id], out = [];
+    if (!m || !m.games || !dr) return out;
+    for (var gi=0; gi<3; gi++){
+      var o = m.games[gi]; if (!gameValid(o)) continue;
+      var nw = dr[gi];
+      if (!nw) out.push('G'+(gi+1)+' '+o.a+'\u2013'+o.p+' \u2192 cleared');
+      else if (nw.a!==o.a || nw.p!==o.p) out.push('G'+(gi+1)+' '+o.a+'\u2013'+o.p+' \u2192 '+(isNaN(nw.a)?'?':nw.a)+'\u2013'+(isNaN(nw.p)?'?':nw.p));
+    }
+    return out;
+  }
+  var armed = {}, saveAllArmed = false;
+  $('entry').addEventListener('click', function(e){
+    var b = e.target.closest('[data-save]'); if (!b) return;
+    var id = b.dataset.save;
+    if (!drafts[id]){ cardMsg(id, 'Nothing new to save on this court.', ''); return; }
+    var ch = savedChanges(id);
+    if (ch.length && !validateGames(drafts[id]) && !armed[id]){
+      armed[id] = true;
+      b.className = 'btn danger'; b.textContent = 'Tap again to change';
+      cardMsg(id, 'This changes saved scores: '+ch.join(', ')+'.', 'err');
+      setTimeout(function(){ if (armed[id]){ armed[id] = false; var bb = document.querySelector('[data-save="'+id+'"]'); if (bb){ bb.className = 'btn'; bb.textContent = 'Save court '+courtNo(parseId(id).d, parseId(id).c); } } }, 5000);
+      return;
+    }
+    armed[id] = false; b.className = 'btn';
+    b.disabled = true;
+    saveOne(id).then(function(){ b.disabled = false; updateSaveBar(); afterScoresChange(); });
+  });
+  $('saveall-btn').addEventListener('click', function(){
+    var ids = Object.keys(drafts); if (!ids.length) return;
+    var btn = $('saveall-btn');
+    var changing = ids.filter(function(id){ return savedChanges(id).length && !validateGames(drafts[id]); });
+    if (changing.length && !saveAllArmed){
+      saveAllArmed = true;
+      btn.className = 'btn danger'; btn.textContent = 'Tap again to save, including changes';
+      $('saveall-msg').textContent = changing.length+' court'+(changing.length===1?' changes':'s change')+' saved scores: '+changing.map(function(id){ var pi = parseId(id); return 'Court '+courtNo(pi.d,pi.c)+' ('+savedChanges(id).join(', ')+')'; }).join('; ')+'.';
+      $('saveall-msg').className = 'msg err';
+      setTimeout(function(){ if (saveAllArmed){ saveAllArmed = false; btn.className = 'btn go'; updateSaveBar(); } }, 6000);
+      return;
+    }
+    saveAllArmed = false; btn.className = 'btn go';
+    btn.disabled = true;
+    $('saveall-msg').textContent = 'Saving '+ids.length+' court'+(ids.length===1?'':'s')+'…'; $('saveall-msg').className = 'msg';
+    var ok = 0, bad = [], i = 0;
+    (function next(){
+      if (i>=ids.length){
+        if (bad.length){ $('saveall-msg').textContent = 'Saved '+ok+'. '+bad.length+(bad.length===1?' court needs':' courts need')+' fixing: '+bad.join(', ')+'.'; $('saveall-msg').className = 'msg err'; }
+        else { $('saveall-msg').textContent = 'Saved '+ok+' court'+(ok===1?'':'s')+'.'; $('saveall-msg').className = 'msg ok'; }
+        updateSaveBar(); afterScoresChange(); return;
+      }
+      var id = ids[i++];
+      saveOne(id).then(function(res){ var pi = parseId(id); if (res) ok++; else bad.push('Court '+courtNo(pi.d,pi.c)+' (R'+(pi.r+1)+')'); next(); });
+    })();
+  });
+
+  // ---------- teams ----------
+  // Players' read-only list of teams (committee get the editor; they can flip to this with "Player view")
+  var rosterQ = '';
+  function renderRoster(){
+    var q = rosterQ.trim().toLowerCase(), html = '', hits = 0;
+    for (var di=0; di<DIVS; di++){
+      var d = DIVS-1-di, body = '';
+      ['atp','ps'].forEach(function(club){
+        body += '<div class="rclub"><div class="rclub-h '+club+'">'+logo(club)+(club==='atp'?'ATP':'PSPC')+'</div>';
+        for (var t=0; t<TEAMS; t++){
+          var names = team(d,club,t), match = q && names.some(function(n){ return n && n.toLowerCase().indexOf(q)>=0; });
+          if (match) hits++;
+          body += '<div class="rteam'+(match?' hit':'')+'">'+tc(club,t)+'<ol>'+names.map(function(n,i){ return '<li>'+(n?hl(n,q):'<span class="msg">TBC</span>')+(i===0&&n?' <small>captain</small>':'')+'</li>'; }).join('')+'</ol></div>';
+        }
+        body += '</div>';
+      });
+      html += '<div class="divcard dv rcard"'+dcs(d)+'><div class="top"><h3 class="display">'+dname(d)+'</h3><span class="sub">Courts '+courtNo(d,0)+'\u2013'+courtNo(d,2)+'</span></div><div class="rclubs">'+body+'</div></div>';
+    }
+    $('roster').innerHTML = html + (q && !hits ? '<p class="msg" style="grid-column:1/-1">No player matches \u201c'+esc(rosterQ)+'\u201d.</p>' : '');
+    var first = document.querySelector('#roster .rteam.hit'); if (first && q) first.scrollIntoView({block:'nearest'});
+  }
+  $('tv-search').addEventListener('input', function(){ rosterQ = this.value; renderRoster(); });
+  function renderTeams(){
+    $('teams-edit').hidden = !isCmte(); $('teams-view').hidden = isCmte();
+    if (!isCmte()){ renderRoster(); return; }
+    var src = teamsDraft || setup, html = '';
+    function tm(d,club,t){ var dv = src.divisions[d]; return (dv && dv[club] && dv[club][t]) || ['','','']; }
+    for (var d=0; d<DIVS; d++){
+      var dv = src.divisions[d] || {name:defaultDivName(d)};
+      var dvName = (dv.name && !/^Division \d$/.test(dv.name)) ? dv.name : defaultDivName(d);
+      html += '<div class="tdiv"><div class="top"><input id="dn-'+d+'" value="'+esc(dvName)+'" aria-label="Division '+(d+1)+' name"'+(canWrite?'':' disabled')+'><span class="msg">Courts '+courtNo(d,0)+'–'+courtNo(d,2)+'</span></div><div class="tclubs">';
+      ['atp','ps'].forEach(function(club){
+        html += '<div><div class="eyebrow '+(club==='atp'?'atp-c':'psb-c')+'">'+(club==='atp'?'ATP':'PSPC')+'</div>';
+        for (var t=0;t<TEAMS;t++){
+          html += '<div class="tteam">'+tc(club,t)+'';
+          for (var p=0;p<3;p++) html += '<input id="tn-'+d+'-'+club+'-'+t+'-'+p+'" value="'+esc(tm(d,club,t)[p])+'" placeholder="Player '+(p+1)+'" aria-label="'+CLUB[club]+' team '+LET[t]+' player '+(p+1)+'"'+(canWrite?'':' disabled')+'>';
+          html += '</div>';
+        }
+        html += '</div>';
+      });
+      html += '</div></div>';
+    }
+    $('teams-body').innerHTML = html;
+    $('teams-save').disabled = !canWrite; $('teams-sample').disabled = !canWrite;
+    $('teams-save').textContent = teamsDraft ? 'Save uploaded teams' : 'Save teams';
+  }
+  function readTeams(){
+    var divs = [];
+    for (var d=0; d<DIVS; d++){
+      var dv = {name: $('dn-'+d).value.trim() || defaultDivName(d), atp:[], ps:[]};
+      ['atp','ps'].forEach(function(club){ for (var t=0;t<TEAMS;t++){ var tm=[]; for (var p=0;p<3;p++) tm.push($('tn-'+d+'-'+club+'-'+t+'-'+p).value.trim()); dv[club].push(tm); } });
+      divs.push(dv);
+    }
+    return {divisions:divs, sample:false, updatedAt:new Date().toISOString()};
+  }
+  function teamsMsg(t, cls){ $('teams-msg').textContent = t; $('teams-msg').className = 'msg '+(cls||''); }
+  $('teams-save').addEventListener('click', function(){
+    var s = readTeams(); teamsMsg('Saving…');
+    saveSetup(s).then(function(){ teamsDraft = null; renderTeams(); teamsMsg('Teams saved', 'ok'); $('up-msg').textContent = ''; },
+      function(){ teamsMsg('Couldn’t save teams. Try again.', 'err'); });
+  });
+  var sampleArmed = false;
+  $('teams-sample').addEventListener('click', function(){
+    var b = $('teams-sample');
+    if (!sampleArmed){ sampleArmed = true; b.textContent = 'Tap again to replace all names'; b.className='btn danger'; setTimeout(function(){ sampleArmed=false; b.textContent='Reset to sample names'; b.className='btn ghost'; }, 4000); return; }
+    sampleArmed = false; b.textContent='Reset to sample names'; b.className='btn ghost';
+    teamsDraft = null;
+    saveSetup(sampleSetup()).then(function(){ teamsMsg('Sample names loaded', 'ok'); renderTeams(); });
+  });
+
+  // ---------- files: save helper ----------
+  function saveFile(filename, data, mime){
+    if (downloads) return downloads.save({filename:filename, data:data});
+    var url = URL.createObjectURL(new Blob([data], {type:mime||'application/octet-stream'}));
+    var a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 2000);
+    return Promise.resolve({status:'saved'});
+  }
+  function fileErr(e){
+    if (!e) return 'Couldn’t create the file.';
+    if (e.code==='declined') return 'Download cancelled.';
+    if (e.code==='rate_limited') return 'A download is already waiting for you to confirm.';
+    if (e.message==='load') return 'Couldn’t load the PDF maker. Check the internet connection and try again.';
+    return 'Couldn’t create the file. Try again.';
+  }
+
+  // ---------- small built-in .xlsx writer and reader (no extra downloads needed) ----------
+  var CRC_T = (function(){ var t = new Uint32Array(256); for (var n=0;n<256;n++){ var c=n; for (var k=0;k<8;k++) c = c&1 ? 0xEDB88320^(c>>>1) : c>>>1; t[n]=c>>>0; } return t; })();
+  function crc32(b){ var c = 0xFFFFFFFF; for (var i=0;i<b.length;i++) c = CRC_T[(c^b[i])&255]^(c>>>8); return (c^0xFFFFFFFF)>>>0; }
+  function zipStore(files){
+    var enc = new TextEncoder(), parts = [], cen = [], off = 0;
+    function u16(v){ return [v&255,(v>>>8)&255]; } function u32(v){ return [v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255]; }
+    files.forEach(function(f){
+      var nm = enc.encode(f[0]), data = enc.encode(f[1]), crc = crc32(data);
+      var common = [].concat(u16(20),u16(0x0800),u16(0),u16(0),u16(0x21),u32(crc),u32(data.length),u32(data.length),u16(nm.length),u16(0));
+      var loc = new Uint8Array([].concat(u32(0x04034b50),common)); parts.push(loc,nm,data);
+      cen.push(new Uint8Array([].concat(u32(0x02014b50),u16(20),common,u16(0),u16(0),u16(0),u32(0),u32(off))),nm);
+      off += loc.length+nm.length+data.length;
+    });
+    var cenLen = cen.reduce(function(n,x){ return n+x.length; },0);
+    var end = new Uint8Array([].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cenLen),u32(off),u16(0)));
+    var all = parts.concat(cen,[end]), out = new Uint8Array(all.reduce(function(n,x){ return n+x.length; },0)), p = 0;
+    all.forEach(function(x){ out.set(x,p); p += x.length; });
+    return out;
+  }
+  function zipRead(buf){
+    var b = new Uint8Array(buf), v = new DataView(buf), out = {}, dec = new TextDecoder(), e = -1, jobs = [];
+    for (var i=b.length-22; i>=Math.max(0,b.length-66000); i--) if (v.getUint32(i,true)===0x06054b50){ e=i; break; }
+    if (e<0) return Promise.reject(new Error('not a zip'));
+    var p = v.getUint32(e+16,true), n = v.getUint16(e+10,true);
+    for (var k=0;k<n;k++){
+      var method = v.getUint16(p+10,true), size = v.getUint32(p+20,true), nl = v.getUint16(p+28,true), xl = v.getUint16(p+30,true), cl = v.getUint16(p+32,true), lo = v.getUint32(p+42,true);
+      var name = dec.decode(b.subarray(p+46,p+46+nl)); p += 46+nl+xl+cl;
+      if (!/\.(xml|rels)$/.test(name)) continue;
+      var start = lo+30+v.getUint16(lo+26,true)+v.getUint16(lo+28,true), raw = b.subarray(start,start+size);
+      if (method===0) out[name] = dec.decode(raw);
+      else if (method===8) jobs.push((function(nm, r){ return new Response(new Blob([r]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text().then(function(t){ out[nm]=t; }); })(name, raw));
+    }
+    return Promise.all(jobs).then(function(){ return out; });
+  }
+  function xesc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,''); }
+  function xlsxTemplate(){
+    var src = teamsDraft || setup, rows = [], merges = [], NC = 6;
+    function band(st, text, ht){ var cells = [[text,st]]; for (var i=1;i<NC;i++) cells.push(['',st]); rows.push({ht:ht, cells:cells}); merges.push(rows.length); }
+    band(1,'ATP V PSPC · DEFEND THE KITCHEN · TEAM NAMES',34);
+    band(2,'Interclub II · Sun 31 Jan 2027 · Jonas Bradley Park',20);
+    band(3,'Type names in the white cells. Player 1 is the team captain. Leave Division, Club and Team as they are, then upload this file on the Teams tab.',32);
+    rows.push({ht:22, cells:[['Division',4],['Club',4],['Team',4],['Player 1 (captain)',5],['Player 2',12],['Player 3',12]]});
+    for (var d=0; d<DIVS; d++){
+      var dvn = (src.divisions[d] && src.divisions[d].name && !/^Division \d$/.test(src.divisions[d].name)) ? src.divisions[d].name : defaultDivName(d);
+      band(6, dvn.toUpperCase()+' · COURTS '+courtNo(d,0)+'–'+courtNo(d,2), 22);
+      ['atp','ps'].forEach(function(club){ for (var t=0;t<TEAMS;t++){
+        var tm = (src.divisions[d] && src.divisions[d][club] && src.divisions[d][club][t]) || ['','',''], k = club==='atp'?7:8;
+        if (src.sample) tm = ['','',''];
+        rows.push({ht:20, cells:[[d+1,k,1],[CLUB[club],k],[LET[t],k],[tm[0]||'',10],[tm[1]||'',11],[tm[2]||'',11]]});
+      }});
+    }
+    function col(i){ return 'ABCDEF'[i]; }
+    var sheet = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+      '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'+
+      '<sheetPr><tabColor rgb="FFC3D22B"/><pageSetUpPr fitToPage="1"/></sheetPr>'+
+      '<sheetViews><sheetView workbookViewId="0" showGridLines="0"><pane ySplit="4" topLeftCell="A5" activePane="bottomLeft" state="frozen"/><selection pane="bottomLeft" activeCell="D6" sqref="D6"/></sheetView></sheetViews>'+
+      '<sheetFormatPr defaultRowHeight="15"/>'+
+      '<cols><col min="1" max="1" width="10" customWidth="1"/><col min="2" max="2" width="9" customWidth="1"/><col min="3" max="3" width="7" customWidth="1"/><col min="4" max="6" width="28" customWidth="1"/></cols>'+
+      '<sheetData>'+rows.map(function(r,ri){ return '<row r="'+(ri+1)+'" ht="'+r.ht+'" customHeight="1">'+r.cells.map(function(c,ci){ var ref = col(ci)+(ri+1), v = c[0], st = c[1];
+        return c[2] ? '<c r="'+ref+'" s="'+st+'"><v>'+v+'</v></c>' : v==='' ? '<c r="'+ref+'" s="'+st+'"/>' : '<c r="'+ref+'" s="'+st+'" t="inlineStr"><is><t xml:space="preserve">'+xesc(v)+'</t></is></c>'; }).join('')+'</row>'; }).join('')+'</sheetData>'+
+      '<mergeCells count="'+merges.length+'">'+merges.map(function(r){ return '<mergeCell ref="A'+r+':F'+r+'"/>'; }).join('')+'</mergeCells>'+
+      '<pageMargins left="0.4" right="0.4" top="0.5" bottom="0.5" header="0.2" footer="0.2"/><pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/></worksheet>';
+    function F(rgb, o){ o = o||''; return '<font>'+o+(/sz/.test(o)?'':'<sz val="11"/>')+'<color rgb="FF'+rgb+'"/><name val="Arial"/></font>'; }
+    var styles = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
+      '<fonts count="9">'+F('000000')+F('C3D22B','<b/><sz val="16"/>')+F('EEF2EE','<sz val="10"/>')+F('F2CD2E','<sz val="10"/>')+F('C3D22B','<b/><sz val="10"/>')+F('F2CD2E','<b/><sz val="10"/>')+F('FFFFFF','<b/>')+F('081826','<b/>')+F('081826')+'</fonts>'+
+      '<fills count="10"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill>'+['081826','3A2F08','0F2436','143049','0B3149','189CD8','F3F7DA','FFFFFF'].map(function(h){ return '<fill><patternFill patternType="solid"><fgColor rgb="FF'+h+'"/><bgColor indexed="64"/></patternFill></fill>'; }).join('')+'</fills>'+
+      '<borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border><border>'+['left','right','top','bottom'].map(function(x){ return '<'+x+' style="thin"><color rgb="FFA9B8C4"/></'+x+'>'; }).join('')+'<diagonal/></border></borders>'+
+      '<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="13">'+
+      '<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'+
+      '<xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="2" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="3" fillId="3" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="center" wrapText="1" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="4" fillId="4" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center"/></xf>'+
+      '<xf numFmtId="0" fontId="5" fillId="4" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="6" fillId="5" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="7" fillId="8" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center"/></xf>'+
+      '<xf numFmtId="0" fontId="6" fillId="7" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center"/></xf>'+
+      '<xf numFmtId="0" fontId="7" fillId="8" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="7" fillId="9" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="8" fillId="9" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '<xf numFmtId="0" fontId="4" fillId="4" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" indent="1"/></xf>'+
+      '</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
+    return zipStore([
+      ['[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>'],
+      ['_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'],
+      ['xl/workbook.xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Teams" sheetId="1" r:id="rId1"/></sheets><definedNames><definedName name="_xlnm.Print_Titles" localSheetId="0">Teams!$1:$4</definedName></definedNames></workbook>'],
+      ['xl/_rels/workbook.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'],
+      ['xl/styles.xml',styles],['xl/worksheets/sheet1.xml',sheet]]);
+  }
+  function xlsxRows(buf){
+    return zipRead(buf).then(function(z){
+      var P = new DOMParser(), NS = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+      function txt(el){ return Array.prototype.map.call(el.getElementsByTagNameNS(NS,'t'), function(t){ return t.textContent; }).join(''); }
+      var shared = z['xl/sharedStrings.xml'] ? Array.prototype.map.call(P.parseFromString(z['xl/sharedStrings.xml'],'application/xml').getElementsByTagNameNS(NS,'si'), txt) : [];
+      var path = 'xl/worksheets/sheet1.xml';
+      try {
+        var wb = P.parseFromString(z['xl/workbook.xml'],'application/xml'), first = wb.getElementsByTagNameNS(NS,'sheet')[0];
+        var rid = first.getAttribute('r:id') || first.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships','id');
+        var rel = Array.prototype.filter.call(P.parseFromString(z['xl/_rels/workbook.xml.rels'],'application/xml').getElementsByTagName('Relationship'), function(r){ return r.getAttribute('Id')===rid; })[0];
+        var t = rel.getAttribute('Target'); path = t.charAt(0)==='/' ? t.slice(1) : 'xl/'+t.replace(/^\.\//,'');
+      } catch(e){}
+      if (!z[path]) path = Object.keys(z).filter(function(k){ return /^xl\/worksheets\/sheet\d+\.xml$/.test(k); })[0];
+      if (!z[path]) throw new Error('no sheet');
+      var doc = P.parseFromString(z[path],'application/xml'), rows = [];
+      Array.prototype.forEach.call(doc.getElementsByTagNameNS(NS,'row'), function(row){
+        var r = ['','','','','','','','',''];
+        Array.prototype.forEach.call(row.getElementsByTagNameNS(NS,'c'), function(c){
+          var ci = (c.getAttribute('r')||'').replace(/\d/g,'').split('').reduce(function(n,ch){ return n*26+ch.charCodeAt(0)-64; },0)-1;
+          if (ci<0 || ci>8) return;
+          var tt = c.getAttribute('t'), vv = c.getElementsByTagNameNS(NS,'v')[0], v = vv ? vv.textContent : '';
+          r[ci] = String(tt==='s' ? (shared[+v]||'') : tt==='inlineStr' ? txt(c) : v).trim();
+        });
+        r.line = +row.getAttribute('r') || rows.length+1;
+        rows.push(r);
+      });
+      return rows;
+    });
+  }
+  function csvRows(text){
+    var rows = [], row = [], cur = '', q = false;
+    text = text.replace(/^﻿/,'');
+    for (var i=0;i<text.length;i++){
+      var ch = text[i];
+      if (q){ if (ch==='"' && text[i+1]==='"'){ cur+='"'; i++; } else if (ch==='"') q = false; else cur += ch; }
+      else if (ch==='"') q = true;
+      else if (ch===','){ row.push(cur.trim()); cur=''; }
+      else if (ch==='\n' || ch==='\r'){ if (ch==='\r' && text[i+1]==='\n') i++; row.push(cur.trim()); row.line = rows.length+1; rows.push(row); row=[]; cur=''; }
+      else cur += ch;
+    }
+    if (cur || row.length){ row.push(cur.trim()); row.line = rows.length+1; rows.push(row); }
+    return rows;
+  }
+
+  $('tpl-btn').addEventListener('click', function(){
+    $('up-msg').textContent = 'Preparing template…'; $('up-msg').className = 'msg';
+    var buf;
+    try { buf = xlsxTemplate(); } catch(e){ $('up-msg').textContent = 'Couldn’t build the template.'; $('up-msg').className = 'msg err'; return; }
+    saveFile('Defend the Kitchen teams.xlsx', buf, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet').then(function(){
+      $('up-msg').textContent = 'Template saved. Type the names in the white cells, then upload it here.'; $('up-msg').className = 'msg ok';
+    }, function(e){ $('up-msg').textContent = fileErr(e); $('up-msg').className = 'msg err'; });
+  });
+
+  function normClub(v){ v = String(v||'').toLowerCase().replace(/[^a-z]/g,''); if (!v) return null; if (v.indexOf('atp')===0) return 'atp'; if (v.indexOf('ps')===0 || v.indexOf('port')===0) return 'ps'; return null; }
+  function normTeam(v){ v = String(v==null?'':v).trim().toUpperCase().replace(/^TEAM\s*/,''); var i = LET.indexOf(v); if (i>=0) return i; var n = parseInt(v,10); return (n>=1&&n<=4) ? n-1 : -1; }
+  function normDiv(v){ var m = String(v==null?'':v).match(/\d+/); var n = m ? +m[0] : 0; return (n>=1&&n<=DIVS) ? n-1 : -1; }
+  function parseTeams(rows){
+    var hi = -1, cols = {};
+    for (var r=0; r<Math.min(rows.length,12); r++){
+      var row = (rows[r]||[]).map(function(x){ return String(x==null?'':x).trim().toLowerCase(); });
+      if (row.some(function(x){ return x.indexOf('div')===0 && x.length<12; }) && row.some(function(x){ return x.indexOf('club')===0; })){
+        hi = r;
+        row.forEach(function(x,i){
+          var pm = x.match(/^player\s*([123])/);
+          if (x.indexOf('div')===0 && cols.div==null) cols.div = i;
+          else if (x.indexOf('club')===0) cols.club = i;
+          else if (x.indexOf('team')===0 && cols.team==null) cols.team = i;
+          else if (pm) cols['p'+pm[1]] = i;
+          else if (x.indexOf('player')===0 || x==='name') cols.player = i;
+        });
+        break;
+      }
+    }
+    if (hi<0 || cols.team==null || (cols.player==null && cols.p1==null)) return {error:'Couldn’t find the column headings. The heading row needs Division, Club, Team and Player 1, Player 2, Player 3.'};
+    var out = {divisions:[], sample:false};
+    for (var d=0; d<DIVS; d++) out.divisions.push({name: divName(d), atp:[['','',''],['','',''],['','',''],['','','']], ps:[['','',''],['','',''],['','',''],['','','']]});
+    var count = {}, skipped = [], loaded = 0;
+    for (var i=hi+1; i<rows.length; i++){
+      var row2 = rows[i] || [], line = row2.line || (i+1);
+      var names = cols.p1!=null ? [row2[cols.p1], row2[cols.p2], row2[cols.p3]] : [row2[cols.player]];
+      names = names.map(function(x){ return String(x==null?'':x).trim(); });
+      var dv = normDiv(row2[cols.div]), cl = normClub(row2[cols.club]), tm = normTeam(row2[cols.team]);
+      if (!names.some(Boolean)) continue;
+      var why = dv<0 ? 'division should be 1 to 4' : !cl ? 'club should be ATP or PSPC' : tm<0 ? 'team should be A to D' : '';
+      if (why){ skipped.push('row '+line+' ('+why+')'); continue; }
+      var k = dv+cl+tm;
+      if (cols.p1!=null){
+        if (count[k]){ skipped.push('row '+line+' ('+CLUB[cl]+' '+LET[tm]+' in Division '+(dv+1)+' is listed twice)'); continue; }
+        count[k] = 3; names.forEach(function(n, pi){ out.divisions[dv][cl][tm][pi] = n; if (n) loaded++; });
+      } else {
+        count[k] = count[k]||0;
+        if (count[k]>=3){ skipped.push('row '+line+' ('+CLUB[cl]+' '+LET[tm]+' in Division '+(dv+1)+' already has 3 players)'); continue; }
+        out.divisions[dv][cl][tm][count[k]++] = names[0]; loaded++;
+      }
+    }
+    var gaps = 0; out.divisions.forEach(function(dv2){ ['atp','ps'].forEach(function(c){ dv2[c].forEach(function(t){ t.forEach(function(n){ if (!n) gaps++; }); }); }); });
+    return {setup:out, loaded:loaded, skipped:skipped, gaps:gaps};
+  }
+  $('up-file').addEventListener('change', function(e){
+    var f = e.target.files && e.target.files[0]; e.target.value = '';
+    if (!f) return;
+    $('up-msg').textContent = 'Reading '+f.name+'…'; $('up-msg').className = 'msg';
+    var isCsv = /\.csv$/i.test(f.name);
+    (isCsv ? f.text().then(csvRows) : f.arrayBuffer().then(xlsxRows)).then(function(rows){
+      var res = parseTeams(rows);
+      if (res.error){ $('up-msg').textContent = res.error; $('up-msg').className = 'msg err'; return; }
+      teamsDraft = res.setup; renderTeams();
+      var t = 'Loaded '+res.loaded+' of 96 players. Check the names below, then press Save uploaded teams.';
+      if (res.gaps) t += ' '+res.gaps+' spot'+(res.gaps===1?' is':'s are')+' still empty.';
+      if (res.skipped.length) t += ' Skipped '+res.skipped.slice(0,4).join('; ')+(res.skipped.length>4?' and '+(res.skipped.length-4)+' more':'')+'.';
+      $('up-msg').textContent = t; $('up-msg').className = 'msg '+(res.skipped.length?'err':'ok');
+      teamsMsg('Not saved yet', '');
+    }).catch(function(){ $('up-msg').textContent = 'Couldn’t read that file. Use the downloaded template (.xlsx) or a .csv with the same columns.'; $('up-msg').className = 'msg err'; });
+  });
+
+  // ---------- printable A4 sheets (PDF), styled like the Dural interclub ----------
+  var jspdfP = null;
+  function loadJsPDF(){
+    if (window.jspdf) return Promise.resolve(window.jspdf.jsPDF);
+    if (!jspdfP) jspdfP = new Promise(function(res, rej){
+      var sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+      sc.onload = function(){ res(window.jspdf.jsPDF); }; sc.onerror = function(){ jspdfP = null; rej(new Error('load')); };
+      document.head.appendChild(sc);
+    });
+    return jspdfP;
+  }
+  function TX(s){ return String(s==null?'':s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[–—]/g,'-').replace(/·/g,'-').replace(/[‘’]/g,"'").replace(/[^\x20-\x7E]/g,''); }
+  var C_NAVY=[8,24,38], C_ATPBAND=[195,210,43], C_PSBAND=[24,156,216], C_LIME=[195,210,43], C_GREY=[236,239,244], C_INK=[20,24,32], C_MUTED=[100,108,124];
+  var C_ATPTXT=[92,108,8], C_PSTXT=[14,104,160];
+  var EV_WHEN = 'Sunday 31 January 2027', EV_VENUE = 'Jonas Bradley Park';
+  function pl(d, club, t, i){ return TX(pname(d,club,t,i)) + (i===0 ? ' (C)' : ''); }
+  function pairTxt(d, club, t, g){ return [pl(d,club,t,PAIRS[g][0]), pl(d,club,t,PAIRS[g][1])]; }
+  function pairLabel(g){ return (PAIRS[g][0]+1)+' & '+(PAIRS[g][1]+1); }
+  function teamName(club, t){ return CLUB[club]+' Team '+LET[t]; }
+  function pdfHead(doc, title, sub){
+    var W = doc.internal.pageSize.getWidth();
+    doc.setFillColor.apply(doc, C_NAVY); doc.rect(0,0,W,18,'F');
+    doc.setFillColor.apply(doc, C_ATPBAND); doc.rect(0,18,W/2,1.6,'F'); doc.setFillColor.apply(doc, C_PSBAND); doc.rect(W/2,18,W/2,1.6,'F');
+    doc.setTextColor.apply(doc, C_LIME); doc.setFont('helvetica','bold'); doc.setFontSize(7.5);
+    doc.text('DEFEND THE KITCHEN - INTERCLUB II - ATP V PSPC', 10, 6.5);
+    doc.setTextColor(255,255,255); doc.setFontSize(15); doc.text(TX(title), 10, 14);
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+    doc.text(TX(EV_WHEN+'  |  '+EV_VENUE), W-10, 8, {align:'right'});
+    if (sub) doc.text(TX(sub), W-10, 14, {align:'right'});
+    doc.setTextColor.apply(doc, C_INK);
+  }
+  function pdfFoot(doc){
+    var W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight();
+    doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor.apply(doc, C_MUTED);
+    doc.text(TX('Printed '+new Date().toLocaleString('en-AU')), W/2, H-5, {align:'center'}); doc.setTextColor.apply(doc, C_INK);
+  }
+  function fitSize(doc, str, maxW, size){ doc.setFontSize(size); while (size>6.5 && doc.getTextWidth(TX(str))>maxW){ size -= .5; doc.setFontSize(size); } }
+  function clubText(doc, club, str, x, y, opt){ doc.setTextColor.apply(doc, club==='atp'?C_ATPTXT:C_PSTXT); doc.text(TX(str), x, y, opt); doc.setTextColor.apply(doc, C_INK); }
+  // page helper: keeps track of the blank first page so sheets can start in either orientation
+  function newPage(doc, orient){
+    if (!doc.__used && orient==='p'){ doc.__used = true; return; }
+    doc.addPage('a4', orient==='l'?'landscape':'portrait');
+    if (!doc.__used){ doc.__used = true; doc.__dropFirst = true; }
+  }
+
+  function pdfSchedule(doc){
+    for (var r=0; r<ROUNDS; r++){
+      newPage(doc,'l'); pdfHead(doc, 'Game schedule - Round '+(r+1), 'Teams '+LET[r]+' rest - 3 games of 12 minutes, in order. Golden point if level.');
+      var y = 27, x0 = 10, xT = 22, xG = [62, 134, 206], gw = 70;
+      doc.setFillColor.apply(doc, C_GREY); doc.rect(10,y,277,6,'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor.apply(doc, C_MUTED);
+      doc.text('COURT', x0+1, y+4.2); doc.text('TEAMS', xT, y+4.2);
+      for (var g=0; g<3; g++) doc.text('GAME '+(g+1)+'  -  PLAYERS '+pairLabel(g), xG[g], y+4.2);
+      doc.setTextColor.apply(doc, C_INK); y += 6;
+      for (var d=0; d<DIVS; d++){
+        doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y,277,5.5,'F'); doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(8);
+        doc.text(TX(divName(d).toUpperCase()), 12, y+3.9); doc.setTextColor.apply(doc, C_INK); y += 5.5;
+        for (var c=0; c<COURTS; c++){
+          var at = DRAW[r][c][0], pt = DRAW[r][c][1], rh = 11.4;
+          if (c%2){ doc.setFillColor(246,248,251); doc.rect(10,y,277,rh,'F'); }
+          doc.setFont('helvetica','bold'); doc.setFontSize(16); doc.text(String(courtNo(d,c)), x0+3, y+7.8);
+          doc.setFontSize(9); clubText(doc,'atp','ATP '+LET[at], xT, y+4.8); doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor.apply(doc, C_MUTED); doc.text('v', xT+14, y+4.8);
+          doc.setFont('helvetica','bold'); doc.setFontSize(9); clubText(doc,'ps','PSPC '+LET[pt], xT+18, y+4.8);
+          for (var g2=0; g2<3; g2++){
+            var hp = pairTxt(d,'atp',at,g2).join(' & '), ap = pairTxt(d,'ps',pt,g2).join(' & ');
+            doc.setFont('helvetica','bold'); fitSize(doc, hp, gw-2, 8.5); clubText(doc,'atp',hp, xG[g2], y+4.6);
+            doc.setFont('helvetica','normal'); fitSize(doc, 'v '+ap, gw-2, 8.5); doc.setTextColor.apply(doc, C_MUTED); doc.text('v ', xG[g2], y+9.2);
+            doc.setFont('helvetica','bold'); clubText(doc,'ps',ap, xG[g2]+3.5, y+9.2);
+          }
+          doc.setDrawColor(210,214,222); doc.setLineWidth(.2); doc.line(10,y+rh,287,y+rh);
+          y += rh;
+        }
+      }
+      y += 5; doc.setFont('helvetica','bold'); doc.setFontSize(8.5); doc.text('Resting this round - cheer on your club', 10, y);
+      doc.setFont('helvetica','normal'); doc.setFontSize(7.5);
+      for (var d2=0; d2<DIVS; d2++){
+        var cx = 10 + (d2%2)*138.5, cy = y + 4.3 + Math.floor(d2/2)*4;
+        var s1 = TX(divName(d2)+': '), s2 = TX('ATP '+LET[r]+' ('+team(d2,'atp',r).filter(Boolean).join(', ')+')'), s3 = TX('  PSPC '+LET[r]+' ('+team(d2,'ps',r).filter(Boolean).join(', ')+')');
+        fitSize(doc, s1+s2+s3, 134, 7.5);
+        doc.setTextColor.apply(doc, C_MUTED); doc.text(s1, cx, cy); var w1 = doc.getTextWidth(s1);
+        clubText(doc,'atp',s2, cx+w1, cy); clubText(doc,'ps',s3, cx+w1+doc.getTextWidth(s2), cy);
+      }
+      pdfFoot(doc);
+    }
+    // team list
+    newPage(doc,'p'); pdfHead(doc, 'Teams', '(C) = captain - player 1');
+    var y2 = 27;
+    for (var d3=0; d3<DIVS; d3++){
+      doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y2,190,7,'F'); doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(10);
+      doc.text(TX(divName(d3).toUpperCase()+'   -   COURTS '+courtNo(d3,0)+'-'+courtNo(d3,2)), 12, y2+5); doc.setTextColor.apply(doc, C_INK); y2 += 10;
+      for (var t=0; t<TEAMS; t++){
+        if (t%2){ doc.setFillColor(246,248,251); doc.rect(10,y2-4.3,190,6.4,'F'); }
+        doc.setFont('helvetica','bold'); doc.setFontSize(9); clubText(doc,'atp','ATP '+LET[t], 12, y2); clubText(doc,'ps','PSPC '+LET[t], 107, y2);
+        doc.setFont('helvetica','normal'); doc.setFontSize(9);
+        var la = [0,1,2].map(function(i){ return pl(d3,'atp',t,i); }).join(', '), lp = [0,1,2].map(function(i){ return pl(d3,'ps',t,i); }).join(', ');
+        fitSize(doc, la, 76, 9); doc.text(la, 27, y2); fitSize(doc, lp, 76, 9); doc.text(lp, 124, y2);
+        y2 += 6.4;
+      }
+      doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor.apply(doc, C_MUTED);
+      doc.text('Rests: Team A round 1, Team B round 2, Team C round 3, Team D round 4.', 12, y2+0.5); doc.setTextColor.apply(doc, C_INK);
+      y2 += 9;
+    }
+    pdfFoot(doc);
+  }
+
+  function pdfScoreCards(doc){
+    for (var di=0; di<DIVS; di++) for (var c=0; c<COURTS; c++){ var d = DIVS-1-di;
+      newPage(doc,'p'); pdfHead(doc, 'Score cards - Court '+courtNo(d,c), 'Hand in at the scoring desk after each round');
+      for (var r=0; r<ROUNDS; r++){
+        var at = DRAW[r][c][0], pt = DRAW[r][c][1];
+        var x = 8, y = 23.5+r*66.5, w = 194, h = 64, nw = w/2-24;
+        doc.setDrawColor(150,156,170); doc.setLineWidth(.35); doc.roundedRect(x,y,w,h,2,2,'S');
+        doc.setFillColor.apply(doc, C_NAVY); doc.rect(x,y,w,8,'F');
+        doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(10.5); doc.text('ROUND '+(r+1)+'  -  COURT '+courtNo(d,c), x+3, y+5.6);
+        doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_LIME); doc.text(TX(divName(d)), x+w-3, y+5.6, {align:'right'}); doc.setTextColor.apply(doc, C_INK);
+        doc.setFont('helvetica','bold'); doc.setFontSize(10); clubText(doc,'atp',teamName('atp',at), x+3, y+13); clubText(doc,'ps',teamName('ps',pt), x+w-3, y+13, {align:'right'});
+        doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_MUTED); doc.text('v', x+w/2, y+13, {align:'center'});
+        var ty = y+15.5; doc.setFillColor.apply(doc, C_GREY); doc.rect(x+2,ty,w-4,4.6,'F'); doc.setFont('helvetica','bold'); doc.setFontSize(6.5);
+        doc.text('GAME', x+3.5, ty+3.2); doc.text('ATP PAIR', x+18, ty+3.2); doc.text('SCORE', x+w/2, ty+3.2, {align:'center'}); doc.text('PSPC PAIR', x+w-3.5, ty+3.2, {align:'right'});
+        doc.setTextColor.apply(doc, C_INK); ty += 4.6;
+        for (var g=0; g<3; g++){
+          var rh = 9.6, hp = pairTxt(d,'atp',at,g), ap = pairTxt(d,'ps',pt,g);
+          doc.setDrawColor(210,214,222); doc.setLineWidth(.3); doc.line(x+2,ty+rh,x+w-2,ty+rh);
+          doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.text('G'+(g+1), x+3.5, ty+4.2);
+          doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED); doc.text('Pairs '+pairLabel(g), x+3.5, ty+7.8); doc.setTextColor.apply(doc, C_INK);
+          doc.setFontSize(8.5); doc.text(hp[0], x+18, ty+4, {maxWidth:nw}); doc.text(hp[1], x+18, ty+8, {maxWidth:nw});
+          doc.text(ap[0], x+w-3.5, ty+4, {align:'right', maxWidth:nw}); doc.text(ap[1], x+w-3.5, ty+8, {align:'right', maxWidth:nw});
+          doc.setDrawColor.apply(doc, C_INK); doc.setLineWidth(.4); doc.rect(x+w/2-12,ty+1.2,10,7.4); doc.rect(x+w/2+2,ty+1.2,10,7.4);
+          doc.setFontSize(9); doc.text('-', x+w/2, ty+5.9, {align:'center'});
+          ty += rh;
+        }
+        ty += 1.5; doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.text('GAMES WON', x+3.5, ty+4.6);
+        doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED); doc.text('12-min games - golden point if level', x+24, ty+4.6); doc.setTextColor.apply(doc, C_INK);
+        doc.setLineWidth(.4); doc.rect(x+w/2-12,ty+.4,10,6.4); doc.rect(x+w/2+2,ty+.4,10,6.4);
+        ty += 8.5; doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED); doc.setLineWidth(.35);
+        doc.line(x+3.5,ty+5,x+w/2-3,ty+5); doc.line(x+w/2+3,ty+5,x+w-3.5,ty+5);
+        doc.text('ATP captain', x+3.5, ty+8); doc.text('PSPC captain', x+w/2+3, ty+8); doc.setTextColor.apply(doc, C_INK);
+      }
+      pdfFoot(doc);
+    }
+  }
+
+  function pdfCourtSheets(doc){
+    for (var di=0; di<DIVS; di++) for (var c=0; c<COURTS; c++){ var d = DIVS-1-di;
+      newPage(doc,'p'); pdfHead(doc, 'Court '+courtNo(d,c), divName(d));
+      doc.setFont('helvetica','bold'); doc.setFontSize(64); doc.setTextColor(225,229,236); doc.text(String(courtNo(d,c)), 200, 52, {align:'right'}); doc.setTextColor.apply(doc, C_INK);
+      doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor.apply(doc, C_MUTED);
+      doc.text('Games on this court today. Play games 1, 2, 3 in order. 12-minute games; golden point if level at time. (C) = captain.', 10, 28, {maxWidth:150});
+      doc.setTextColor.apply(doc, C_INK);
+      var y = 38;
+      doc.setFillColor.apply(doc, C_GREY); doc.rect(10,y,190,6,'F'); doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor.apply(doc, C_MUTED);
+      doc.text('GAME', 12, y+4.2); doc.text('ATP PLAYERS', 56, y+4.2); doc.text('PSPC PLAYERS', 198, y+4.2, {align:'right'}); doc.setTextColor.apply(doc, C_INK); y += 6;
+      for (var r=0; r<ROUNDS; r++){
+        var at = DRAW[r][c][0], pt = DRAW[r][c][1];
+        if (r){ doc.setFont('helvetica','italic'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_MUTED); doc.text('Changeover', 105, y+4, {align:'center'}); doc.setTextColor.apply(doc, C_INK); y += 5.5; }
+        doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y,190,6,'F'); doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+        doc.text(TX('ROUND '+(r+1)+'   '+teamName('atp',at)+'  v  '+teamName('ps',pt)), 12, y+4.2);
+        doc.setFont('helvetica','normal'); doc.setTextColor.apply(doc, C_LIME); doc.text('Teams '+LET[r]+' rest', 198, y+4.2, {align:'right'}); doc.setTextColor.apply(doc, C_INK); y += 6;
+        for (var g=0; g<3; g++){
+          var rh = 14.2, hp = pairTxt(d,'atp',at,g), ap = pairTxt(d,'ps',pt,g);
+          doc.setDrawColor(210,214,222); doc.setLineWidth(.3); doc.line(10,y+rh,200,y+rh);
+          doc.setFont('helvetica','bold'); doc.setFontSize(14); doc.text('G'+(g+1), 12, y+9);
+          doc.setFont('helvetica','normal'); doc.setFontSize(7); doc.setTextColor.apply(doc, C_MUTED); doc.text('Players '+pairLabel(g), 30, y+9); doc.setTextColor.apply(doc, C_INK);
+          doc.setFont('helvetica','bold'); fitSize(doc, hp[0], 64, 11.5); clubText(doc,'atp',hp[0], 56, y+6.3); fitSize(doc, hp[1], 64, 11.5); clubText(doc,'atp',hp[1], 56, y+11.6);
+          doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor.apply(doc, C_MUTED); doc.text('v', 128, y+9.2, {align:'center'});
+          doc.setFont('helvetica','bold'); fitSize(doc, ap[0], 64, 11.5); clubText(doc,'ps',ap[0], 198, y+6.3, {align:'right'}); fitSize(doc, ap[1], 64, 11.5); clubText(doc,'ps',ap[1], 198, y+11.6, {align:'right'});
+          y += rh;
+        }
+      }
+      pdfFoot(doc);
+    }
+  }
+
+  function pdfTable(doc, y, cols, rows, opt){
+    opt = opt || {}; var rh = opt.rh || 6.2;
+    doc.setFillColor.apply(doc, C_GREY); doc.rect(10,y,190,5.5,'F'); doc.setFont('helvetica','bold'); doc.setFontSize(7); doc.setTextColor.apply(doc, C_MUTED);
+    cols.forEach(function(c){ doc.text(TX(c.h), c.align==='right'?c.x+c.w:c.align==='center'?c.x+c.w/2:c.x, y+3.9, {align:c.align||'left'}); });
+    doc.setTextColor.apply(doc, C_INK); y += 5.5;
+    rows.forEach(function(r, i){
+      if (i%2){ doc.setFillColor(247,249,252); doc.rect(10,y,190,rh,'F'); }
+      cols.forEach(function(c, j){
+        var v = r[j]; if (v==null) return; var t = typeof v==='object' ? v : {t:v};
+        doc.setFont('helvetica', t.b?'bold':'normal'); doc.setFontSize(t.fs||8.5);
+        if (t.side) doc.setTextColor.apply(doc, t.side==='atp'?C_ATPTXT:C_PSTXT); else if (t.muted) doc.setTextColor.apply(doc, C_MUTED);
+        doc.text(TX(String(t.t)), c.align==='right'?c.x+c.w:c.align==='center'?c.x+c.w/2:c.x, y+rh-1.9, {align:c.align||'left', maxWidth:c.w});
+        doc.setTextColor.apply(doc, C_INK);
+      });
+      y += rh;
+    });
+    return y;
+  }
+  function sgn(n){ return (n>0?'+':'')+n; }
+  function playerStats(){
+    var st = {};
+    for (var d=0; d<DIVS; d++) ['atp','ps'].forEach(function(club){ for (var t=0;t<TEAMS;t++) for (var p=0;p<3;p++) st[d+club+t+p] = {d:d, club:club, t:t, p:p, w:0, l:0, pf:0, pa:0}; });
+    for (var d2=0; d2<DIVS; d2++) for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++){
+      var m = scores[mid(d2,r,c)]; if (!m || !m.games) continue;
+      var at = DRAW[r][c][0], pt = DRAW[r][c][1];
+      m.games.forEach(function(g, gi){
+        if (!gameValid(g)) return;
+        PAIRS[gi].forEach(function(p){
+          var a = st[d2+'atp'+at+p], b = st[d2+'ps'+pt+p];
+          a.pf += g.a; a.pa += g.p; b.pf += g.p; b.pa += g.a;
+          if (g.a>g.p){ a.w++; b.l++; } else { b.w++; a.l++; }
+        });
+      });
+    }
+    return st;
+  }
+  function rankRows(list){ return list.sort(function(a,b){ return (b.w-a.w) || ((b.pf-b.pa)-(a.pf-a.pa)) || (b.pf-a.pf); }); }
+  function pdfResults(doc){
+    var R = compute(), win = R.atp.g>R.ps.g ? 'atp' : R.ps.g>R.atp.g ? 'ps' : R.atp.pf>R.ps.pf ? 'atp' : R.ps.pf>R.atp.pf ? 'ps' : null;
+    function page(title, sub){ newPage(doc,'p'); pdfHead(doc, title, sub); return 27; }
+    function room(y, need, title){ if (y+need>284){ pdfFoot(doc); return page(title+' (continued)', ''); } return y; }
+    var y = page('Final results', win ? (win==='atp'?'ATP Pickleball Club':'Port Stephens Pickleball Club')+' win the Kitchen' : (R.played?'Level on games':'No games played yet'));
+    [['atp',10],['ps',108]].forEach(function(s){
+      var k = s[0], x = s[1], t = R[k];
+      doc.setDrawColor.apply(doc, k==='atp'?C_ATPBAND:C_PSBAND); doc.setLineWidth(1.2); doc.line(x,y,x+92,y); doc.setLineWidth(.3);
+      doc.setFont('helvetica','bold'); doc.setFontSize(9); clubText(doc,k,(k==='atp'?'ATP PICKLEBALL CLUB':'PORT STEPHENS PICKLEBALL CLUB'), x, y+6);
+      doc.setFontSize(30); clubText(doc,k,String(t.g), x, y+19);
+      doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_MUTED);
+      doc.text(TX('Games won by division: '+R.divs.map(function(dv){ return dv[k].g; }).join(' / ')), x+26, y+13);
+      doc.text(TX('Points scored '+t.pf+'  -  against '+t.pa), x+26, y+18.5); doc.setTextColor.apply(doc, C_INK);
+    });
+    y += 28;
+    R.divs.forEach(function(dv, d){
+      y = room(y, 64, 'Final results');
+      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.text(TX(divName(d)+' teams'), 10, y);
+      doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_MUTED); doc.text(TX('ATP '+dv.atp.g+' - '+dv.ps.g+' PSPC (games won)'), 200, y, {align:'right'}); doc.setTextColor.apply(doc, C_INK); y += 2;
+      var rows = []; ['atp','ps'].forEach(function(club){ dv.teams[club].forEach(function(x){ rows.push({club:club, t:x.t, rw:x.rw, w:x.g, l:x.l, pf:x.pf, pa:x.pa}); }); });
+      rankRows(rows);
+      y = pdfTable(doc, y, [{h:'#',x:12,w:6},{h:'Team',x:20,w:28},{h:'Players',x:50,w:72},{h:'W',x:126,w:10,align:'right'},{h:'L',x:140,w:10,align:'right'},{h:'PF',x:156,w:12,align:'right'},{h:'PA',x:172,w:12,align:'right'},{h:'+/-',x:186,w:12,align:'right'}],
+        rows.map(function(t, i){ return [i+1, {t:CLUB[t.club]+' '+LET[t.t], b:1, side:t.club}, {t:team(d,t.club,t.t).filter(Boolean).join(', '), fs:7.5, muted:1}, {t:t.w, b:1}, t.l, t.pf, t.pa, {t:sgn(t.pf-t.pa), b:1}]; }));
+      y += 6;
+    });
+    pdfFoot(doc);
+    var ps = playerStats();
+    y = page('Final results - players', 'Every player plays 6 games');
+    for (var d=0; d<DIVS; d++){
+      y = room(y, 160, 'Final results - players');
+      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.text(TX(divName(d)+' players'), 10, y); y += 2;
+      var list = rankRows(Object.keys(ps).map(function(k){ return ps[k]; }).filter(function(p){ return p.d===d; }));
+      y = pdfTable(doc, y, [{h:'#',x:12,w:6},{h:'Player',x:20,w:66},{h:'Team',x:90,w:30},{h:'W',x:132,w:10,align:'right'},{h:'L',x:148,w:10,align:'right'},{h:'PF',x:162,w:10,align:'right'},{h:'+/-',x:180,w:18,align:'right'}],
+        list.map(function(p, i){ return [i+1, {t:pname(p.d,p.club,p.t,p.p)+(p.p===0?' (C)':''), b:1}, {t:CLUB[p.club]+' '+LET[p.t], side:p.club}, p.w, p.l, p.pf, {t:sgn(p.pf-p.pa), b:1}]; }), {rh:5.4});
+      y += 6;
+    }
+    pdfFoot(doc);
+    y = page('Final results - every score', 'Scores shown ATP first');
+    for (var r=0; r<ROUNDS; r++){
+      y = room(y, 90, 'Final results - every score');
+      doc.setFont('helvetica','bold'); doc.setFontSize(11); doc.text('Round '+(r+1), 10, y); y += 2;
+      var rws = [];
+      for (var di2=0; di2<DIVS; di2++) for (var c=0;c<COURTS;c++){ var d2 = DIVS-1-di2;
+        var at = DRAW[r][c][0], pt = DRAW[r][c][1], m = scores[mid(d2,r,c)], hw = 0, aw = 0;
+        var gs = [0,1,2].map(function(gi){ var g = m && m.games && m.games[gi]; if (!gameValid(g)) return {t:'-', muted:1}; if (g.a>g.p) hw++; else aw++; return g.a+'-'+g.p; });
+        rws.push([courtNo(d2,c), {t:divShort(d2), fs:7.5, muted:1}, {t:'ATP '+LET[at], b:1, side:'atp'}, {t:'PSPC '+LET[pt], b:1, side:'ps'}].concat(gs, [{t:hw+'-'+aw, b:1}]));
+      }
+      y = pdfTable(doc, y, [{h:'Ct',x:12,w:8},{h:'Division',x:22,w:22},{h:'ATP team',x:48,w:28},{h:'PSPC team',x:80,w:30},{h:'Game 1',x:116,w:16,align:'center'},{h:'Game 2',x:136,w:16,align:'center'},{h:'Game 3',x:156,w:16,align:'center'},{h:'Games',x:180,w:18,align:'center'}], rws, {rh:5.6});
+      y += 6;
+    }
+    pdfFoot(doc);
+  }
+  function buildPDF(JsPDF, kind){
+    var doc = new JsPDF({unit:'mm', format:'a4'}); doc.__used = false;
+    if (kind==='schedule' || kind==='all') pdfSchedule(doc);
+    if (kind==='cards' || kind==='all') pdfScoreCards(doc);
+    if (kind==='courts' || kind==='all') pdfCourtSheets(doc);
+    if (kind==='results') pdfResults(doc);
+    if (doc.__dropFirst) doc.deletePage(1);
+    return doc;
+  }
+  var PDF_NAMES = {all:'All sheets', schedule:'Game schedule', cards:'Score cards', courts:'Court sheets', results:'Final results'};
+  document.querySelector('#tab-print').addEventListener('click', function(e){
+    var b = e.target.closest('[data-pdf]'); if (!b) return;
+    var kind = b.dataset.pdf, msg = $('pdf-msg');
+    msg.textContent = 'Building '+PDF_NAMES[kind].toLowerCase()+'…'; msg.className = 'msg';
+    loadJsPDF().then(function(JsPDF){
+      var doc = buildPDF(JsPDF, kind);
+      return saveFile('Defend the Kitchen - '+PDF_NAMES[kind]+'.pdf', doc.output('arraybuffer'), 'application/pdf');
+    }).then(function(){ msg.textContent = 'PDF saved. Open it and print on A4.'; msg.className = 'msg ok'; },
+      function(e){ msg.textContent = fileErr(e); msg.className = 'msg err'; });
+  });
+
+  // ---------- test tools ----------
+  $('fill-btn').addEventListener('click', function(){
+    var jobs = [];
+    for (var d=0; d<DIVS; d++) for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++){
+      var id = mid(d,r,c); if (scores[id] && scores[id].games && scores[id].games.filter(gameValid).length===3) continue;
+      var games = [0,1,2].map(function(){ var a = 4+Math.floor(Math.random()*10), p = 4+Math.floor(Math.random()*10); if (a===p) a++; return {a:a, p:p}; });
+      var doc = docFor(id, games); doc.test = true; jobs.push([id, doc]);
+    }
+    $('tools-msg').textContent = 'Filling ' + jobs.length + ' courts…'; $('tools-msg').className='msg';
+    var i = 0;
+    (function next(){
+      if (i>=jobs.length){ $('tools-msg').textContent = 'Random scores filled. Clear them before the real day.'; $('tools-msg').className='msg ok'; afterScoresChange(); return; }
+      var j = jobs[i++]; saveScore(j[0], j[1]).then(next, function(){ $('tools-msg').textContent='Stopped: couldn’t save.'; $('tools-msg').className='msg err'; });
+    })();
+  });
+  var clearArmed = false;
+  $('clear-btn').addEventListener('click', function(){
+    var btn = $('clear-btn');
+    if (!clearArmed){ clearArmed = true; btn.textContent = 'Tap again to delete every score'; btn.className='btn danger'; setTimeout(function(){ clearArmed=false; btn.textContent='Clear all scores'; btn.className='btn ghost'; }, 4000); return; }
+    clearArmed = false; btn.textContent='Clear all scores'; btn.className='btn ghost';
+    var ids = Object.keys(scores), i = 0;
+    $('tools-msg').textContent = 'Clearing…'; $('tools-msg').className='msg';
+    (function next(){
+      if (i>=ids.length){ drafts = {}; $('tools-msg').textContent='All scores cleared.'; $('tools-msg').className='msg ok'; afterScoresChange(); if (view.tab==='scores') renderScores(); return; }
+      deleteScore(ids[i++]).then(next, next);
+    })();
+  });
+
+  // clears every score and the start time, ready for the real tournament (teams stay as they are)
+  var resetArmed = false;
+  $('reset-btn').addEventListener('click', function(){
+    var btn = $('reset-btn');
+    if (!resetArmed){ resetArmed = true; btn.textContent = 'Tap again: delete all scores and the start'; btn.className='btn danger'; setTimeout(function(){ resetArmed=false; btn.textContent='Reset for the real day'; btn.className='btn ghost'; }, 5000); return; }
+    resetArmed = false; btn.textContent='Reset for the real day'; btn.className='btn ghost';
+    var ids = Object.keys(scores), i = 0;
+    $('tools-msg').textContent = 'Resetting\u2026'; $('tools-msg').className='msg';
+    (function next(){
+      if (i<ids.length){ deleteScore(ids[i++]).then(next, next); return; }
+      saveTimer({round:-1, game:0, phase:'idle', endsAt:null, remainMs:GAME_MS, roundAt:null}).then(function(){}, function(){});
+      saveState({startedAt:null}).then(function(){}, function(){}).then(function(){
+        drafts = {}; startedAt = null;
+        $('tools-msg').textContent = 'Reset done. All scores cleared and the timer is back to \u201cNot started\u201d.'+(setup.sample?' Sample names are still loaded: upload the real teams on the Teams tab.':'');
+        $('tools-msg').className='msg ok'; afterScoresChange(); if (view.tab==='scores') renderScores();
+      });
+    })();
+  });
+
+  // ---------- storage: shared db, or local memory when unavailable ----------
+  function saveScore(id, doc){
+    if (db) return db.doc('scores/'+id).set(doc);
+    scores[id] = doc; return Promise.resolve();
+  }
+  function deleteScore(id){
+    if (db) return db.doc('scores/'+id).delete();
+    delete scores[id]; return Promise.resolve();
+  }
+  function saveState(st){
+    if (db) return db.doc('event/state').set(st);
+    startedAt = st.startedAt || null; return Promise.resolve();
+  }
+  function saveSetup(s){
+    if (db) return db.doc('event/setup').set(s);
+    setup = s; renderAll(); return Promise.resolve();
+  }
+
+  function setStatus(){
+    $('dot').className = 'dot ' + (connected ? 'live' : 'off');
+    $('status-text').textContent = connected
+      ? (canWrite ? 'Live. Scores you save show on every screen.' : 'Live. Scores update as the committee enters them.')
+      : 'Not connected to shared scores. Changes stay on this screen only.';
+    $('sample-flag').hidden = !setup.sample;
+    $('status').hidden = !isCmte();
+    $('who-in').textContent = loggedIn ? 'Logged in as '+loggedIn : '';
+    $('cmte-link').hidden = isCmte();
+    applyFront();
+    document.querySelectorAll('.cmte').forEach(function(b){ b.hidden = !isCmte(); });
+    document.querySelectorAll('#tab-scores .tools').forEach(function(t){ t.hidden = !isCmte(); });
+    $('fill-btn').hidden = !!(startedAt && !setup.sample);
+  }
+
+  // ---------- tabs ----------
+  // ---------- game timer ----------
+  function remaining(){
+    if (timer.phase==='playing') return Math.max(0, Date.parse(timer.endsAt) - Date.now());
+    if (timer.phase==='paused') return timer.remainMs;
+    if (timer.phase==='time' || timer.phase==='finished') return 0;
+    return GAME_MS;
+  }
+  function tPhase(){ return (timer.phase==='playing' && remaining()<=0) ? 'time' : timer.phase; }
+  function fmtClock(ms){ var t = Math.ceil(ms/1000), m = Math.floor(t/60), sec = t%60; return m+':'+(sec<10?'0':'')+sec; }
+  function tLabel(){
+    if (timer.round<0) return 'Not started';
+    if (timer.phase==='finished') return 'All rounds played';
+    return 'Round '+(timer.round+1)+' \u00b7 Game '+(timer.game+1)+' of 3';
+  }
+  function tStateText(ph){
+    return {idle:'Starting soon', ready:'Get ready', playing:'Playing', paused:'Paused', time:'', finished:'Thanks for playing'}[ph] || '';
+  }
+  function saveTimer(t){
+    if (db) return db.doc('event/timer').set(t);
+    timer = t; tickClocks(true); afterScoresChange(); return Promise.resolve();
+  }
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+  function tMsg(t, cls){ $('t-msg').textContent = t; $('t-msg').className = 'msg '+(cls||''); }
+  var tArmed = {};
+  function armTap(key, btn, label){
+    if (tArmed[key]) { tArmed[key] = false; return true; }
+    tArmed[key] = true; btn.textContent = label; btn.className = 'btn danger';
+    setTimeout(function(){ if (tArmed[key]){ tArmed[key] = false; renderTimer(); } }, 4000);
+    return false;
+  }
+  function timerAction(act, btn){
+    var t = clone(timer), now = Date.now(), iso = new Date(now).toISOString();
+    if (act==='start-tournament'){
+      if (!armTap('start', btn, 'Tap again to start Round 1')) return;
+      t = {round:0, game:0, phase:'playing', endsAt:new Date(now+GAME_MS).toISOString(), remainMs:GAME_MS, roundAt:iso};
+      saveState({startedAt: iso});
+    } else if (act==='start'){
+      t.phase = 'playing'; t.endsAt = new Date(now+GAME_MS).toISOString(); t.remainMs = GAME_MS;
+      if (t.game===0) t.roundAt = iso;
+    } else if (act==='pause'){
+      t.remainMs = remaining(); t.phase = 'paused'; t.endsAt = null;
+    } else if (act==='resume'){
+      t.phase = 'playing'; t.endsAt = new Date(now+timer.remainMs).toISOString();
+    } else if (act==='end'){
+      if (!armTap('end', btn, 'Tap again to end this game')) return;
+      t.phase = 'time'; t.endsAt = null; t.remainMs = 0;
+    } else if (act==='next'){
+      if (t.game<2){ t.game++; t.phase = 'ready'; }
+      else if (t.round<ROUNDS-1){ t.round++; t.game = 0; t.phase = 'ready'; }
+      else { t.phase = 'finished'; }
+      t.endsAt = null; t.remainMs = GAME_MS;
+    }
+    saveTimer(t).then(function(){ tMsg(''); }, function(){ tMsg('Couldn\u2019t update the timer. Check the connection and try again.', 'err'); });
+  }
+  function renderTimer(){
+    var ph = tPhase();
+    $('t-label').textContent = tLabel();
+    $('t-clock').className = 'tbig '+ph;
+    $('t-state').textContent = timer.round<0 ? 'Every court plays the same round. Start Round 1 when everyone is on court.' :
+      ph==='time' ? 'Time. Play the golden point on any court that\u2019s level, then press Next game.' :
+      ph==='ready' ? (timer.game===0 ? 'Round '+(timer.round+1)+' is next. Teams '+LET[timer.round]+' rest. Start when everyone is on court.' : 'Swap to the next pair, then start Game '+(timer.game+1)+'.') :
+      ph==='finished' ? 'All 4 rounds are done. Make sure every score card is in.' : tStateText(ph);
+    var b = '';
+    if (timer.round<0) b = '<button class="btn go" data-t="start-tournament">Start tournament \u00b7 Round 1</button>';
+    else if (ph==='ready') b = '<button class="btn go" data-t="start">Start Game '+(timer.game+1)+'</button>';
+    else if (ph==='playing') b = '<button class="btn ghost" data-t="pause">Pause</button><button class="btn ghost" data-t="end">End game now</button>';
+    else if (ph==='paused') b = '<button class="btn go" data-t="resume">Resume</button><button class="btn ghost" data-t="end">End game now</button>';
+    else if (ph==='time') b = '<button class="btn go" data-t="next">'+(timer.game<2 ? 'Next game' : timer.round<ROUNDS-1 ? 'Next round' : 'Finish')+'</button>';
+    $('t-btns').innerHTML = b;
+    tickClocks(true);
+  }
+  $('t-btns').addEventListener('click', function(e){ var b = e.target.closest('[data-t]'); if (b) timerAction(b.dataset.t, b); });
+  $('t-set').addEventListener('click', function(){
+    var t = clone(timer); t.round = +$('t-set-round').value; t.game = +$('t-set-game').value; t.phase = 'ready'; t.endsAt = null; t.remainMs = GAME_MS;
+    if (!startedAt) saveState({startedAt: new Date().toISOString()});
+    saveTimer(t).then(function(){ tMsg('Set to Round '+(t.round+1)+', Game '+(t.game+1)+'. Press Start when ready.', 'ok'); });
+  });
+  function bump(ms){
+    var t = clone(timer);
+    if (t.phase==='playing'){ t.endsAt = new Date(Math.max(Date.now(), Date.parse(t.endsAt)+ms)).toISOString(); }
+    else if (t.phase==='paused'){ t.remainMs = Math.max(0, t.remainMs+ms); }
+    else { tMsg('Start or pause a game first.', ''); return; }
+    saveTimer(t);
+  }
+  $('t-plus').addEventListener('click', function(){ bump(60000); });
+  $('t-minus').addEventListener('click', function(){ bump(-60000); });
+  $('t-reset').addEventListener('click', function(){
+    if (!armTap('reset', $('t-reset'), 'Tap again to reset to Not started')) return;
+    saveTimer({round:-1, game:0, phase:'idle', endsAt:null, remainMs:GAME_MS, roundAt:null});
+    saveState({startedAt:null});
+    tMsg('Timer reset.', 'ok');
+  });
+  // light-weight clock refresh on every screen that shows the timer
+  var lastPh = null, lastRem = 0;
+  function tickClocks(force){
+    var ph = tPhase(), clock = fmtClock(remaining());
+    if (view.tab==='timer'){ $('t-clock').textContent = clock; if (ph!==lastPh || force){ $('t-clock').className = 'tbig '+ph; } }
+    var tv = $('tv-clock');
+    if (tv){ tv.textContent = timer.round<0 ? '12:00' : clock; tv.className = 'clock '+ph; $('tv-tlabel').textContent = timer.round<0 ? 'Starting soon' : tLabel(); $('tv-tstate').textContent = timer.round<0 ? 'Round 1 is on every court' : ph==='time' ? '' : tStateText(ph); }
+    document.querySelectorAll('.tclock').forEach(function(el){ el.textContent = timer.round<0 ? '' : (clock+' '+tStateText(ph).toLowerCase()).trim(); });
+    document.querySelectorAll('.tclock-label').forEach(function(el){ el.textContent = timer.round<0 ? 'Not started' : tLabel(); });
+    var rem = remaining(), loud = view.tab==='tv' || view.tab==='timer';
+    if (loud && ph==='playing' && lastRem>10000 && rem<=10000 && rem>0) alertTenSec();
+    if (loud && lastPh && ph!==lastPh){ if (ph==='playing' && lastPh!=='paused') chime(); if (ph==='time') alertEndOfGame(); }
+    lastRem = (ph==='playing') ? rem : 0;
+    var changed = ph!==lastPh; lastPh = ph;
+    if (changed && view.tab==='timer' && !force) renderTimer();
+  }
+  setInterval(function(){ tickClocks(false); }, 500);
+
+  // ---------- TV screen ----------
+  var seenCalls = null, soundOn = false, actx = null;
+  function chime(){
+    if (!soundOn || !actx) return;
+    [0, .22].forEach(function(off, i){
+      var o = actx.createOscillator(), g = actx.createGain(), t0 = actx.currentTime + off;
+      o.frequency.value = i ? 1046 : 784; o.type = 'sine';
+      g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(.25, t0+.02); g.gain.exponentialRampToValueAtTime(.001, t0+.5);
+      o.connect(g); g.connect(actx.destination); o.start(t0); o.stop(t0+.55);
+    });
+  }
+  // Same alerts as the ATP vs Dural timer: two pips at 10 seconds left, then loud alternating beeps + vibrate + flash at time.
+  function beeps(n, len, gap, freq, freq2){
+    if (!soundOn || !actx) return;
+    var t0 = actx.currentTime + .05, out = actx.createDynamicsCompressor(), vol = actx.createGain();
+    out.threshold.value = -12; out.ratio.value = 12; vol.gain.value = 1; out.connect(vol); vol.connect(actx.destination);
+    for (var i=0; i<n; i++){
+      var o = actx.createOscillator(), g = actx.createGain(), t = t0 + i*(len+gap);
+      o.type = 'square'; o.frequency.value = (freq2 && i%2) ? freq2 : freq;
+      g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(1, t+.01); g.gain.setValueAtTime(1, t+len-.02); g.gain.linearRampToValueAtTime(.0001, t+len);
+      o.connect(g); g.connect(out); o.start(t); o.stop(t+len+.05);
+    }
+  }
+  function buzz(p){ try { if (navigator.vibrate) navigator.vibrate(p); } catch(e){} }
+  function alertEndOfGame(){
+    beeps(10, .4, .12, 1800, 2400); buzz([700,200,700,200,700,200,1200]);
+    document.body.classList.add('tkflash'); setTimeout(function(){ document.body.classList.remove('tkflash'); }, 4000);
+  }
+  function alertTenSec(){ beeps(2, .12, .1, 1500); buzz([120,100,120]); }
+  function setSound(on){
+    try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); actx.resume(); soundOn = on; } catch(e){ soundOn = false; }
+    syncSoundBtns();
+  }
+  function syncSoundBtns(){
+    $('tv-sound').textContent = soundOn ? 'Sound on' : 'Turn on sound';
+    var b = $('t-sound'); if (b){ b.textContent = soundOn ? '\ud83d\udd14 Sound on \u00b7 test' : '\ud83d\udd15 Tap to turn sound on'; b.className = soundOn ? 'btn ghost' : 'btn go'; }
+  }
+  function renderTV(){
+    var R = compute(), all = allStatus();
+    $('tv-atp').textContent = R.atp.g; $('tv-ps').textContent = R.ps.g;
+    $('tv-atp-pts').textContent = 'Points scored '+R.atp.pf;
+    $('tv-ps-pts').textContent = 'Points scored '+R.ps.pf;
+    $('tv-played').textContent = 'Games won \u00b7 '+R.played+' of 144 played \u00b7 '+WIN_AT+' wins it';
+    $('tv-lead').textContent = leadText(R, true);
+    setTug('tug-tv', R.atp.g, R.ps.g);
+    var go = timer.phase==='finished' ? [] : roundList();
+    var done = all.filter(function(x){ return x.s==='done'; }).length;
+    $('tv-calls').innerHTML = go.length ? go.map(function(st){
+      var at = DRAW[st.r][st.c][0], pt = DRAW[st.r][st.c][1], fin = st.s==='done', nw = isNew(st) && !fin;
+      return '<div class="tv-call dv'+(nw?' new':'')+(fin?' fin':'')+'"'+dcs(st.d)+'><div class="ct">'+courtNo(st.d,st.c)+'</div><div><div class="t"><span class="a">'+logo('atp')+LET[at]+'</span><span class="v">v</span><span class="p">'+logo('ps')+LET[pt]+'</span>'+(nw?'<span class="flag">Go now</span>':'')+'</div><div class="sub">'+dname(st.d)+(fin?' \u00b7 games '+gamesWon(st.d,st.r,st.c):'')+'</div></div></div>';
+    }).join('') : '<div class="tv-empty" style="grid-column:1/-1">'+(done===48 ? 'All matches finished' : !startedAt ? 'Starting soon<br><span style="font-size:.5em">Round 1 is on every court. Check My games for your court.</span>' : 'Waiting for score cards')+'</div>';
+    $('tv-divs').innerHTML = R.divs.map(function(dv, d){
+      var fin = 0; for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++) if (matchDone(d,r,c)) fin++;
+      var line;
+      if (timer.round<0) line = '<span>Round 1 on courts '+courtNo(d,0)+'\u2013'+courtNo(d,2)+' when play starts</span>';
+      else if (timer.phase==='finished' || timer.round>=ROUNDS-1) line = fin===12 ? '<span>All rounds finished</span>' : '<span>Final round on court</span>';
+      else line = '<span>Next: Round '+(timer.round+2)+' \u00b7 resting</span>'+tc('atp',timer.round+1)+tc('ps',timer.round+1);
+      return '<div class="tv-div"><div><b class="dvt"'+dcs(d)+'><i class="dvdot"></i>'+esc(divName(d))+'</b></div><div class="sc"><span class="atp-c">'+dv.atp.g+'</span> <span style="color:var(--ink-soft);font-size:.6em">\u2013</span> <span class="psb-c">'+dv.ps.g+'</span></div><div class="nx">'+line+'</div></div>';
+    }).join('');
+    tickClocks(true);
+  }
+  $('tv-sound').addEventListener('click', function(){ setSound(!soundOn); if (soundOn) chime(); });
+  $('t-sound').addEventListener('click', function(){ setSound(true); setTimeout(function(){ beeps(10, .4, .12, 1800, 2400); buzz([700,200,700]); }, 150); });
+  $('tv-full').addEventListener('click', function(){ var el = document.documentElement; if (el.requestFullscreen) el.requestFullscreen().catch(function(){}); });
+  $('tv-exit').addEventListener('click', function(){ show('draw'); });
+
+  var TABS = ['login','board','court','me','draw','tv','timer','scores','teams','print'], CMTE = ['timer','scores','print'];
+  var backTab = 'court', wakeLock = null;
+  function keepAwake(on){
+    try {
+      if (on && !wakeLock && navigator.wakeLock) navigator.wakeLock.request('screen').then(function(w){ wakeLock = w; w.addEventListener('release', function(){ wakeLock = null; }); }).catch(function(){});
+      if (!on && wakeLock){ wakeLock.release(); wakeLock = null; }
+    } catch(e){}
+  }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState==='visible') keepAwake(view.tab==='timer' || view.tab==='tv'); });
+  function show(tab){
+    if (TABS.indexOf(tab)<0) tab = 'draw';
+    if (CMTE.indexOf(tab)>=0 && !isCmte()){ if (asPlayer) tab = 'draw'; else { afterLogin = tab; tab = 'login'; } }
+    if (tab==='login' && isCmte()) tab = afterLogin;
+    $('cmte-link').hidden = isCmte() || tab==='login';
+    view.tab = tab;
+    document.body.classList.toggle('tvmode', tab==='tv');
+    document.body.classList.toggle('tkmode', tab==='timer');
+    if (tab!=='timer' && tab!=='login') backTab = tab;
+    keepAwake(tab==='timer' || tab==='tv');
+    applyFront();
+    if (tab!=='tv' && document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function(){});
+    if (tab==='tv' && navigator.wakeLock && navigator.wakeLock.request) navigator.wakeLock.request('screen').catch(function(){});
+    TABS.forEach(function(t){ $('tab-'+t).hidden = t!==tab; });
+    document.querySelectorAll('nav button').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.tab===tab); });
+    try { history.replaceState(null,'','#'+tab); } catch(e){}
+    renderTab();
+  }
+  document.querySelector('nav').addEventListener('click', function(e){ var b = e.target.closest('button'); if (b) show(b.dataset.tab); });
+  function renderTab(){
+    if (view.tab==='board') renderBoard();
+    if (view.tab==='court') renderCalls();
+    if (view.tab==='login'){ $('login-msg').textContent = ''; setTimeout(function(){ try { $('login-email').focus(); } catch(e){} }, 50); }
+    if (view.tab==='me') renderMe();
+    if (view.tab==='draw') renderDraw();
+    if (view.tab==='scores') renderScores();
+    if (view.tab==='teams') renderTeams();
+    if (view.tab==='tv') renderTV();
+    if (view.tab==='timer') renderTimer();
+    renderMini();
+  }
+  function renderAll(){ setStatus(); renderTab(); }
+  // after scores change: refresh everything except rebuilding the score-entry form or team form
+  function afterScoresChange(){
+    setStatus(); renderMini();
+    if (view.tab==='scores') refreshScoreCards();
+    else if (view.tab!=='teams' && view.tab!=='print') renderTab();
+  }
+
+  // TV screen
+  document.addEventListener('keydown', function(e){ if (e.key==='Escape' && view.tab==='tv' && !document.fullscreenElement) show('draw'); });
+  // refresh "go now" highlights as they age, and keep the TV current
+  setInterval(function(){ if (view.tab==='tv') renderTV(); else if (view.tab==='court') renderCalls(); }, 20000);
+
+  $('t-back').addEventListener('click', function(){ show(backTab==='timer' ? 'court' : backTab); });
+  document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-go]'); if (b) show(b.getAttribute('data-go')); });
+
+  // ---------- front page + player view ----------
+  $('fp-login').addEventListener('click', function(){ afterLogin = 'draw'; show('login'); applyFront(); });
+  $('fp-back').addEventListener('click', function(){ previewFront = false; applyFront(); window.scrollTo(0,0); });
+  $('fp-preview').addEventListener('click', function(){ previewFront = true; applyFront(); window.scrollTo(0,0); });
+  $('fp-toggle').addEventListener('click', function(){
+    saveFront(!frontOn).then(function(){ applyFront(); }, function(){ applyFront(); });
+  });
+  $('pv-on').addEventListener('click', function(){ asPlayer = true; setStatus(); show(CMTE.indexOf(view.tab)>=0 ? 'draw' : view.tab); window.scrollTo(0,0); });
+  $('pv-off').addEventListener('click', function(){ asPlayer = false; setStatus(); show(view.tab); });
+
+  // ---------- committee log in ----------
+  $('cmte-link').addEventListener('click', function(){ afterLogin = 'draw'; show('login'); });
+  $('login-back').addEventListener('click', function(){ show('draw'); });
+  $('login-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = $('login-email').value.trim(), pass = $('login-pass').value, m = $('login-msg');
+    m.className = 'msg err';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { m.textContent = 'Enter your email address.'; return; }
+    if (!pass) { m.textContent = 'Enter your password.'; return; }
+    if (!fbAuth) { m.textContent = 'Log in isn\u2019t available right now. Check your connection and reload.'; return; }
+    m.className = 'msg'; m.textContent = 'Logging in\u2026';
+    fbAuth.signInWithEmailAndPassword(email, pass).then(function(){ $('login-pass').value = ''; }, function(err){
+      var c = (err && err.code) || '';
+      m.className = 'msg err';
+      m.textContent = (c.indexOf('invalid')>=0 || c.indexOf('wrong-password')>=0 || c.indexOf('user-not-found')>=0) ? 'That email and password don\u2019t match.'
+        : c.indexOf('too-many-requests')>=0 ? 'Too many tries. Wait a minute and try again.'
+        : c.indexOf('network')>=0 ? 'No connection. Check your internet and try again.'
+        : 'Couldn\u2019t log in. Try again.';
+    });
+  });
+  $('logout-btn').addEventListener('click', function(){
+    if (fbAuth) fbAuth.signOut();
+    loggedIn = ''; canWrite = false; setStatus(); show('draw');
+  });
+
+  // ---------- boot ----------
+  setStatus(); show((location.hash||'').replace('#','') || 'draw');
+
+  // ---------- Firebase (project: ATP Events · this event saved under events/defend-the-kitchen-2027) ----------
+  var FB = window.FIREBASE_CONFIG, EVENT_ID = 'defend-the-kitchen-2027';
+  if (window.firebase && FB && FB.apiKey && FB.apiKey.indexOf('PASTE')<0){
+    try {
+      firebase.initializeApp(FB);
+      var fs = firebase.firestore();
+      try { fs.settings({ignoreUndefinedProperties:true}); } catch(e0){}
+      fbAuth = firebase.auth();
+      // Same layout as the Dural site: the whole event is ONE document, events/<EVENT_ID>, with fields
+      // setup, state, timer, front and scores (a map of court id -> score card). Matches the existing Firestore rules.
+      var evRef = fs.doc('events/'+EVENT_ID), evData = null, evSubs = [], evErrs = [], evListening = false;
+      function evListen(){
+        if (evListening) return; evListening = true;
+        evRef.onSnapshot(function(snap){ evData = snap.exists ? (snap.data()||{}) : {}; evSubs.forEach(function(f){ f(); }); },
+          function(err){ evErrs.forEach(function(f){ f(err); }); });
+      }
+      function fieldOf(p){ var a = p.split('/'); return a[0]==='scores' ? new firebase.firestore.FieldPath('scores', a[1]) : new firebase.firestore.FieldPath(a[1]); }
+      function evWrite(fp, val){
+        return evRef.update(fp, val).catch(function(err){
+          if (err && err.code==='not-found' && val!==firebase.firestore.FieldValue.delete()){
+            return evRef.set(nestFor(fp, val), {merge:true});
+          }
+          throw err;
+        });
+      }
+      function nestFor(fp, val){
+        // FieldPath -> nested object for the very first write (document doesn't exist yet)
+        var segs = fp.__dtkSegs, o = {}, cur = o;
+        for (var i=0;i<segs.length-1;i++){ cur[segs[i]] = {}; cur = cur[segs[i]]; }
+        cur[segs[segs.length-1]] = val; return o;
+      }
+      function fpFor(p){ var a = p.split('/'), segs = a[0]==='scores' ? ['scores', a[1]] : [a[1]];
+        var fp = new (Function.prototype.bind.apply(firebase.firestore.FieldPath, [null].concat(segs)))(); fp.__dtkSegs = segs; return fp; }
+      db = {
+        doc: function(p){
+          var segs = p.split('/'), key = segs[0]==='scores' ? segs[1] : segs[1], isScore = segs[0]==='scores';
+          function cur(){ var d = evData||{}; return isScore ? (d.scores||{})[key] : d[key]; }
+          return {
+            set: function(v){ return evWrite(fpFor(p), v); },
+            delete: function(){ return evRef.update(fpFor(p), firebase.firestore.FieldValue.delete()).catch(function(err){ if (err && err.code==='not-found') return; throw err; }); },
+            onSnapshot: function(cb, errCb){
+              var f = function(){ var v = cur(); cb({exists: v!==undefined && v!==null, id: key, data: function(){ return v; }}); };
+              evSubs.push(f); if (errCb) evErrs.push(errCb); evListen(); if (evData) f();
+              return function(){};
+            }
+          };
+        },
+        collection: function(p){
+          return { onSnapshot: function(cb, errCb){
+            var f = function(){ var m = (evData||{})[p]||{}; cb({docs: Object.keys(m).map(function(id){ return {id:id, exists:true, data:function(){ return m[id]; }}; })}); };
+            evSubs.push(f); if (errCb) evErrs.push(errCb); evListen(); if (evData) f();
+            return function(){};
+          } };
+        }
+      };
+      connected = true; scores = {}; setStatus();
+      db.doc('event/setup').onSnapshot(function(snap){
+        if (snap.exists){ var s = snap.data(); if (s && s.divisions && s.divisions.length===DIVS) setup = s; }
+        else setup = sampleSetup();
+        setStatus();
+        if (view.tab==='teams'){ if (!teamsDraft) renderTeams(); }
+        else if (view.tab==='scores') renderScores();
+        else renderTab();
+      }, function(){ connected = false; setStatus(); });
+      db.doc('event/timer').onSnapshot(function(snap){
+        var t = snap.exists ? snap.data() : null;
+        timer = (t && typeof t.round==='number') ? t : {round:-1, game:0, phase:'idle', endsAt:null, remainMs:GAME_MS, roundAt:null};
+        if (view.tab==='timer') renderTimer();
+        afterScoresChange();
+      }, function(){});
+      db.doc('event/front').onSnapshot(function(snap){
+        var f = snap.exists ? snap.data() : null;
+        frontOn = !(f && f.on===false);
+        applyFront();
+      }, function(){});
+      db.doc('event/state').onSnapshot(function(snap){
+        var st = snap.exists ? snap.data() : null;
+        startedAt = (st && st.startedAt) || null;
+        afterScoresChange();
+      }, function(){});
+      db.collection('scores').onSnapshot(function(qs){
+        var next = {};
+        qs.docs.forEach(function(doc){ if (parseId(doc.id)) next[doc.id] = doc.data(); });
+        scores = next;
+        afterScoresChange();
+      }, function(){ connected = false; setStatus(); });
+      // committee = logged in AND email listed in config/committee -> emails (same list as the Dural site)
+      fbAuth.onAuthStateChanged(function(u){
+        if (!u){ if (!loggedIn && !canWrite) { setStatus(); return; } loggedIn = ''; canWrite = false; setStatus(); show(view.tab); return; }
+        var email = (u.email||'').toLowerCase();
+        fs.doc('config/committee').get().then(function(d){
+          var list = (d.exists && d.data().emails) || [];
+          canWrite = list.map(function(e){ return String(e).toLowerCase(); }).indexOf(email) >= 0; loggedIn = canWrite ? (u.email||'') : '';
+          setStatus(); show(view.tab==='login' && canWrite ? afterLogin : view.tab);
+          if (!canWrite){
+            fbAuth.signOut();
+            var m = $('login-msg'); m.className = 'msg err'; m.textContent = 'This account isn\u2019t on the committee list.';
+          }
+        }, function(){
+          canWrite = false; loggedIn = ''; setStatus();
+          var m = $('login-msg'); m.className = 'msg err'; m.textContent = 'Couldn\u2019t check committee access. Try again.';
+        });
+      });
+      $('login-forgot').addEventListener('click', function(){
+        var email = $('login-email').value.trim(), m = $('login-msg');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { m.className = 'msg err'; m.textContent = 'Enter your email above, then tap Forgot password.'; return; }
+        fbAuth.sendPasswordResetEmail(email).then(function(){ m.className = 'msg ok'; m.textContent = 'Check your email for a link to set a new password.'; },
+          function(){ m.className = 'msg err'; m.textContent = 'Couldn\u2019t send the email. Check the address and try again.'; });
+      });
+    } catch(e){ connected = false; setStatus(); }
+  } else {
+    setStatus();
+    $('login-forgot').hidden = true;
+  }
 })();
 </script>
 </body>
