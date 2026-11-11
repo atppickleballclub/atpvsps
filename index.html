@@ -405,6 +405,85 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
 .resting.top{margin-bottom:2px}
 .resting{grid-column:1/-1;font-size:.8rem;color:var(--ink-soft);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .divlabel{grid-column:1/-1;margin-top:6px}
+.brief{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;padding-bottom:20px}
+.brief-back{align-self:flex-start}
+.bhero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:4px}
+.bhero-court{display:grid;grid-template-columns:1fr 1.3fr 1fr;width:min(100%,520px);height:110px;border:3px solid #f4f6f2;border-radius:6px;background:#f4f6f2;gap:3px;margin-bottom:6px}
+.bh-half{display:flex;align-items:center;justify-content:center;position:relative}
+.bh-half::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(244,246,242,.5)}
+.bh-half.atp{background:linear-gradient(135deg,#0b3149,#0f4462)} .bh-half.ps{background:linear-gradient(225deg,#2f5fcf,#1a2a6c)}
+.bh-half img{position:relative;height:78px;width:auto;max-width:85%;object-fit:contain}
+.bh-kitchen{background:#e9ecdf;color:#081826;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--display);text-transform:uppercase;line-height:.9;background-image:linear-gradient(90deg,transparent calc(50% - 2px),rgba(27,39,51,.25) calc(50% - 2px),rgba(27,39,51,.25) calc(50% + 2px),transparent calc(50% + 2px))}
+.bh-kitchen span{font-weight:800;letter-spacing:.2em;font-size:.8rem;color:#4a5848;background:#e9ecdf;padding:0 4px}
+.bh-kitchen b{font-weight:900;font-size:clamp(1.6rem,6vw,2.3rem);background:#e9ecdf;padding:0 4px}
+.bhero h2{font-size:clamp(1.5rem,5vw,2.2rem);font-weight:900;text-transform:uppercase;margin:4px 0 0;line-height:1}
+.bwhen{margin:0;font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:.06em;text-transform:uppercase;color:#f2cd2e}
+.bwhere{margin:0 0 6px;color:var(--ink-soft)}
+.bjump{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none;position:sticky;top:0;z-index:5;background:var(--ground)}
+.bjump::-webkit-scrollbar{display:none}
+@media (min-width:700px){.bjump{flex-wrap:wrap;justify-content:center;overflow:visible}}
+.bjump button{flex:none;background:var(--panel);border:1px solid var(--rule);color:var(--ink);font:inherit;font-size:.85rem;font-weight:600;padding:6px 12px;border-radius:99px;cursor:pointer}
+.bjump button:hover{border-color:var(--atp)}
+.bcard{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px 18px;scroll-margin-top:56px}
+.bcard h3{font-size:1.45rem;font-weight:900;text-transform:uppercase;margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.bcard h3::before{content:"";width:6px;height:1.1em;border-radius:3px;background:linear-gradient(var(--atp) 50%,var(--ps-chip) 50%)}
+.bcard ul{margin:6px 0;padding-left:18px;line-height:1.5} .bcard li{margin:3px 0}
+.bcard .btn{margin-top:8px}
+.bwelcome p{margin:0 0 10px;line-height:1.55} .bwelcome .bq{font-weight:700;color:var(--atp)} .bwelcome .bsoft{color:var(--ink-soft);font-size:.9rem;margin:0}
+.btime{list-style:none;margin:0;padding:0;position:relative}
+.btime::before{content:"";position:absolute;left:84px;top:8px;bottom:8px;width:2px;background:var(--rule)}
+.btime li{display:grid;grid-template-columns:76px 1fr;gap:22px;align-items:center;padding:7px 0;position:relative}
+.btime li::after{content:"";position:absolute;left:80px;width:10px;height:10px;border-radius:50%;background:var(--panel);border:2px solid var(--ink-soft)}
+.btime time{font-family:var(--display);font-weight:800;font-size:1.1rem;text-align:right;color:var(--ink-soft)}
+.btime li.done{opacity:.5}
+.btime li.now time{color:var(--atp)} .btime li.now::after{background:var(--atp);border-color:var(--atp);box-shadow:0 0 0 4px rgba(195,210,43,.25)} .btime li.now span{font-weight:700}
+.bnote{margin:0 0 8px;color:var(--ink-soft)}
+.bdivs{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin:6px 0 4px;font-weight:700;font-size:.9rem}
+.bgames{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0}
+.bgames div{background:var(--ground);border:1px solid var(--rule);border-radius:8px;padding:8px;text-align:center;display:flex;flex-direction:column}
+.bgames b{font-family:var(--display);font-size:1.15rem;text-transform:uppercase} .bgames span{font-size:.85rem;color:var(--ink-soft)}
+.bicons{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+.bicons div{display:flex;gap:10px;align-items:flex-start} .bicons p{margin:2px 0 0;line-height:1.4;font-size:.92rem}
+.bi{flex:none;width:36px;height:36px;border-radius:50%;background:var(--ground);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:var(--atp);font-weight:900}
+.bsample{position:relative;overflow:hidden;background:#f4f6f2;color:#081826;border-radius:8px;padding:12px 14px;margin-top:10px}
+.bsample .atp-c{color:#5d6a00} .bsample .psb-c{color:#1f56c4}
+.bstamp{position:absolute;right:10px;bottom:6px;top:auto;transform:rotate(-5deg);font-size:1.05rem!important;border:3px solid rgba(220,40,40,.55);color:rgba(220,40,40,.6);font-family:var(--display);font-weight:900;font-size:1.4rem;letter-spacing:.12em;text-transform:uppercase;padding:0 10px;pointer-events:none}
+.bs-bar{display:flex;justify-content:space-between;gap:8px;background:#dfe3e8;margin:-12px -14px 8px;padding:8px 14px;border-radius:8px 8px 0 0;font-size:.9rem}
+.bs-bar span{color:#4a5848;font-weight:600}
+.bsample .nm{font-weight:700;line-height:1.25;text-align:left}
+.bsample .r{text-align:right!important}
+.bsample td small{display:block}
+.bsample .sc{display:inline-block;min-width:30px;border:1.5px solid #081826;border-radius:2px;padding:3px 0;font-family:'Caveat',cursive,var(--body);font-weight:700;font-size:1.05rem;color:#1f3fa8}
+.bsample .wn{white-space:nowrap}
+.bsample .tk{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;justify-content:flex-start}
+.bsample .tk::before{content:"";width:11px;height:11px;border:1.5px solid #081826;border-radius:2px;flex:none}
+.bsample .tk.on::before{content:"\2713";color:#1f3fa8;font-size:13px;line-height:10px;text-align:center;font-weight:900}
+.bs-foot{margin:8px 0 0;padding-right:110px;min-height:26px;text-align:left;font-size:.72rem;color:#4a5848}
+@media (max-width:560px){.bsample{padding:12px 10px}.bs-bar{margin:-12px -10px 8px;padding:8px 10px}.bsample .nm{white-space:nowrap;font-size:.74rem}.bsample td small{font-size:.6rem}.bsample th,.bsample td{padding:5px 2px}.bsample table{font-size:.78rem}.bsample th:nth-child(2),.bsample th:nth-child(5){font-size:.7rem}.bsample .sc{min-width:24px}}
+.bs-head{display:flex;justify-content:space-between;gap:8px;font-size:.85rem;font-weight:700;color:#4a5848;flex-wrap:wrap}
+.bsample .dvt{color:#c2410c}
+.bs-teams{font-family:var(--display);font-weight:900;font-size:1.25rem;justify-content:space-between;text-transform:uppercase;margin:4px 0 8px;display:flex;gap:10px;align-items:baseline}
+.bs-teams .vs{font-size:.8rem;color:#4a5848}
+.bsample table{width:100%;border-collapse:collapse;font-size:.88rem}
+.bsample th,.bsample td{border-bottom:1px solid #c9cfc2;padding:6px 4px;text-align:center;color:#081826;background:none}
+.bsample th:first-child,.bsample td:first-child{text-align:left}
+.bsample tfoot td{font-weight:800;border-bottom:0}
+.bsample small{display:block;font-size:.68rem;color:#4a5848;font-weight:600}
+.bmap{display:block;margin:6px 0 4px;border-radius:8px;overflow:hidden;border:1px solid var(--rule)}
+.bmap img{display:block;width:100%;height:auto}
+.bmap-tip{margin:0 0 6px;font-size:.8rem;color:var(--ink-soft)}
+.bcourts{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:4px 0 8px}
+.bcourts span{height:64px;border:2px solid var(--dc);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:900;font-size:1.3rem;background:linear-gradient(transparent calc(50% - 1px),var(--dc) calc(50% - 1px),var(--dc) calc(50% + 1px),transparent calc(50% + 1px)),color-mix(in srgb,var(--dc) 14%,transparent)}
+.bbtns{display:flex;gap:8px;flex-wrap:wrap}
+.bcontacts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bclub{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.bclub img{height:64px;width:auto}
+.bclub a{display:flex;flex-direction:column;width:100%;background:var(--ground);border:1px solid var(--rule);border-radius:8px;padding:8px;color:var(--ink);text-decoration:none}
+.bclub a:hover{border-color:var(--atp)} .bclub a span{color:var(--ink-soft);font-size:.9rem}
+.bclub.atp a b{color:var(--atp)} .bclub.ps a b{color:var(--ps-chip)}
+.fp-brief{margin-top:2px}
+body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:none!important}
+@media (max-width:560px){.bicons,.bdivs{grid-template-columns:1fr}.bcourts{grid-template-columns:repeat(3,1fr)}.bcard{padding:14px}}
 .rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .rclubs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
 .rclub-h{display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:900;font-size:1.05rem;text-transform:uppercase;margin-bottom:6px}
@@ -518,7 +597,8 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
     </div>
     <p class="ch-meta">ATP vs Port Stephens · Jonas Bradley Park · Sunday 31 January 2027</p>
     <nav role="tablist" aria-label="Sections">
-      <button role="tab" data-tab="draw" aria-selected="true">Draw</button>
+      <button role="tab" data-tab="info" aria-selected="true">Briefing</button>
+      <button role="tab" data-tab="draw" aria-selected="false">Draw</button>
       <button role="tab" data-tab="board" aria-selected="false">Standings</button>
       <button role="tab" data-tab="court" aria-selected="false">On court</button>
       <button role="tab" data-tab="me" aria-selected="false">My games</button>
@@ -560,6 +640,7 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
       </figure>
     </div>
     <div class="fp-foot">
+      <button class="btn go" type="button" id="fp-brief">Read the player briefing</button>
       <button class="linkbtn" type="button" id="fp-login">Committee log in</button>
       <button class="btn" type="button" id="fp-back" hidden>Back to the app</button>
     </div>
@@ -637,6 +718,174 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
     </div>
   </section>
 
+  <!-- PLAYERS' BRIEFING -->
+  <section id="tab-info" aria-label="Player briefing" hidden>
+    <div class="brief">
+      <button type="button" class="btn ghost sm brief-back" id="brief-back" hidden>&larr; Back</button>
+
+      <div class="bhero">
+        <div class="bhero-court" aria-hidden="true">
+          <div class="bh-half atp"><img src="images/atp-logo.png" alt="" width="470" height="512"></div>
+          <div class="bh-kitchen"><span>Player</span><b>Briefing</b></div>
+          <div class="bh-half ps"><img src="images/ps-logo.png" alt="" width="512" height="422"></div>
+        </div>
+        <h2 class="display">Defend the Kitchen · Interclub II</h2>
+        <p class="bwhen">Sunday 31 January 2027</p>
+        <p class="bwhere"><b>Jonas Bradley Park</b> · 145 The Ponds Blvd, The Ponds NSW 2769</p>
+        <a class="btn go sm" href="https://maps.app.goo.gl/wxTT2ocMQRXgxfeL7" target="_blank" rel="noopener">Map to the courts</a>
+      </div>
+
+      <nav class="bjump" aria-label="Briefing sections">
+        <button type="button" data-jump="b-sched">Schedule</button><button type="button" data-jump="b-arrive">Getting there</button><button type="button" data-jump="b-day">On the day</button><button type="button" data-jump="b-format">Format</button><button type="button" data-jump="b-card">Score cards</button><button type="button" data-jump="b-courts">Courts</button><button type="button" data-jump="b-results">Results</button><button type="button" data-jump="b-social">Afternoon</button><button type="button" data-jump="b-contacts">Contacts</button>
+      </nav>
+
+      <div class="bcard bwelcome">
+        <p>Hi everyone,</p>
+        <p>Welcome back for the rematch. Last time ATP took home the bragging rights. This time we're hosting at our home courts, and Port Stephens are coming to even the score. ATP, it's time to <b>defend the Kitchen</b>.</p>
+        <p>Above all this is a fun, social day: great pickleball, familiar faces, new friends and plenty of laughs between our two clubs. Play hard and fight for every point, but keep it friendly and cheer each other on.</p>
+        <p class="bq">Will ATP make it two in a row, or will Port Stephens get their revenge? We'll find out on the courts.</p>
+      </div>
+
+      <div class="bcard" id="b-sched">
+        <h3 class="display">Schedule</h3>
+        <ol class="btime" id="btime">
+          <li data-t="08:30"><time>8:30am</time><span>Arrival, check-in &amp; warm-up</span></li>
+          <li data-t="08:45"><time>8:45am</time><span>Player briefing</span></li>
+          <li data-t="09:00"><time>9:00am</time><span>Interclub begins: Round 1</span></li>
+          <li data-t="12:30"><time>12:30pm</time><span>BBQ lunch</span></li>
+          <li data-t="13:15"><time>1:15pm</time><span>Trophy presentation &amp; team photos</span></li>
+          <li data-t="13:30"><time>1:30pm</time><span>Mixed social teams (ATP &amp; PSPC combined)</span></li>
+          <li data-t="15:30"><time>~3:30pm</time><span>Finish</span></li>
+        </ol>
+      </div>
+
+      <div class="bcard" id="b-arrive">
+        <h3 class="display">Getting there &amp; parking</h3>
+        <ul>
+          <li>The main <b>car park</b> is off The Ponds Boulevard, beside the playground and the Ponds FC building.</li>
+          <li>Street parking along <b>Lilypad Avenue</b> is the closest to the courts. There's more on <b>The Ponds Boulevard</b>.</li>
+          <li>The <b>pickleball courts</b> are a short walk past the oval, along the path at the top of the field.</li>
+          <li>Give yourself time to park and walk over before 8:30am.</li>
+        </ul>
+        <a class="bmap" href="images/site-map.jpg" target="_blank" rel="noopener" title="Open the site map full size">
+          <img src="images/site-map.jpg" alt="Site map of Jonas Bradley Park: the pickleball courts at top left, street parking on Lilypad Avenue and The Ponds Boulevard, the car park at right, and the toilets in the Ponds FC building beside the car park." width="1096" height="872" loading="lazy">
+        </a>
+        <p class="bmap-tip">Tap the map to open it full size.</p>
+        <div class="bbtns"><a class="btn go sm" href="https://maps.app.goo.gl/wxTT2ocMQRXgxfeL7" target="_blank" rel="noopener">Map to the courts</a><a class="btn ghost sm" href="https://www.google.com/maps/search/?api=1&amp;query=Jonas+Bradley+Park+car+park+The+Ponds+NSW" target="_blank" rel="noopener">Car parks nearby</a></div>
+      </div>
+
+      <div class="bcard" id="b-day">
+        <h3 class="display">On the day</h3>
+        <div class="bicons">
+          <div><span class="bi">✓</span><p><b>Check in</b> at the tournament desk when you arrive.</p></div>
+          <div><span class="bi">👕</span><p><b>Rep your club.</b> Put on your club shirt and wear it with pride. It's club against club today.</p></div>
+          <div><span class="bi">🪑</span><p><b>Bring a camping chair.</b> Seating is limited.</p></div>
+          <div><span class="bi">🍔</span><p><b>BBQ lunch</b> is provided. Bring water, snacks and a hat.</p></div>
+          <div><span class="bi">☕</span><p><b>Coffee van</b> on site in the morning (location on the day).</p></div>
+          <div><span class="bi">🚻</span><p><b>Toilets</b> are in the Ponds FC building beside the car park. <b>First aid</b> is at the tournament desk.</p></div>
+          <div><span class="bi">📷</span><p><b>Photos</b> will be taken during the day. Not keen? Let the desk know.</p></div>
+          <div><span class="bi">📱</span><p><b>This site is live all day.</b> Check My games for your court each round.</p></div>
+        </div>
+      </div>
+
+      <div class="bcard" id="b-format">
+        <h3 class="display">Team &amp; match format</h3>
+        <p class="bnote">All teams are mixed. Four divisions, four teams of three per club in each.</p>
+        <div class="bdivs">
+          <span class="dvt" style="--dc:#a855f7"><i class="dvdot"></i>DUPR 3.5–3.99 · Courts 1–3</span>
+          <span class="dvt" style="--dc:#ef4444"><i class="dvdot"></i>DUPR 3.0–3.49 · Courts 4–6</span>
+          <span class="dvt" style="--dc:#f97316"><i class="dvdot"></i>DUPR 2.5–2.99 · Courts 7–9</span>
+          <span class="dvt" style="--dc:#22c55e"><i class="dvdot"></i>DUPR 2.49 &amp; under · Courts 10–12</span>
+        </div>
+        <ul>
+          <li><b>Four rounds.</b> Your team plays three of them and rests one. Resting? Get courtside and cheer on your club.</li>
+          <li>Each round is three doubles games against the same team:</li>
+        </ul>
+        <div class="bgames">
+          <div><b>Game 1</b><span>Players 1 &amp; 2</span></div>
+          <div><b>Game 2</b><span>Players 1 &amp; 3</span></div>
+          <div><b>Game 3</b><span>Players 2 &amp; 3</span></div>
+        </div>
+        <ul>
+          <li>Player numbers stay the same all day.</li>
+          <li>Every game is <b>12 minutes</b>, all courts on one clock.</li>
+          <li><b>Level at time?</b> Play one golden point to decide it.</li>
+          <li>All three games are played, even if one club wins the first two.</li>
+        </ul>
+      </div>
+
+      <div class="bcard" id="b-card">
+        <h3 class="display">Score cards</h3>
+        <ul>
+          <li>Your court's score card is waiting at the court each round.</li>
+          <li>Write each game's score as soon as it finishes, and tick the club that won it.</li>
+          <li>Captains check the scores together, then bring the card to the tournament desk.</li>
+        </ul>
+        <div class="bsample" aria-label="Example score card">
+          <span class="bstamp">Example</span>
+          <div class="bs-bar"><b>Round 2 · Court 8</b><span>DUPR 2.5–2.99</span></div>
+          <div class="bs-teams"><span>ATP Team B</span><span class="vs">v</span><span>PSPC Team C</span></div>
+          <table>
+            <thead><tr><th>Game</th><th>ATP pair</th><th colspan="2">Score</th><th class="r">PSPC pair</th><th>Winner</th></tr></thead>
+            <tbody>
+              <tr><td><b>G1</b><small>Pairs 1 &amp; 2</small></td><td class="nm">Bree K. (C)<br>Alex R.</td><td><span class="sc">9</span></td><td><span class="sc">7</span></td><td class="nm r">Jen H. (C)<br>Phil N.</td><td class="wn"><span class="tk on">ATP</span><span class="tk">PSPC</span></td></tr>
+              <tr><td><b>G2</b><small>Pairs 1 &amp; 3</small></td><td class="nm">Bree K. (C)<br>Kate C.</td><td><span class="sc">6</span></td><td><span class="sc">10</span></td><td class="nm r">Jen H. (C)<br>Fi W.</td><td class="wn"><span class="tk">ATP</span><span class="tk on">PSPC</span></td></tr>
+              <tr><td><b>G3</b><small>Pairs 2 &amp; 3</small></td><td class="nm">Alex R.<br>Kate C.</td><td><span class="sc">8</span></td><td><span class="sc">7</span></td><td class="nm r">Phil N.<br>Fi W.</td><td class="wn"><span class="tk on">ATP</span><span class="tk">PSPC</span></td></tr>
+            </tbody>
+          </table>
+          <p class="bs-foot">12-minute games · golden point if level at time</p>
+        </div>
+      </div>
+
+      <div class="bcard" id="b-courts">
+        <h3 class="display">Courts</h3>
+        <a class="bmap" href="images/court-map.jpg" target="_blank" rel="noopener" title="Open the court map full size">
+          <img src="images/court-map.jpg" alt="Court map of Jonas Bradley Park: four columns of three courts. From the left, courts 12, 11, 10 (2.49 and under, green), courts 9, 8, 7 (2.5 to 2.99, orange), courts 6, 5, 4 (3.0 to 3.49, red) and courts 3, 2, 1 (3.5 to 3.99, purple)." width="1400" height="821" loading="lazy">
+        </a>
+        <p class="bmap-tip">Tap the map to open it full size.</p>
+        <ul>
+          <li>Each division plays on its own three courts.</li>
+          <li><b class="atp-c">ATP</b> teams B, C and D keep their own court. ATP A (resting in Round 1) takes the court of whichever ATP team is resting.</li>
+          <li><b class="psb-c">PSPC</b> teams move to a new court each round.</li>
+          <li>Your court for every round is on <b>My games</b>, <b>On court</b> and the TV.</li>
+        </ul>
+        <div class="bbtns"><button type="button" class="btn ghost sm" data-go="me">Find my games</button></div>
+      </div>
+
+      <div class="bcard" id="b-results">
+        <h3 class="display">Results</h3>
+        <ul>
+          <li>Every game won is <b>1 point</b> for your club, across all four divisions.</li>
+          <li>144 games in total. The first club to <b>73 game wins</b> takes the Kitchen.</li>
+          <li>If game wins finish level, the club with more <b>total points scored</b> wins.</li>
+          <li>Follow it live on <b>Standings</b>. The trophy is presented at about <b>1:15pm</b>.</li>
+        </ul>
+      </div>
+
+      <div class="bcard" id="b-social">
+        <h3 class="display">Social afternoon</h3>
+        <ul>
+          <li>Mixed ATP and PSPC teams after lunch, open to everyone, including people who didn't play in the morning.</li>
+          <li>Playing? Put your name on the <b>whiteboard</b> during a break in the morning so the committee can set the format.</li>
+        </ul>
+      </div>
+
+      <div class="bcard" id="b-contacts">
+        <h3 class="display">Contacts</h3>
+        <div class="bcontacts">
+          <div class="bclub atp"><img src="images/atp-logo.png" alt="ATP Pickleball Club" width="470" height="512">
+            <a href="tel:0431007799"><b>Scott Fisk</b><span>0431 007 799</span></a>
+            <a href="tel:0412460078"><b>Shane Harvey</b><span>0412 460 078</span></a>
+          </div>
+          <div class="bclub ps"><img src="images/ps-logo.png" alt="Port Stephens Pickleball Club" width="512" height="422">
+            <a href="tel:0404698820"><b>Sean Andrews</b><span>0404 698 820</span></a>
+            <a href="tel:0457260352"><b>Steve Wilson</b><span>0457 260 352</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- DRAW -->
   <section id="tab-draw" aria-label="Draw">
     <div class="divpick-wrap">
@@ -710,7 +959,7 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
         <span class="btn filebtn">Upload file<input type="file" id="up-file" accept=".xlsx,.xls,.csv" aria-label="Upload teams file"></span>
       </div>
     </div>
-    <p class="note" style="margin-bottom:14px">Player 1 in each team is the captain and signs the score card. Team A rests in round 1, Team B in round 2, Team C in round 3 and Team D in round 4. ATP's Team A never plays PSPC's Team A, and the same goes for B, C and D.</p>
+    <p class="note" style="margin-bottom:14px">Player 1 in each team is the captain. Team A rests in round 1, Team B in round 2, Team C in round 3 and Team D in round 4. ATP's Team A never plays PSPC's Team A, and the same goes for B, C and D.</p>
     <div id="teams-body"></div>
     <div class="erow"><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="teams-save">Save teams</button><button class="btn ghost" id="teams-sample">Reset to sample names</button></span><span class="msg" id="teams-msg"></span></div>
     </div>
@@ -731,7 +980,7 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
       <p class="msg" id="pdf-msg"></p>
       <ul class="note" style="margin:4px 0 0;padding-left:18px">
         <li><b>Game schedule:</b> one page per round, every court's three games in order, plus a page with all the teams.</li>
-        <li><b>Score cards:</b> one page per court with a card for each of its four rounds. Score boxes, games won and both captains' signatures.</li>
+        <li><b>Score cards:</b> one page per court with a card for each of its four rounds. Score boxes and a winner tick box for each game.</li>
         <li><b>Court sheets:</b> one page per court to pin up, listing who plays there each round, game by game.</li>
         <li><b>Final results:</b> club totals, team and player standings, and every score.</li>
       </ul>
@@ -796,13 +1045,16 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
   var frontOn = true, asPlayer = false, previewFront = false, fpArmed = false;
   function realCmte(){ return canWrite && !!loggedIn; }
   function isCmte(){ return realCmte() && !asPlayer; }
-  function frontShowing(){ return previewFront || (frontOn && !realCmte() && view.tab!=='login'); }
+  var briefOpen = false;   // briefing opened from the front page's button
+  function frontShowing(){ return previewFront || (frontOn && !realCmte() && view.tab!=='login' && !(view.tab==='info' && briefOpen)); }
   function applyFront(){
     var on = frontShowing();
     document.body.classList.toggle('frontmode', on);
     $('front').hidden = !on;
     $('fp-login').hidden = realCmte();
     $('fp-back').hidden = !previewFront;
+    var bo = frontOn && !realCmte() && view.tab==='info' && briefOpen;   // briefing opened from the front page: no tabs, just a Back button
+    document.body.classList.toggle('briefonly', bo); $('brief-back').hidden = !bo;
     $('fpctl').hidden = !isCmte();
     $('pvbar').hidden = !(realCmte() && asPlayer) || on;
     $('fp-toggle').setAttribute('aria-checked', String(frontOn));
@@ -1571,8 +1823,9 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
     return jspdfP;
   }
   function TX(s){ return String(s==null?'':s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[–—]/g,'-').replace(/·/g,'-').replace(/[‘’]/g,"'").replace(/[^\x20-\x7E]/g,''); }
-  var C_NAVY=[8,24,38], C_ATPBAND=[195,210,43], C_PSBAND=[24,156,216], C_LIME=[195,210,43], C_GREY=[236,239,244], C_INK=[20,24,32], C_MUTED=[100,108,124];
-  var C_ATPTXT=[92,108,8], C_PSTXT=[14,104,160];
+  var C_NAVY=[222,226,232], C_ATPBAND=[150,156,170], C_PSBAND=[150,156,170], C_LIME=[60,66,80],   // printer-friendly: light grey bars, dark text
+      C_GREY=[236,239,244], C_INK=[20,24,32], C_MUTED=[100,108,124];
+  var C_ATPTXT=[20,24,32], C_PSTXT=[20,24,32];
   var EV_WHEN = 'Sunday 31 January 2027', EV_VENUE = 'Jonas Bradley Park';
   function pl(d, club, t, i){ return TX(pname(d,club,t,i)) + (i===0 ? ' (C)' : ''); }
   function pairTxt(d, club, t, g){ return [pl(d,club,t,PAIRS[g][0]), pl(d,club,t,PAIRS[g][1])]; }
@@ -1580,11 +1833,10 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
   function teamName(club, t){ return CLUB[club]+' Team '+LET[t]; }
   function pdfHead(doc, title, sub){
     var W = doc.internal.pageSize.getWidth();
-    doc.setFillColor.apply(doc, C_NAVY); doc.rect(0,0,W,18,'F');
-    doc.setFillColor.apply(doc, C_ATPBAND); doc.rect(0,18,W/2,1.6,'F'); doc.setFillColor.apply(doc, C_PSBAND); doc.rect(W/2,18,W/2,1.6,'F');
+    doc.setDrawColor.apply(doc, C_INK); doc.setLineWidth(.6); doc.line(10,18.6,W-10,18.6);
     doc.setTextColor.apply(doc, C_LIME); doc.setFont('helvetica','bold'); doc.setFontSize(7.5);
     doc.text('DEFEND THE KITCHEN - INTERCLUB II - ATP V PSPC', 10, 6.5);
-    doc.setTextColor(255,255,255); doc.setFontSize(15); doc.text(TX(title), 10, 14);
+    doc.setTextColor.apply(doc, C_INK); doc.setFontSize(15); doc.text(TX(title), 10, 14);
     doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
     doc.text(TX(EV_WHEN+'  |  '+EV_VENUE), W-10, 8, {align:'right'});
     if (sub) doc.text(TX(sub), W-10, 14, {align:'right'});
@@ -1613,8 +1865,8 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
       doc.text('COURT', x0+1, y+4.2); doc.text('TEAMS', xT, y+4.2);
       for (var g=0; g<3; g++) doc.text('GAME '+(g+1)+'  -  PLAYERS '+pairLabel(g), xG[g], y+4.2);
       doc.setTextColor.apply(doc, C_INK); y += 6;
-      for (var d=0; d<DIVS; d++){
-        doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y,277,5.5,'F'); doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(8);
+      for (var di=0; di<DIVS; di++){ var d = DIVS-1-di;   // court order
+        doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y,277,5.5,'F'); doc.setTextColor.apply(doc, C_INK); doc.setFont('helvetica','bold'); doc.setFontSize(8);
         doc.text(TX(divName(d).toUpperCase()), 12, y+3.9); doc.setTextColor.apply(doc, C_INK); y += 5.5;
         for (var c=0; c<COURTS; c++){
           var at = DRAW[r][c][0], pt = DRAW[r][c][1], rh = 11.4;
@@ -1647,7 +1899,7 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
     newPage(doc,'p'); pdfHead(doc, 'Teams', '(C) = captain - player 1');
     var y2 = 27;
     for (var d3=0; d3<DIVS; d3++){
-      doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y2,190,7,'F'); doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(10);
+      doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y2,190,7,'F'); doc.setTextColor.apply(doc, C_INK); doc.setFont('helvetica','bold'); doc.setFontSize(10);
       doc.text(TX(divName(d3).toUpperCase()+'   -   COURTS '+courtNo(d3,0)+'-'+courtNo(d3,2)), 12, y2+5); doc.setTextColor.apply(doc, C_INK); y2 += 10;
       for (var t=0; t<TEAMS; t++){
         if (t%2){ doc.setFillColor(246,248,251); doc.rect(10,y2-4.3,190,6.4,'F'); }
@@ -1664,38 +1916,42 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
     pdfFoot(doc);
   }
 
+  // Tick one: ATP or PSPC (stacked boxes, 3.4mm)
+  function winBoxes(doc, bx, by){
+    doc.setDrawColor.apply(doc, C_INK); doc.setLineWidth(.35); doc.setFont('helvetica','bold'); doc.setFontSize(7);
+    doc.rect(bx, by, 3.4, 3.4); clubText(doc,'atp','ATP', bx+5, by+2.8);
+    doc.rect(bx, by+4.1, 3.4, 3.4); clubText(doc,'ps','PSPC', bx+5, by+6.9);
+    doc.setTextColor.apply(doc, C_INK);
+  }
   function pdfScoreCards(doc){
     for (var di=0; di<DIVS; di++) for (var c=0; c<COURTS; c++){ var d = DIVS-1-di;
       newPage(doc,'p'); pdfHead(doc, 'Score cards - Court '+courtNo(d,c), 'Hand in at the scoring desk after each round');
       for (var r=0; r<ROUNDS; r++){
         var at = DRAW[r][c][0], pt = DRAW[r][c][1];
-        var x = 8, y = 23.5+r*66.5, w = 194, h = 64, nw = w/2-24;
+        var x = 8, y = 24+r*66.5, w = 194, h = 64, nw = w/2-36, xr = x+w-29, wx = x+w-24;   // xr: PSPC names end; wx: winner tick boxes
         doc.setDrawColor(150,156,170); doc.setLineWidth(.35); doc.roundedRect(x,y,w,h,2,2,'S');
         doc.setFillColor.apply(doc, C_NAVY); doc.rect(x,y,w,8,'F');
-        doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(10.5); doc.text('ROUND '+(r+1)+'  -  COURT '+courtNo(d,c), x+3, y+5.6);
+        doc.setTextColor.apply(doc, C_INK); doc.setFont('helvetica','bold'); doc.setFontSize(10.5); doc.text('ROUND '+(r+1)+'  -  COURT '+courtNo(d,c), x+3, y+5.6);
         doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_LIME); doc.text(TX(divName(d)), x+w-3, y+5.6, {align:'right'}); doc.setTextColor.apply(doc, C_INK);
-        doc.setFont('helvetica','bold'); doc.setFontSize(10); clubText(doc,'atp',teamName('atp',at), x+3, y+13); clubText(doc,'ps',teamName('ps',pt), x+w-3, y+13, {align:'right'});
+        doc.setFont('helvetica','bold'); doc.setFontSize(12); clubText(doc,'atp',teamName('atp',at), x+3, y+13.2); clubText(doc,'ps',teamName('ps',pt), x+w-3, y+13.2, {align:'right'});
         doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_MUTED); doc.text('v', x+w/2, y+13, {align:'center'});
         var ty = y+15.5; doc.setFillColor.apply(doc, C_GREY); doc.rect(x+2,ty,w-4,4.6,'F'); doc.setFont('helvetica','bold'); doc.setFontSize(6.5);
-        doc.text('GAME', x+3.5, ty+3.2); doc.text('ATP PAIR', x+18, ty+3.2); doc.text('SCORE', x+w/2, ty+3.2, {align:'center'}); doc.text('PSPC PAIR', x+w-3.5, ty+3.2, {align:'right'});
+        doc.text('GAME', x+3.5, ty+3.2); doc.text('ATP PAIR', x+18, ty+3.2); doc.text('SCORE', x+w/2, ty+3.2, {align:'center'}); doc.text('PSPC PAIR', xr, ty+3.2, {align:'right'}); doc.text('WINNER', wx+10, ty+3.2, {align:'center'});
         doc.setTextColor.apply(doc, C_INK); ty += 4.6;
         for (var g=0; g<3; g++){
-          var rh = 9.6, hp = pairTxt(d,'atp',at,g), ap = pairTxt(d,'ps',pt,g);
-          doc.setDrawColor(210,214,222); doc.setLineWidth(.3); doc.line(x+2,ty+rh,x+w-2,ty+rh);
-          doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.text('G'+(g+1), x+3.5, ty+4.2);
-          doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED); doc.text('Pairs '+pairLabel(g), x+3.5, ty+7.8); doc.setTextColor.apply(doc, C_INK);
-          doc.setFontSize(8.5); doc.text(hp[0], x+18, ty+4, {maxWidth:nw}); doc.text(hp[1], x+18, ty+8, {maxWidth:nw});
-          doc.text(ap[0], x+w-3.5, ty+4, {align:'right', maxWidth:nw}); doc.text(ap[1], x+w-3.5, ty+8, {align:'right', maxWidth:nw});
-          doc.setDrawColor.apply(doc, C_INK); doc.setLineWidth(.4); doc.rect(x+w/2-12,ty+1.2,10,7.4); doc.rect(x+w/2+2,ty+1.2,10,7.4);
-          doc.setFontSize(9); doc.text('-', x+w/2, ty+5.9, {align:'center'});
+          var rh = 13, hp = pairTxt(d,'atp',at,g), ap = pairTxt(d,'ps',pt,g);
+          if (g<2){ doc.setDrawColor(210,214,222); doc.setLineWidth(.3); doc.line(x+2,ty+rh,x+w-2,ty+rh); }
+          doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.text('G'+(g+1), x+3.5, ty+5.6);
+          doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED); doc.text('Pairs '+pairLabel(g), x+3.5, ty+9.6); doc.setTextColor.apply(doc, C_INK);
+          doc.setFont('helvetica','bold'); fitSize(doc, hp[0], nw, 12); doc.text(hp[0], x+18, ty+5.6); fitSize(doc, hp[1], nw, 12); doc.text(hp[1], x+18, ty+10.6);
+          fitSize(doc, ap[0], nw, 12); doc.text(ap[0], xr, ty+5.6, {align:'right'}); fitSize(doc, ap[1], nw, 12); doc.text(ap[1], xr, ty+10.6, {align:'right'}); doc.setFont('helvetica','normal');
+          doc.setDrawColor.apply(doc, C_INK); doc.setLineWidth(.4); doc.rect(x+w/2-14,ty+1.5,12,10); doc.rect(x+w/2+2,ty+1.5,12,10);
+          doc.setFontSize(10); doc.text('-', x+w/2, ty+7.6, {align:'center'});
+          winBoxes(doc, wx, ty+2.6);
           ty += rh;
         }
-        ty += 1.5; doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.text('GAMES WON', x+3.5, ty+4.6);
-        doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED); doc.text('12-min games - golden point if level', x+24, ty+4.6); doc.setTextColor.apply(doc, C_INK);
-        doc.setLineWidth(.4); doc.rect(x+w/2-12,ty+.4,10,6.4); doc.rect(x+w/2+2,ty+.4,10,6.4);
-        ty += 8.5; doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED); doc.setLineWidth(.35);
-        doc.line(x+3.5,ty+5,x+w/2-3,ty+5); doc.line(x+w/2+3,ty+5,x+w-3.5,ty+5);
-        doc.text('ATP captain', x+3.5, ty+8); doc.text('PSPC captain', x+w/2+3, ty+8); doc.setTextColor.apply(doc, C_INK);
+        doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED);
+        doc.text('12-minute games - golden point if level at time', x+w/2, y+h-1.8, {align:'center'}); doc.setTextColor.apply(doc, C_INK);
       }
       pdfFoot(doc);
     }
@@ -1714,7 +1970,7 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
       for (var r=0; r<ROUNDS; r++){
         var at = DRAW[r][c][0], pt = DRAW[r][c][1];
         if (r){ doc.setFont('helvetica','italic'); doc.setFontSize(8); doc.setTextColor.apply(doc, C_MUTED); doc.text('Changeover', 105, y+4, {align:'center'}); doc.setTextColor.apply(doc, C_INK); y += 5.5; }
-        doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y,190,6,'F'); doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
+        doc.setFillColor.apply(doc, C_NAVY); doc.rect(10,y,190,6,'F'); doc.setTextColor.apply(doc, C_INK); doc.setFont('helvetica','bold'); doc.setFontSize(8.5);
         doc.text(TX('ROUND '+(r+1)+'   '+teamName('atp',at)+'  v  '+teamName('ps',pt)), 12, y+4.2);
         doc.setFont('helvetica','normal'); doc.setTextColor.apply(doc, C_LIME); doc.text('Teams '+LET[r]+' rest', 198, y+4.2, {align:'right'}); doc.setTextColor.apply(doc, C_INK); y += 6;
         for (var g=0; g<3; g++){
@@ -2099,7 +2355,7 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
   $('tv-full').addEventListener('click', function(){ var el = document.documentElement; if (el.requestFullscreen) el.requestFullscreen().catch(function(){}); });
   $('tv-exit').addEventListener('click', function(){ show('draw'); });
 
-  var TABS = ['login','board','court','me','draw','tv','timer','scores','teams','print'], CMTE = ['timer','scores','print'];
+  var TABS = ['login','info','board','court','me','draw','tv','timer','scores','teams','print'], CMTE = ['timer','scores','print'];
   var backTab = 'court', wakeLock = null;
   function keepAwake(on){
     try {
@@ -2108,8 +2364,10 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
     } catch(e){}
   }
   document.addEventListener('visibilitychange', function(){ if (document.visibilityState==='visible') keepAwake(view.tab==='timer' || view.tab==='tv'); });
+  // Landing tab: the Briefing before the event, the Draw from game day (Sunday 31 Jan 2027, Sydney time) on
+  function homeTab(){ return Date.now() >= Date.UTC(2027,0,30,13,0,0) ? 'draw' : 'info'; }
   function show(tab){
-    if (TABS.indexOf(tab)<0) tab = 'draw';
+    if (TABS.indexOf(tab)<0) tab = homeTab();
     if (CMTE.indexOf(tab)>=0 && !isCmte()){ if (asPlayer) tab = 'draw'; else { afterLogin = tab; tab = 'login'; } }
     if (tab==='login' && isCmte()) tab = afterLogin;
     $('cmte-link').hidden = isCmte() || tab==='login';
@@ -2155,6 +2413,20 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
   $('t-back').addEventListener('click', function(){ show(backTab==='timer' ? 'court' : backTab); });
   document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-go]'); if (b) show(b.getAttribute('data-go')); });
 
+  // ---------- player briefing ----------
+  $('fp-brief').addEventListener('click', function(){ briefOpen = true; show('info'); window.scrollTo(0,0); });
+  $('brief-back').addEventListener('click', function(){ briefOpen = false; show('info'); window.scrollTo(0,0); });
+  document.querySelectorAll('.bjump [data-jump]').forEach(function(b){ b.addEventListener('click', function(){ var t = $(b.getAttribute('data-jump')); if (t) t.scrollIntoView({behavior:'smooth', block:'start'}); }); });
+  function markSchedule(){
+    // On the day (Sydney time), highlight what's on now
+    var parts = {}; try { new Intl.DateTimeFormat('en-AU',{timeZone:'Australia/Sydney',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).forEach(function(p){ parts[p.type]=p.value; }); } catch(e){ return; }
+    var today = parts.year+'-'+parts.month+'-'+parts.day, hm = (parts.hour==='24'?'00':parts.hour)+':'+parts.minute;
+    var items = document.querySelectorAll('#btime li'), cur = -1;
+    items.forEach(function(li,i){ li.classList.remove('now','done'); if (today==='2027-01-31' && li.getAttribute('data-t')<=hm) cur = i; });
+    items.forEach(function(li,i){ if (cur>=0){ if (i<cur) li.classList.add('done'); if (i===cur) li.classList.add('now'); } });
+  }
+  markSchedule(); setInterval(markSchedule, 60000);
+
   // ---------- front page + player view ----------
   $('fp-login').addEventListener('click', function(){ afterLogin = 'draw'; show('login'); applyFront(); });
   $('fp-back').addEventListener('click', function(){ previewFront = false; applyFront(); window.scrollTo(0,0); });
@@ -2191,7 +2463,7 @@ mark{background:rgba(195,210,43,.28);color:inherit;border-radius:3px;padding:0 2
   });
 
   // ---------- boot ----------
-  setStatus(); show((location.hash||'').replace('#','') || 'draw');
+  setStatus(); show((location.hash||'').replace('#','') || homeTab());
 
   // ---------- Firebase (project: ATP Events · this event saved under events/defend-the-kitchen-2027) ----------
   var FB = window.FIREBASE_CONFIG, EVENT_ID = 'defend-the-kitchen-2027';
