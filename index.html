@@ -828,9 +828,12 @@ body.tvmode.tvday .tv-timer .clock.time{color:#c62012}
 body.tvmode.tvday .tv-timer .clock.ten{color:#b86e00}
 @keyframes tenflashday{0%,100%{color:#d98a00}50%{color:#a35c00}}
 body.outdoor:not(.tvmode) .tbig.ten{animation-name:tenflashday}
+/* hide everything until the app has picked the right screen (stops the Briefing flashing before the front page) */
+html.booting body>*{visibility:hidden}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('booting'); setTimeout(function(){ document.documentElement.classList.remove('booting'); }, 4000);</script>
 
 <header>
   <div class="wrap">
@@ -3144,6 +3147,7 @@ body.outdoor:not(.tvmode) .tbig.ten{animation-name:tenflashday}
 
   // ---------- boot ----------
   setStatus(); show((location.hash||'').replace('#','') || homeTab());
+  document.documentElement.classList.remove('booting');
 
   // ---------- Firebase (project: ATP Events · this event saved under events/defend-the-kitchen-2027) ----------
   var FB = window.FIREBASE_CONFIG, EVENT_ID = 'defend-the-kitchen-2027';
