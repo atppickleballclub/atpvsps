@@ -52,7 +52,7 @@ button,input,select{font:inherit;color:inherit}
 .tchip.ps{background:rgba(24,156,216,.16);border:1px solid rgba(24,156,216,.7);color:var(--ps-chip)}
 .chip.rest img{height:1.4em;width:auto;vertical-align:middle}
 .tv-call .t img{height:1.15em;width:auto;vertical-align:-.15em;margin-right:.25vw}
-.chip.rest{background:transparent;border:1px solid var(--rule);color:var(--ink-soft)}
+.chip.rest{background:transparent;border:1px solid var(--rule);color:var(--ink-soft);white-space:normal;max-width:100%;border-radius:12px;line-height:1.35}
 .chip.sample{background:var(--warn);color:#2b1606}
 :focus-visible{outline:2px solid var(--ps);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -147,6 +147,10 @@ nav{display:flex;justify-content:center;gap:2px;margin-top:10px;overflow-x:auto}
 nav button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 12px 10px;font-weight:600;color:var(--ink-soft);cursor:pointer;white-space:nowrap}
 nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--atp)}
 nav button:hover{color:var(--ink)}
+nav{align-items:center;flex-wrap:wrap}
+nav button.cmte{border:1px dashed var(--warn);border-radius:99px;padding:5px 12px;margin:4px 2px;color:var(--warn);font-size:.9rem}
+nav button.cmte[aria-selected="true"]{border-style:solid;background:var(--warn);color:#2b1606}
+nav .cmte-first{margin-left:12px}
 @media (max-width:480px){nav{justify-content:flex-start}nav button{padding:8px 8px 10px;font-size:.88rem}}
 @media (max-width:600px){
   .head{gap:8px}
@@ -212,6 +216,21 @@ table.teams th:first-child{width:auto;letter-spacing:.1em}
 table.teams th:first-child,table.teams td:first-child{text-align:left;padding-left:6px}
 table.teams td{padding:6px 2px;border-top:1px solid var(--rule);text-align:center}
 table.teams td .who{display:block;color:var(--ink-soft);font-size:.76rem}
+.stctl{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:6px 0 14px}
+.sthd{grid-column:1/-1;margin:14px 0 -4px;font-size:1.5rem;font-weight:900}
+.sthd-p{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:22px}
+.sthd-p h3{font-size:1.5rem;font-weight:900}
+table.teams.players td:first-child{padding-left:4px}
+table.teams .rk{display:inline-block;min-width:1.6em;color:var(--ink-soft);font-size:.75rem;font-weight:700}
+table.teams .pn{font-weight:700}
+table.teams.players .who{padding-left:1.6em}
+.gbadge{display:inline-block;font-size:.62rem;font-weight:800;line-height:1;padding:2px 4px;border-radius:4px;vertical-align:middle;letter-spacing:.02em}
+.gbadge.gM{background:rgba(70,140,230,.22);color:#7fb4ff}
+.gbadge.gF{background:rgba(230,90,170,.22);color:#ff8fcf}
+body.outdoor:not(.tvmode) .gbadge.gM{color:#1d5fb8} body.outdoor:not(.tvmode) .gbadge.gF{color:#b0247a}
+.tpl{display:flex;gap:4px;align-items:center}
+.tpl input{flex:1;min-width:0}
+.gsel{flex:none;width:52px;padding:6px 4px;border-radius:6px;border:1px solid var(--rule);background:var(--panel-2);color:var(--ink);font:inherit;font-size:.82rem}
 @media (max-width:820px){.divgrid{grid-template-columns:1fr}}
 @media (max-width:560px){
   .totals{grid-template-columns:1fr 1fr;padding:16px}
@@ -242,6 +261,15 @@ table.teams td .who{display:block;color:var(--ink-soft);font-size:.76rem}
 .call b.ct{font-family:var(--display);font-weight:900;font-size:1.8rem;line-height:1;min-width:2ch;text-align:center}
 .call .t{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-weight:600}
 .call .sub{font-size:.74rem;color:var(--ink-soft)}
+.call .cpair{font-weight:600;display:grid;grid-template-columns:auto 1fr;gap:1px 6px;font-size:.8rem;margin-top:4px;line-height:1.3}
+.call .cpair span:first-child{grid-column:1/-1}
+.call .cpair i{font-style:normal;color:var(--ink-soft)}
+.cnow{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;border:2px solid var(--good);border-radius:8px;padding:8px 12px;margin:4px 0 10px;font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:1.15rem;line-height:1.1}
+.cnow b{color:var(--good)}
+.cnow.next{border-color:var(--atp);background:rgba(195,210,43,.1)}
+.cnow.next b{color:var(--atp)}
+body.outdoor:not(.tvmode) .cnow.next b{color:#556100}
+.cnow span{font-family:var(--body);text-transform:none;font-weight:600;font-size:.8rem;color:var(--ink-soft);flex-basis:100%}
 .call.new{border-color:var(--atp);box-shadow:0 0 0 1px var(--atp)}
 .flag{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background:var(--atp);color:var(--atp-deep)}
 .st{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
@@ -296,11 +324,13 @@ body.tkflash::after{content:'';position:fixed;inset:0;background:rgba(255,70,50,
 .tadj label{font-size:.85rem;color:var(--ink-soft)}
 .tclock{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
 /* TV clock */
-.tv-timer{display:flex;justify-content:space-between;align-items:center;gap:1vw}
+.tv-timer{display:flex;justify-content:flex-start;align-items:center;gap:1vw}
+.tv-timer .lab{order:1;}
+.tv-timer .clock{order:4;margin-left:auto}
 .tv-timer .lab{font-family:var(--display);font-weight:900;font-size:3.2vh;text-transform:uppercase;line-height:1}
 .tv-timer .st2{display:block;font-family:var(--body);font-size:1.6vh;font-weight:600;color:var(--ink-soft);margin-top:.4vh;text-transform:none}
 .tv-timer .clock{font-family:var(--display);font-weight:900;font-size:7.5vh;line-height:.9;font-variant-numeric:tabular-nums}
-.tv-timer .clock.playing{color:var(--good)} .tv-timer .clock.paused{color:var(--warn)} .tv-timer .clock.time{color:#ff6b5a;animation:pulse 1s ease-in-out infinite}
+.tv-timer .clock.playing{color:var(--good)} .tv-timer .clock.paused{color:var(--warn)} .tv-timer .clock.time{color:#ff6b5a}
 .csum div{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;min-width:120px}
 .csum b{display:block;font-family:var(--display);font-weight:900;font-size:1.8rem;line-height:1;font-variant-numeric:tabular-nums}
 .csum span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
@@ -335,7 +365,7 @@ body.tvmode main{max-width:none;padding:0}
 .tv-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2vw}
 .tv-side{display:flex;align-items:center;gap:1.6vw}
 .tv-side.r{justify-content:flex-end;text-align:right}
-.tv-side img{height:12vh;width:auto}
+.tv-side img{height:24vh;width:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
 .tv-side .club{font-family:var(--display);font-weight:800;font-size:3.4vh;text-transform:uppercase;letter-spacing:.04em}
 .tv-side .num{font-family:var(--display);font-weight:900;font-size:12.5vh;line-height:.82;font-variant-numeric:tabular-nums}
 .tv-side .pts{font-size:1.9vh;color:var(--ink-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -344,7 +374,7 @@ body.tvmode main{max-width:none;padding:0}
 .tv-mid .k{font-size:1.9vh;color:var(--ink-soft);letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-top:.6vh}
 .tv-mid .lead{font-family:var(--display);font-weight:800;font-size:2.8vh;text-transform:uppercase;margin-top:.8vh}
 .tv-mid .bar{height:1.2vh;width:min(36vw,520px);margin:1.2vh auto 0}
-.tv-body{display:grid;grid-template-columns:1.55fr 1fr;gap:2vw;min-height:0}
+.tv-body{display:grid;grid-template-columns:1fr;gap:2vw;min-height:0}
 .tv-panel{background:rgba(15,36,54,.85);border:1px solid var(--rule);border-radius:1.2vh;padding:1.8vh 1.6vw;min-height:0;display:flex;flex-direction:column;gap:1.4vh;overflow:hidden}
 .tv-panel h2{font-size:3.2vh;font-weight:900;display:flex;justify-content:space-between;align-items:baseline;gap:1vw}
 .tv-panel h2 span{font-family:var(--body);font-size:1.7vh;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
@@ -387,7 +417,19 @@ body.tvmode main{max-width:none;padding:0}
 .court .ct{display:flex;justify-content:space-between;gap:6px 8px;align-items:center;flex-wrap:wrap}
 .court .ct b{font-family:var(--display);font-weight:900;font-size:1.25rem;text-transform:uppercase;white-space:nowrap}
 .court .ct span{font-size:.75rem;color:var(--ink-soft)}
-.matchup{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:6px 0 8px;font-weight:600}
+.matchup{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;margin:6px 0 8px;font-weight:600}
+.matchup .tchip:first-child{justify-self:start}
+.matchup .tchip:last-child{justify-self:end}
+.matchup .vs{color:var(--ink-soft);font-size:.85rem}
+.games .pr.atp-n{color:var(--atp);font-weight:600}
+.games .pr.ps-n{color:#5cc3f2;font-weight:600}
+body.outdoor:not(.tvmode) .games .pr.atp-n{color:#556100}
+body.outdoor:not(.tvmode) .games .pr.ps-n{color:#0b6aa3}
+.games .pr.r{text-align:right}
+.resting.top{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;align-items:start}
+.resting.top .rlab{grid-column:1/-1}
+.resting.top .rp{justify-self:end;text-align:right}
+.resting.top .chip.rest{text-transform:none;letter-spacing:0;font-weight:600}
 .games{list-style:none;margin:0;padding:0;font-size:.84rem}
 .games li{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;padding:5px 0;border-top:1px solid var(--rule);align-items:center}
 .games li .r{text-align:right}
@@ -505,6 +547,52 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
 .divpick button.dvb[aria-pressed="true"] .dvdot{background:#fff}
 .seg button.dvb{display:inline-flex;align-items:center;gap:5px}
 .tv-call.dv{border-left-width:.6vw!important}
+.tvmatrix{grid-template-columns:auto repeat(3,minmax(0,1fr))!important;grid-template-rows:none!important;grid-auto-rows:auto!important}
+.tvmatrix{grid-template-rows:repeat(4,minmax(0,1fr))!important}
+.tvmatrix.hasnext{grid-template-rows:auto auto repeat(4,minmax(0,1fr))!important}
+.tvmatrix>.tv-call,.tvmatrix>.tvm-rest,.tvmatrix>.tvm-dv{min-height:0}
+.tv-timer{position:relative}
+.tvm-next{order:3;flex:1;margin:0 1.5vw;display:flex;align-items:baseline;gap:1vw;background:rgba(195,210,43,.16);border:2px solid var(--atp);border-radius:1vh;padding:.8vh 1.2vw;font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:2.6vh;line-height:1}
+.tvm-next b{color:var(--atp)}
+.tvm-next span{margin-left:auto;font-family:var(--body);text-transform:none;font-weight:700;font-size:1.7vh;color:var(--ink-soft)}
+.tvm-restline{order:2;margin-left:2vw;padding-left:2vw;border-left:2px solid var(--rule);display:flex;align-items:center;gap:.8vw;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:2.2vh;color:var(--ink-soft);line-height:1}
+.tvm-restline .a,.tvm-restline .p{display:inline-flex;align-items:center;gap:.3vw;font-size:1.25em}
+.tvm-restline .a{color:var(--atp)} .tvm-restline .p{color:var(--ps-chip)}
+.tvm-restline img{height:1.1em;width:auto}
+.tvm-restline small{font-family:var(--body);text-transform:none;font-weight:600;font-size:.7em}
+.tvm-ch{font-size:1.3vh;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-bottom:-.6vh;visibility:hidden}
+.tvm-ch.rest{visibility:visible}
+.tvm-rest{display:flex;gap:.8vw;align-items:center;border:1px dashed var(--rule);border-radius:1vh;padding:.6vh .8vw;min-width:0;background:rgba(0,0,0,.12)}
+.tvm-rest .side{display:flex;flex-direction:column;gap:.4vh;min-width:0;flex:1 1 0}
+.tvm-rest .a,.tvm-rest .p{display:inline-flex;align-items:center;gap:.3vw;font-family:var(--display);font-weight:900;font-size:2.2vh;line-height:1}
+.tvm-rest .a{color:var(--atp)} .tvm-rest .p{color:var(--ps-chip)}
+.tvm-rest img{height:1.15em;width:auto}
+.tvm-rest .nm{display:flex;flex-direction:column;gap:.15vh;font-weight:600;font-size:1.35vh;line-height:1.15;color:var(--ink-soft);min-width:0}
+.tvm-rest .nm i{font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tv-call.nextup{border-style:dashed}
+.tvm-mu{display:flex;align-items:center;gap:.9vw;font-family:var(--display);font-weight:900;font-size:3vh;text-transform:uppercase;line-height:1;flex-wrap:wrap}
+.tvm-mu img{height:1.2em;width:auto}
+.tvm-mu .a,.tvm-mu .p{display:inline-flex;align-items:center;gap:.3vw}
+.tvm-mu .a{color:var(--atp)} .tvm-mu .p{color:var(--ps-chip)} .tvm-mu .v{color:var(--ink-soft);font-size:.6em}
+.tvm-mu .flag{font-size:1.5vh;position:absolute;top:.6vh;right:.6vw}
+.tv-call.tvm{position:relative}
+.tvm-mu{flex-wrap:nowrap!important;min-width:0;flex:1}
+.tvm-mu .side{display:flex;flex-direction:column;align-items:flex-start;gap:.5vh;min-width:0;flex:1 1 0}
+.tvm-mu .nm{font-family:var(--body);text-transform:none;font-weight:700;font-size:1.9vh;line-height:1.12;color:var(--ink);max-width:100%;width:100%;display:flex;flex-direction:column;gap:.35vh}
+.tvm-mu .nm i{font-style:normal;display:block;white-space:nowrap;overflow:hidden}
+.tvm-mu .nm i.nmwrap{white-space:normal;text-align:left}
+.tvm-mu .side{align-self:stretch;justify-content:center}
+.tv-call.tvm{gap:1.1vw;padding-left:1vw;padding-right:.8vw}
+.tv-call.tvm .ct{min-width:2.2ch}
+.tvm-hd{display:flex;align-items:center;justify-content:center;gap:.6vw;font-family:var(--display);font-weight:900;font-size:2.8vh;text-transform:uppercase;line-height:1;padding:.4vh 0 .2vh}
+.tvm-hd img{height:1.15em;width:auto}
+.tvm-hd .a{color:var(--atp)} .tvm-hd .p{color:var(--ps-chip)} .tvm-hd .v{color:var(--ink-soft);font-size:.7em}
+.tvm-hd .a,.tvm-hd .p{display:inline-flex;align-items:center;gap:.3vw}
+.tvm-dv{display:flex;align-items:center;gap:.4vw;font-family:var(--display);font-weight:900;font-size:1.6vh;text-transform:uppercase;color:var(--dc);white-space:nowrap;padding-right:.4vw}
+.tv-call.tvm{grid-template-columns:auto minmax(0,1fr)}
+.tv-call.tvm .ct{font-size:5vh}
+.tv-call.tvm .sub{font-size:1.8vh;margin:0}
+
 
 /* ---------- my games ---------- */
 .finder{max-width:720px;margin:0 auto}
@@ -557,8 +645,11 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
 .tdiv{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:16px;margin-bottom:14px}
 .tdiv .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
 .tdiv .top input{background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:6px 10px;font-family:var(--display);font-weight:800;font-size:1.2rem;text-transform:uppercase;min-width:0;flex:1;max-width:340px}
-.tclubs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:760px){.tclubs{grid-template-columns:1fr}}
+.tclubs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.tclubs>div{min-width:0}
+.tteam{grid-template-columns:auto repeat(3,minmax(0,1fr))!important}
+@media (max-width:1100px){.tclubs{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.tteam{grid-template-columns:auto minmax(0,1fr)!important}.tteam .tpl:nth-of-type(n+2){grid-column:2}}
 .tteam{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:6px;align-items:center;margin-top:6px}
 .tteam input{min-width:0;background:var(--ground);border:1px solid var(--rule);border-radius:6px;padding:6px 8px;font-size:.86rem}
 
@@ -574,6 +665,154 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
 .sketch b{font-size:.8rem}
 .sketch .ln{border-top:1px solid #bbb;margin-top:5px;padding-top:4px;display:flex;justify-content:space-between}
 .sketch .box{display:inline-block;width:20px;height:13px;border:1px solid #444;vertical-align:middle}
+
+/* ---------- scores under wraps until the committee reveals them ---------- */
+body.veiled .ch-sc{display:none}
+body.veiled .ch-sc span{margin-bottom:0}
+.veilnote{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.st.played,.s.played{color:var(--ink-soft)}
+.s.played{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.s.played::before{content:"\2713 ";color:var(--good)}
+.sc.played{color:var(--ink-soft);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.sc.played::before{content:"\2713 ";color:var(--good)}
+.tally.veil{display:block;text-align:center;font-size:.85rem;color:var(--ink-soft);padding:10px}
+.tv.veiled .tv-side .num,.tv.veiled .tv-side .pts,.tv.veiled .tv-divs .sc{display:none}
+.tv-veil{margin-top:.8vh;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:4.2vh;line-height:1;color:var(--ink-soft)}
+/* committee results tab */
+.rv{display:grid;gap:16px}
+.rvcard{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px}
+.rvcard h3{font-size:1.4rem;font-weight:900;margin-bottom:6px}
+.rvcard .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rvcard .hint{font-size:.85rem;color:var(--ink-soft);margin:4px 0 10px}
+.rvstate{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:#3a2f08;color:#f7c520}
+.rvstate.on{background:#123b22;color:#4ade80}
+.rvtot{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;text-align:center;margin:8px 0}
+.rvtot b{display:block;font-family:var(--display);font-weight:900;font-size:3.4rem;line-height:.9;font-variant-numeric:tabular-nums}
+.rvtot small{color:var(--ink-soft);font-size:.78rem}
+.rvdivs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:8px;margin-top:10px}
+.rvdiv{border:1px solid var(--rule);border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rvdiv .s2{font-family:var(--display);font-weight:900;font-size:1.5rem}
+.rvdiv .s2{white-space:nowrap}
+.rkgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px}
+@media (max-width:900px){.rkgrid{grid-template-columns:minmax(0,1fr)}}
+.rkdiv{min-width:0}
+.rkdiv table.teams td .tchip{margin-right:4px}
+.rkh{display:flex;align-items:center;gap:8px;font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:1.1rem;color:var(--dc);margin:4px 0 2px}
+.rvcard.shut>*:not(.rvhd){display:none!important}
+.rvcard.shut .rvhd{margin:0}
+.rvhd h3{margin:0}
+.rkctl{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 10px}
+#rk-div button[aria-pressed="true"]{background:var(--dc);border-color:var(--dc);color:#fff}
+.ld-h{font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:1.05rem;letter-spacing:.03em;margin:14px 0 6px}
+.ld-hp{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:20px}
+.ld-hp h4{font:inherit}
+.ldt{width:100%;border-collapse:collapse;table-layout:fixed}
+.ldt th,.ldt td{padding:8px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+.ldt thead th{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:.95rem;letter-spacing:.04em}
+.ldt thead th:first-child,.ldt tbody th{width:24%}
+.ldt tbody th{font-weight:700;font-size:.85rem}
+.ldt .ld{display:grid;gap:1px}.ldt .ld+.ld{margin-top:6px}
+.ldt .ld b{font-weight:800}
+.ldt .ld small{color:var(--ink-soft);font-size:.74rem}
+.ldt .ld-none{color:var(--ink-soft)}
+.ldt tr.ld-all th,.ldt tr.ld-all td{border-top:2px solid var(--line);border-bottom:0}
+.ldt tr.ld-all th{font-family:var(--display);text-transform:uppercase;font-weight:900;font-size:1rem}
+@media (max-width:520px){.ldt thead th:first-child,.ldt tbody th{width:28%}.ldt th,.ldt td{padding:7px 4px}}
+.rvrounds{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;margin-top:6px}
+.rvrounds th,.rvrounds td{padding:7px 8px;border-bottom:1px solid var(--rule);text-align:center;white-space:nowrap}
+.rvrounds th{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.rvrounds th:first-child,.rvrounds td:first-child{text-align:left}
+.rvrounds b{font-family:var(--display);font-size:1.3rem}
+.segrow{display:flex;gap:6px;flex-wrap:wrap}
+.segrow .btn[aria-pressed="true"]{background:var(--atp);color:var(--atp-deep);border-color:var(--atp)}
+/* check-in */
+.cicount{font-size:1rem;margin:4px 0 12px}.cicount b.num{font-family:var(--display);font-size:1.8rem;margin-right:4px;color:var(--atp)}
+.cicount .dvt{margin-left:8px}
+.cisearch{width:100%;max-width:360px;margin:0 0 12px}
+.cidiv{margin:18px 0 8px;font-size:1.25rem;font-weight:900;display:flex;align-items:baseline;gap:10px}
+.cidiv small{font-family:var(--body);font-size:.8rem;font-weight:600;color:var(--ink-soft);text-transform:none;letter-spacing:0}
+.ciclubs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;align-items:start}
+.cilist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:8px}
+.ci{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:10px 12px;color:var(--ink);font:inherit;cursor:pointer;min-height:48px}
+.ci .box{flex:none;width:24px;height:24px;border-radius:6px;border:2px solid var(--ink-soft);display:flex;align-items:center;justify-content:center}
+.ci.on{background:rgba(60,170,90,.18);border-color:#3caa5a}
+.ci.on .box{background:#3caa5a;border-color:#3caa5a}
+.ci.on .box::after{content:"\2713";color:#fff;font-weight:900;font-size:15px;line-height:1}
+.ci .cin{flex:1;min-width:0;font-weight:700;display:grid;gap:1px}
+.ci .cin small{font-weight:600;font-size:.74rem;color:var(--ink-soft);display:flex;align-items:center;gap:6px}
+.ci .cin small .tchip{font-size:.8rem}
+/* TV alternate screens: check-in, court map, QR codes */
+.tvalt{min-height:0;overflow:hidden}
+.tv.altmode{grid-template-rows:1fr auto}
+.tv.altmode .tv-top{display:none}
+body.tvmode .fpctl,body.tkmode .fpctl{display:none!important}
+.tvci{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2vw;height:100%;min-height:0;align-items:center}
+.tvci-main{display:flex;flex-direction:column;gap:1.2vh;min-height:0;align-self:stretch}
+.tvci-hd{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.tvci-hd h2{font-family:var(--display);text-transform:uppercase;font-size:4vh;font-weight:900;line-height:1}
+.tvci-hd .n{font-family:var(--display);font-weight:900;font-size:4vh;color:var(--atp);white-space:nowrap}
+.tvci-hd .n small{font-family:var(--body);font-size:.45em;color:var(--ink-soft);margin-left:6px;font-weight:700}
+.tvci-divs{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1.6vh 1.4vw}
+.tvci-div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto 1fr 1fr;gap:.6vh .5vw;min-height:0}
+.tvci-div .dvh{grid-column:1/-1;display:flex;align-items:center;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:2.6vh;line-height:1}
+.tvci-team{border:2px solid var(--rule);border-radius:1vh;padding:.6vh .6vw;display:flex;flex-direction:column;justify-content:center;gap:.2vh;min-width:0;min-height:0;background:rgba(0,0,0,.18)}
+.tvci-team.all{border-color:#3caa5a;background:rgba(60,170,90,.22)}
+.tvci-team .tn{display:flex;align-items:center;gap:.4vw;font-family:var(--display);font-weight:900;font-size:2vh;line-height:1;white-space:nowrap}
+.tvci-team .tn img{height:2.2vh;width:auto}
+.tvci-team .tn em{font-style:normal;font-family:var(--body);font-size:.62em;font-weight:800;letter-spacing:.06em;color:#7fe0a0}
+.tvci-team .pl{display:flex;align-items:center;gap:.4vw;font-size:1.6vh;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25}
+.tvci-team .pl i{flex:none;width:1.4vh;height:1.4vh;border-radius:50%;border:2px solid currentColor;opacity:.6}
+.tvci-team .pl.in{color:var(--ink);font-weight:700}
+.tvci-team .pl.in i{background:#3caa5a;border-color:#3caa5a;opacity:1}
+.qrcard{background:#fff;color:#081826;border-radius:2vh;padding:1.6vh;display:flex;flex-direction:column;align-items:center;gap:.8vh;text-align:center;width:min(30vw,52vh);border:3px solid var(--atp)}
+.qrcard .qr{position:relative;width:100%;aspect-ratio:1}
+.qrcard .qrc,.qrcard .qrc canvas,.qrcard .qrc img{width:100%!important;height:100%!important;display:block;image-rendering:pixelated}
+.qrcard .qrlogo{position:absolute;left:50%;top:50%;width:22%;height:auto;transform:translate(-50%,-50%);background:#fff;border-radius:18%;padding:3%;box-sizing:content-box}
+.qrcard b{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:3.4vh;line-height:1;color:#0b3149}
+.qrcard p{font-size:1.6vh;color:#33485a;line-height:1.3}
+.qrfail{font-weight:800;padding:10px}
+.tvqrbig{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh}
+.tvqrbig h2{font-family:var(--display);text-transform:uppercase;font-size:6vh;font-weight:900;text-align:center;line-height:1}
+.tvqrbig .qrcard{width:min(40vw,58vh)}
+.tvmap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2vw;align-items:center;height:100%;min-height:0}
+.tvmap figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:1.2vh;min-height:0;height:100%;justify-content:center}
+.tvmap h2{font-family:var(--display);text-transform:uppercase;font-size:4vh;font-weight:900;line-height:1}
+.tvmap img{display:block;max-width:100%;max-height:calc(100vh - 12vh);width:auto;height:auto;object-fit:contain;border-radius:1vh;border:3px solid var(--line)}
+.tvbtns{display:flex;gap:8px}
+
+/* ---------- last 10 seconds: amber flash before the red ---------- */
+@keyframes tenflash{0%,100%{color:#ffd23f;text-shadow:0 0 18px rgba(255,210,63,.55)}50%{color:#ff9f1a;text-shadow:none}}
+.tbig.ten{animation:tenflash .5s steps(1) infinite}
+.tv-timer .clock.ten{color:#ffb020}
+body.tvmode.tkflash::after{display:none}
+body.tenmode::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;background:rgba(255,190,40,.18);animation:tenbg 1s steps(1) infinite}
+@keyframes tenbg{50%{opacity:0}}
+
+/* ---------- daylight (outdoor) mode: easier to read in bright sun ---------- */
+.sunbtn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid var(--rule);color:var(--ink);border-radius:99px;padding:4px 12px;font-weight:700;font-size:.8rem;cursor:pointer;margin-left:8px;vertical-align:middle}
+.sunbtn svg{width:16px;height:16px}
+.sunbtn[aria-pressed="true"]{background:#f2cd2e;color:#1a2a6c;border-color:#f2cd2e}
+body.outdoor:not(.tvmode),body.tvmode.tvday{
+  color-scheme:light;
+  --ground:#f2f4ee; --panel:#ffffff; --panel-2:#e6ebe2; --rule:rgba(8,24,38,.22); --line:#081826;
+  --ink:#06121c; --ink-soft:#3a4855; --ps-chip:#0b6aa3; --good:#11793a; --warn:#9a4f00;
+}
+body.outdoor:not(.tvmode) .atp-c,body.tvmode.tvday .atp-c,body.outdoor:not(.tvmode) .tchip.atp,body.tvmode.tvday .tchip.atp{color:#556100}
+body.outdoor:not(.tvmode) .tchip.atp,body.tvmode.tvday .tchip.atp{background:rgba(195,210,43,.25);border-color:#8a9a00}
+body.outdoor:not(.tvmode) .tchip.ps,body.tvmode.tvday .tchip.ps{background:rgba(24,156,216,.14)}
+body.outdoor:not(.tvmode) header .atp .ch-sc b{color:var(--atp)}
+body.outdoor:not(.tvmode) .court,body.outdoor:not(.tvmode) .divcard,body.outdoor:not(.tvmode) .bcard,body.outdoor:not(.tvmode) .mround,body.outdoor:not(.tvmode) .call,body.outdoor:not(.tvmode) .rvcard,body.outdoor:not(.tvmode) .ci{box-shadow:0 1px 4px rgba(0,0,0,.1)}
+body.outdoor:not(.tvmode) input,body.outdoor:not(.tvmode) select{background:#fff;color:var(--ink)}
+body.tvmode.tvday .tv{background:linear-gradient(180deg,#e9eef2,#f6f7f2)}
+body.tvmode.tvday .tv-panel{background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+body.tvmode.tvday .tvci-team{background:#fff}
+body.tvmode.tvday .tvci-team.all{background:#dff3e5}
+body.tvmode.tvday .tvci-team .tn em{color:#11793a}
+body.tvmode.tvday .tvci-hd .n{color:#556100}
+body.tvmode.tvday .tv-timer .clock.time{color:#c62012}
+body.tvmode.tvday .tv-timer .clock.ten{color:#b86e00}
+@keyframes tenflashday{0%,100%{color:#d98a00}50%{color:#a35c00}}
+body.outdoor:not(.tvmode) .tbig.ten{animation-name:tenflashday}
 </style>
 </head>
 <body>
@@ -584,28 +823,30 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     <div class="chead" aria-label="Games won">
       <div class="ch-half atp">
         <img src="images/atp-logo.png" alt="ATP Pickleball Club" width="470" height="512">
-        <div class="ch-sc"><span>ATP</span><b id="mini-atp">0</b></div>
+        <div class="ch-sc"><b id="mini-atp">0</b></div>
       </div>
       <div class="ch-kitchen">
         <h1 class="display"><span class="the">Defend the</span><span>Kitchen</span></h1>
         <span class="ch-tag">Interclub II</span>
       </div>
       <div class="ch-half ps">
-        <div class="ch-sc"><span>PSPC</span><b id="mini-ps">0</b></div>
+        <div class="ch-sc"><b id="mini-ps">0</b></div>
         <img src="images/ps-logo.png" alt="Port Stephens Pickleball Club" width="512" height="422">
       </div>
     </div>
-    <p class="ch-meta">ATP vs Port Stephens · Jonas Bradley Park · Sunday 31 January 2027</p>
+    <p class="ch-meta">ATP vs Port Stephens · Jonas Bradley Park · Sunday 31 January 2027<button type="button" class="sunbtn" id="sun-btn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span id="sun-lbl">Daylight</span></button></p>
     <nav role="tablist" aria-label="Sections">
       <button role="tab" data-tab="info" aria-selected="true">Briefing</button>
       <button role="tab" data-tab="draw" aria-selected="false">Draw</button>
-      <button role="tab" data-tab="board" aria-selected="false">Standings</button>
+      <button role="tab" data-tab="board" aria-selected="false" id="nav-board" hidden>Standings</button>
       <button role="tab" data-tab="court" aria-selected="false">On court</button>
       <button role="tab" data-tab="me" aria-selected="false">My games</button>
       <button role="tab" data-tab="teams" aria-selected="false">Teams</button>
+      <button role="tab" data-tab="checkin" aria-selected="false" class="cmte cmte-first">Check-in</button>
       <button role="tab" data-tab="timer" aria-selected="false" class="cmte">Timer</button>
       <button role="tab" data-tab="scores" aria-selected="false" class="cmte">Enter scores</button>
-      <button role="tab" data-tab="print" aria-selected="false" class="cmte">Print</button>
+      <button role="tab" data-tab="results" aria-selected="false" class="cmte">Results</button>
+      <button role="tab" data-tab="print" aria-selected="false" class="cmte">Settings</button>
       <button role="tab" data-tab="tv" aria-selected="false" class="cmte">TV screen</button>
     </nav>
   </div>
@@ -667,6 +908,10 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     </div>
     <div class="bar" aria-hidden="true"><span id="bar" style="width:50%"></span></div>
     <p class="lead" id="lead">All square. No games played yet.</p>
+    <div class="stctl">
+      <div class="seg" id="st-view" role="group" aria-label="Show standings for"><button type="button" data-v="all" aria-pressed="true">All</button><button type="button" data-v="teams" aria-pressed="false">Teams</button><button type="button" data-v="players" aria-pressed="false">Players</button></div>
+      <div class="seg" id="st-gender" role="group" aria-label="Players to show"><button type="button" data-v="" aria-pressed="true">Everyone</button><button type="button" data-v="M" aria-pressed="false">Male</button><button type="button" data-v="F" aria-pressed="false">Female</button></div>
+    </div>
     <div class="divgrid" id="divgrid"></div>
   </section>
 
@@ -685,6 +930,53 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     </form>
   </section>
 
+  <!-- COMMITTEE: RESULTS & REVEAL -->
+  <section id="tab-results" aria-label="Results" hidden>
+    <div class="rv">
+      <div class="rvcard">
+        <div class="row" style="justify-content:space-between"><h3 class="display">Reveal standings</h3><span class="rvstate" id="rv-state">Hidden</span></div>
+        <p class="hint">The Draw only ever shows the last game's scores. While hidden, the standings, club totals, My games results and the TV scores stay under wraps. Turn this on to show everyone.</p>
+        <button type="button" class="fpswitch" id="rv-toggle" role="switch" aria-checked="false"><span class="knob"></span><span class="lbl">Standings hidden</span></button>
+      </div>
+      <div class="rvcard">
+        <div class="row rvhd" style="justify-content:space-between"><h3 class="display">Running score</h3><button type="button" class="btn ghost sm rvtog" data-sec="live" aria-expanded="false">Show</button></div>
+        <div id="rv-live"></div>
+      </div>
+      <div class="rvcard">
+        <div class="row rvhd" style="justify-content:space-between"><h3 class="display">Leaders</h3><button type="button" class="btn ghost sm rvtog" data-sec="leaders" aria-expanded="false">Show</button></div>
+        <p class="hint">Most games won, then points difference. Updates as scores go in. Joint leaders are all shown.</p>
+        <div id="rv-leaders"></div>
+      </div>
+      <div class="rvcard">
+        <div class="row rvhd" style="justify-content:space-between"><h3 class="display">Player rankings</h3><button type="button" class="btn ghost sm rvtog" data-sec="prank" aria-expanded="false">Show</button></div>
+        <p class="hint">Every player, ranked within their division by games won, then points difference. Players can't see this until the standings are revealed.</p>
+        <div class="rkctl">
+          <div class="seg" id="rk-div" role="group" aria-label="Division"></div>
+          <div class="seg" id="rk-g" role="group" aria-label="Players"><button type="button" data-v="" aria-pressed="true">All</button><button type="button" data-v="M" aria-pressed="false">Male</button><button type="button" data-v="F" aria-pressed="false">Female</button></div>
+        </div>
+        <div id="rv-rank"></div>
+      </div>
+      <div class="rvcard">
+        <div class="row rvhd" style="justify-content:space-between"><h3 class="display">Team rankings</h3><button type="button" class="btn ghost sm rvtog" data-sec="trank" aria-expanded="false">Show</button></div>
+        <p class="hint">Every team, ranked within its division by games won, then points difference.</p>
+        <div class="rkctl"><div class="seg" id="tk-div" role="group" aria-label="Division"></div></div>
+        <div id="rv-trank"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMITTEE: PLAYER CHECK-IN -->
+  <section id="tab-checkin" aria-label="Player check-in" hidden>
+    <div class="rvcard" style="margin-bottom:16px">
+      <h3 class="display">Player check-in</h3>
+      <p class="hint">Tap a player's name when they arrive. Tap again to undo. Only the committee sees this tab.</p>
+      <div class="cicount" id="ci-count"></div>
+      <input class="search cisearch" id="ci-search" type="search" placeholder="Find a player" autocomplete="off" aria-label="Find a player">
+      <div class="row"><button class="btn ghost sm" type="button" id="ci-hide">Hide checked-in players</button><button class="btn ghost sm" type="button" id="ci-clear">Clear all check-ins</button></div>
+    </div>
+    <div id="ci-body"></div>
+  </section>
+
   <!-- ON COURT -->
   <section id="tab-court" aria-label="On court" hidden>
     <div class="callbox" id="callbox" style="margin-top:0"></div>
@@ -694,18 +986,19 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   <section id="tab-tv" aria-label="TV screen" hidden>
     <div class="tv">
       <div class="tv-top">
-        <div class="tv-side"><img src="images/atp-logo.png" alt="ATP Pickleball Club" width="470" height="512"><div><div class="club atp-c">ATP</div><div class="num atp-c" id="tv-atp">0</div><div class="pts" id="tv-atp-pts"></div></div></div>
+        <div class="tv-side"><img src="images/atp-logo.png" alt="ATP Pickleball Club" width="470" height="512"><div><div class="num atp-c" id="tv-atp">0</div><div class="pts" id="tv-atp-pts"></div></div></div>
         <div class="tv-mid"><h1 class="display">Defend the Kitchen</h1><div class="k" id="tv-played">Games won</div>
           <div class="tug" id="tug-tv" role="img" aria-label="Tug of war for the trophy"><img class="ph" src="images/tug.jpg" alt="" width="990" height="530"><span class="kline"></span><span class="end a">ATP</span><span class="end p">PSPC</span></div>
           <div class="lead" id="tv-lead"></div></div>
-        <div class="tv-side r"><div><div class="club psb-c">PSPC</div><div class="num psb-c" id="tv-ps">0</div><div class="pts" id="tv-ps-pts"></div></div><img src="images/ps-logo.png" alt="Port Stephens Pickleball Club" width="512" height="422"></div>
+        <div class="tv-side r"><div><div class="num psb-c" id="tv-ps">0</div><div class="pts" id="tv-ps-pts"></div></div><img src="images/ps-logo.png" alt="Port Stephens Pickleball Club" width="512" height="422"></div>
       </div>
-      <div class="tv-body">
-        <div class="tv-panel"><div class="tv-timer"><div class="lab"><span id="tv-tlabel">Starting soon</span><span class="st2" id="tv-tstate"></span></div><div class="clock" id="tv-clock">12:00</div></div><div class="tv-calls" id="tv-calls"></div></div>
-        <div class="tv-panel"><h2 class="display">Divisions</h2><div class="tv-divs" id="tv-divs"></div></div>
+      <div class="tvalt" id="tv-alt" hidden></div>
+      <div class="tv-body" id="tv-main">
+        <div class="tv-panel"><div class="tv-timer"><div class="tvm-next" id="tv-upnext" hidden></div><div class="tvm-restline" id="tv-rest" hidden></div><div class="lab"><span id="tv-tlabel">Starting soon</span><span class="st2" id="tv-tstate"></span></div><div class="clock" id="tv-clock">12:00</div></div><div class="tv-calls" id="tv-calls"></div></div>
+        <div class="tv-panel" hidden><div class="tv-divs" id="tv-divs"></div></div>
       </div>
       <div class="tv-foot">
-        <div class="tv-ctl"><button type="button" id="tv-sound">Turn on sound</button><button type="button" id="tv-full">Full screen</button><button type="button" id="tv-exit">Exit</button></div></div>
+        <div class="tv-ctl"><button type="button" id="tv-day" aria-pressed="false">Daylight</button><button type="button" id="tv-sound">Turn on sound</button><button type="button" id="tv-full">Full screen</button><button type="button" id="tv-exit">Exit</button></div></div>
     </div>
   </section>
 
@@ -736,7 +1029,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       </div>
 
       <nav class="bjump" aria-label="Briefing sections">
-        <button type="button" data-jump="b-sched">Schedule</button><button type="button" data-jump="b-arrive">Getting there</button><button type="button" data-jump="b-day">On the day</button><button type="button" data-jump="b-format">Format</button><button type="button" data-jump="b-card">Score cards</button><button type="button" data-jump="b-courts">Courts</button><button type="button" data-jump="b-results">Results</button><button type="button" data-jump="b-social">Afternoon</button><button type="button" data-jump="b-contacts">Contacts</button>
+        <button type="button" data-jump="b-sched">Schedule</button><button type="button" data-jump="b-arrive">Getting there</button><button type="button" data-jump="b-day">On the day</button><button type="button" data-jump="b-format">Format</button><button type="button" data-jump="b-card">Reporting scores</button><button type="button" data-jump="b-courts">Courts</button><button type="button" data-jump="b-results">Results</button><button type="button" data-jump="b-social">Afternoon</button><button type="button" data-jump="b-contacts">Contacts</button>
       </nav>
 
       <div class="bcard bwelcome">
@@ -815,26 +1108,13 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       </div>
 
       <div class="bcard" id="b-card">
-        <h3 class="display">Score cards</h3>
+        <h3 class="display">Reporting scores</h3>
         <ul>
-          <li>Your court's score card is waiting at the court each round.</li>
-          <li>Write each game's score as soon as it finishes, and tick the club that won it.</li>
-          <li>Captains check the scores together, then bring the card to the tournament desk.</li>
+          <li>There are no score cards. Keep track of the score as you play.</li>
+          <li><b>Report the score to the tournament desk after every game.</b> The player sitting out the next game (one from each club) goes to the desk together and reports it while the next two get ready.</li>
+          <li>After Game 3, one player from each club reports that game's score.</li>
+          <li>Both clubs agree the score before it goes in. The desk enters it straight away.</li>
         </ul>
-        <div class="bsample" aria-label="Example score card">
-          <span class="bstamp">Example</span>
-          <div class="bs-bar"><b>Round 2 · Court 8</b><span>DUPR 2.5–2.99</span></div>
-          <div class="bs-teams"><span>ATP Team B</span><span class="vs">v</span><span>PSPC Team C</span></div>
-          <table>
-            <thead><tr><th>Game</th><th>ATP pair</th><th colspan="2">Score</th><th class="r">PSPC pair</th><th>Winner</th></tr></thead>
-            <tbody>
-              <tr><td><b>G1</b><small>Pairs 1 &amp; 2</small></td><td class="nm">Bree K. (C)<br>Alex R.</td><td><span class="sc">9</span></td><td><span class="sc">7</span></td><td class="nm r">Jen H. (C)<br>Phil N.</td><td class="wn"><span class="tk on">ATP</span><span class="tk">PSPC</span></td></tr>
-              <tr><td><b>G2</b><small>Pairs 1 &amp; 3</small></td><td class="nm">Bree K. (C)<br>Kate C.</td><td><span class="sc">6</span></td><td><span class="sc">10</span></td><td class="nm r">Jen H. (C)<br>Fi W.</td><td class="wn"><span class="tk">ATP</span><span class="tk on">PSPC</span></td></tr>
-              <tr><td><b>G3</b><small>Pairs 2 &amp; 3</small></td><td class="nm">Alex R.<br>Kate C.</td><td><span class="sc">8</span></td><td><span class="sc">7</span></td><td class="nm r">Phil N.<br>Fi W.</td><td class="wn"><span class="tk on">ATP</span><span class="tk">PSPC</span></td></tr>
-            </tbody>
-          </table>
-          <p class="bs-foot">12-minute games · golden point if level at time</p>
-        </div>
       </div>
 
       <div class="bcard" id="b-courts">
@@ -858,7 +1138,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
           <li>Every game won is <b>1 point</b> for your club, across all four divisions.</li>
           <li>144 games in total. The first club to <b>73 game wins</b> takes the Kitchen.</li>
           <li>If game wins finish level, the club with more <b>total points scored</b> wins.</li>
-          <li>Follow it live on <b>Standings</b>. The trophy is presented at about <b>1:15pm</b>.</li>
+          <li>The <b>Draw</b> shows the last game's scores. The standings stay under wraps until the committee reveals them. The trophy is presented at about <b>1:15pm</b>.</li>
         </ul>
       </div>
 
@@ -915,7 +1195,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       <button class="btn ghost" id="t-reset">Reset timer</button>
       <span class="msg" id="t-msg"></span>
     </div>
-    <p class="note" style="margin-top:12px">Games are 12 minutes. When the clock runs out, play the golden point on any court that’s level, then press <b>Next game</b>. With sound on, this page and the TV give two short pips at 10 seconds left, then beep loudly at time (phones also vibrate). Turn sound on here and on the TV. Every phone and the TV follow this timer.</p>
+    <p class="note" style="margin-top:12px">Games are 12 minutes. When the clock runs out, play the golden point on any court that’s level, then press <b>Next game</b>. With sound on, this page and the TV give two short pips and the clock flashes amber for the last 10 seconds, then beep loudly at time (phones also vibrate). Turn sound on here and on the TV. Every phone and the TV follow this timer.</p>
   </section>
 
   <!-- ENTER SCORES -->
@@ -930,13 +1210,6 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span id="saveall-msg" class="msg"></span><button class="btn go" id="saveall-btn" disabled>Save all changes</button></span>
     </div>
     <div class="entry" id="entry"></div>
-    <div class="tools">
-      <span class="eyebrow">Testing</span>
-      <button class="btn ghost" id="fill-btn">Fill random scores</button>
-      <button class="btn ghost" id="clear-btn">Clear all scores</button>
-      <button class="btn ghost" id="reset-btn">Reset for the real day</button>
-      <span id="tools-msg" class="msg"></span>
-    </div>
   </section>
 
   <!-- TEAMS -->
@@ -951,7 +1224,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     <div class="upload">
       <div>
         <h3 class="display">Upload teams from Excel</h3>
-        <p class="note" style="margin-top:6px">Download the template, type the names in the white cells and upload it here. It has one row per team: <code>Division</code>, <code>Club</code>, <code>Team</code>, then <code>Player 1 (captain)</code>, <code>Player 2</code> and <code>Player 3</code>. The template also works as a backup of the current names. A .csv with the same columns works too.</p>
+        <p class="note" style="margin-top:6px">Download the template, type the names in the white cells and upload it here. It has one row per team: <code>Division</code>, <code>Club</code>, <code>Team</code>, then <code>Player 1 (captain)</code>, <code>Player 2</code> and <code>Player 3</code>, each with an <code>M/F</code> column beside it. The template also works as a backup of the current names. A .csv with the same columns works too.</p>
         <p class="msg" id="up-msg" style="margin-top:8px"></p>
       </div>
       <div class="acts">
@@ -966,23 +1239,50 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   </section>
 
   <!-- PRINT -->
-  <section id="tab-print" aria-label="Print" hidden>
+  <section id="tab-print" aria-label="Settings" hidden>
+    <div class="rv" style="margin-bottom:16px">
+      <div class="rvcard">
+        <h3 class="display">TV screen</h3>
+        <p class="hint">What every TV shows. Changes straight away on all screens.</p>
+        <div class="segrow" id="tv-modes">
+          <button class="btn ghost sm" type="button" data-tvmode="games" aria-pressed="true">Games &amp; timer</button>
+          <button class="btn ghost sm" type="button" data-tvmode="map" aria-pressed="false">Court map + QR code</button>
+          <button class="btn ghost sm" type="button" data-tvmode="qr" aria-pressed="false">QR code only</button>
+        </div>
+        <p class="hint" style="margin-top:14px">Look: Daylight is easier to read in bright sun.</p>
+        <div class="segrow" id="tv-days">
+          <button class="btn ghost sm" type="button" data-tvday="night" aria-pressed="false">Night</button>
+          <button class="btn ghost sm" type="button" data-tvday="day" aria-pressed="false">Daylight</button>
+          <button class="btn ghost sm" type="button" data-tvday="" aria-pressed="true">Each TV decides</button>
+        </div>
+        <div class="row" style="margin-top:14px"><button class="btn go sm" type="button" data-go="tv">Open the TV screen</button></div>
+      </div>
+    </div>
+    <div class="rvcard" style="margin-bottom:16px">
+      <h3 class="display">Testing</h3>
+      <p class="hint">Simulate fills Rounds 1 and 2 (half the tournament) with random scores so you can try the Draw, Standings, Results and TV. It's turned off once any score has been entered. Reset deletes every score and puts the timer back to "Not started" (tap twice). Teams stay as they are.</p>
+      <div class="row">
+        <button class="btn ghost" type="button" id="fill-btn">Simulate half the rounds</button>
+        <button class="btn ghost" type="button" id="reset-btn">Reset scores and timer</button>
+      </div>
+      <p id="tools-msg" class="msg"></p>
+    </div>
     <div class="pcard">
       <h3 class="display">Printable sheets</h3>
       <p class="note">A4 PDFs built from the current names and courts, the same set as the Dural interclub. Print them after the teams are entered. (C) marks each team's captain.</p>
       <div class="row">
         <button class="btn go" data-pdf="all">All sheets (one PDF)</button>
         <button class="btn ghost" data-pdf="schedule">Game schedule + teams</button>
-        <button class="btn ghost" data-pdf="cards">Score cards (1 page per court)</button>
         <button class="btn ghost" data-pdf="courts">Court sheets (1 page per court)</button>
         <button class="btn ghost" data-pdf="results">Final results</button>
+        <button class="btn ghost" data-pdf="cards">Backup score cards</button>
       </div>
       <p class="msg" id="pdf-msg"></p>
       <ul class="note" style="margin:4px 0 0;padding-left:18px">
         <li><b>Game schedule:</b> one page per round, every court's three games in order, plus a page with all the teams.</li>
-        <li><b>Score cards:</b> one page per court with a card for each of its four rounds. Score boxes and a winner tick box for each game.</li>
         <li><b>Court sheets:</b> one page per court to pin up, listing who plays there each round, game by game.</li>
         <li><b>Final results:</b> club totals, team and player standings, and every score.</li>
+        <li><b>Backup score cards:</b> just in case. One page per court with a card for each round, score boxes and a winner tick box for each game. Not part of All sheets.</li>
       </ul>
     </div>
   </section>
@@ -1015,8 +1315,9 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   var EVENT = 'Defend the Kitchen · Interclub II';
 
   // Sample names: invented, for testing only
-  var FIRST = ['Sam','Jo','Kim','Lee','Alex','Chris','Pat','Robin','Jess','Mel','Tony','Kate','Ben','Lisa','Nick','Amy','Dave','Sue','Mark','Jen','Paul','Rae','Greg','Tash','Rob','Liz','Phil','Dee','Matt','Bec','Steve','Kerry','Andy','Fi','Jim','Nat','Ross','Anna','Tim','Kylie','Gary','Lou','Craig','Meg','Wes','Bree','Doug','Cath'];
-  var LAST = 'BCDFGHJKLMNPRSTW';
+  // sample names: full names of mixed lengths, so layouts get tested with real-looking names
+  var FIRST = ['Sam','Jo','Kimberley','Lee','Alexander','Chris','Patricia','Robin','Jessica','Mel','Anthony','Kate','Ben','Elizabeth','Nicholas','Amy','David','Sue','Mark','Jennifer','Paul','Rae','Gregory','Natasha','Rob','Liz','Phillip','Dee','Matthew','Rebecca','Steve','Kerry-Anne','Andy','Fiona','Jim','Natalie','Ross','Anastasia','Tim','Kylie','Gary','Lou','Christopher','Meg','Wes','Bree','Douglas','Catherine'];
+  var LAST = ['Ng','Smith','Papadopoulos','Brown','Fitzgerald','Lee','Wilson','Van der Merwe','Hall','Nguyen','MacDonald','Kelly','Thompson','Ward','Christodoulou','Bell','Harrison-Jones','Tran','Murphy','Fox','Williamson','Cox','Montgomery','Li'];
   function sampleSetup(){
     var divs = [], n = 0;
     for (var d=0; d<DIVS; d++){
@@ -1024,10 +1325,11 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       ['atp','ps'].forEach(function(club, ci){
         for (var t=0; t<TEAMS; t++){
           var tm = [];
-          for (var p=0; p<3; p++){ tm.push(FIRST[(n*7+ci*13)%FIRST.length]+' '+LAST[(n*5+ci*3)%LAST.length]+'.'); n++; }
+          for (var p=0; p<3; p++){ tm.push(FIRST[(n*7+ci*13)%FIRST.length]+' '+LAST[(n*5+ci*3)%LAST.length]); n++; }
           div[club].push(tm);
         }
       });
+      div.gender = {atp:div.atp.map(function(tm,t){ return tm.map(function(_,p){ return (t+p)%2 ? 'F' : 'M'; }); }), ps:div.ps.map(function(tm,t){ return tm.map(function(_,p){ return (t+p)%2 ? 'M' : 'F'; }); })};
       divs.push(div);
     }
     return {divisions:divs, sample:true};
@@ -1074,6 +1376,11 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     frontOn = on; applyFront(); return Promise.resolve();
   }
   var startedAt = null;    // ISO time the committee started the tournament
+  // Standings stay under wraps until the committee reveals them (shared via event/reveal)
+  var revealed = false;
+  function canSee(){ return revealed || isCmte(); }
+  var checkin = {};        // 'd-club-t-p' -> true, shared via the checkin collection
+  var tvMode = 'games', tvDay = '';   // shared via event/tv
   var GAME_MS = 12*60*1000;  // 12-minute games, golden point if level at time
   // round: -1 before the start, 0-3 during play. phase: idle | ready | playing | paused | time | finished
   var timer = {round:-1, game:0, phase:'idle', endsAt:null, remainMs:GAME_MS, roundAt:null};
@@ -1087,6 +1394,9 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   function tc(club, t){ return '<span class="tchip '+club+'">'+logo(club)+LET[t]+'</span>'; }
   function courtNo(d,c){ return (DIVS-1-d)*COURTS + c + 1; }  // lowest DUPR on courts 10-12
   function team(d, club, t){ var dv = setup.divisions[d]; return (dv && dv[club] && dv[club][t]) || ['','','']; }
+  // M/F for each player (optional), stored beside the names: divisions[d].gender[club][t][i]
+  function pgender(d, club, t, i){ var dv = setup.divisions[d], g = dv && dv.gender && dv.gender[club] && dv.gender[club][t]; return (g && g[i]) || ''; }
+  function gBadge(g){ return g ? '<span class="gbadge g'+g+'" title="'+(g==='M'?'Male':'Female')+'">'+g+'</span>' : ''; }
   function pname(d, club, t, i){ return team(d,club,t)[i] || (CLUB[club]+' '+LET[t]+(i+1)); }
   function pair(d, club, t, gi){ return pname(d,club,t,PAIRS[gi][0])+' & '+pname(d,club,t,PAIRS[gi][1]); }
   // the pair as two lines, one name each (optionally highlighting a search)
@@ -1119,11 +1429,16 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     for (var d=0; d<DIVS; d++){
       var dv = {atp:{rw:0,g:0,pf:0,pa:0}, ps:{rw:0,g:0,pf:0,pa:0}, played:0, matches:0, teams:{atp:[], ps:[]}};
       for (var t=0;t<TEAMS;t++){ dv.teams.atp.push({t:t,rw:0,rl:0,g:0,l:0,pf:0,pa:0}); dv.teams.ps.push({t:t,rw:0,rl:0,g:0,l:0,pf:0,pa:0}); }
+      dv.players = [];
+      ['atp','ps'].forEach(function(club){ for (var t2=0;t2<TEAMS;t2++) for (var p=0;p<3;p++) dv.players.push({club:club,t:t2,p:p,g:0,l:0,pf:0,pa:0}); });
+      var pl = function(club,t,p){ return dv.players[(club==='atp'?0:TEAMS*3)+t*3+p]; };
       for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++){
         var m = scores[mid(d,r,c)]; if (!m || !m.games) continue;
         var at = dv.teams.atp[DRAW[r][c][0]], pt = dv.teams.ps[DRAW[r][c][1]];
-        m.games.forEach(function(g){
+        m.games.forEach(function(g, gi){
           if (!gameValid(g)) return;
+          PAIRS[gi].forEach(function(p){ var a = pl('atp',DRAW[r][c][0],p), b = pl('ps',DRAW[r][c][1],p);
+            a.pf += g.a; a.pa += g.p; b.pf += g.p; b.pa += g.a; if (g.a>g.p){ a.g++; b.l++; } else { b.g++; a.l++; } });
           dv.played++; dv.atp.pf += g.a; dv.atp.pa += g.p; dv.ps.pf += g.p; dv.ps.pa += g.a;
           at.pf += g.a; at.pa += g.p; pt.pf += g.p; pt.pa += g.a;
           if (g.a > g.p){ dv.atp.g++; at.g++; pt.l++; } else { dv.ps.g++; pt.g++; at.l++; }
@@ -1168,7 +1483,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   }
   function stChip(st, d, r, c){
     if (st.s==='go') return '<span class="st go">'+(isNew(st)?'Round '+(r+1)+' \u00b7 go now':'On court')+'</span>';
-    if (st.s==='done') return '<span class="st done">Card in</span>';
+    if (st.s==='done') return '<span class="st done">Scores in</span>';
     if (st.s==='pre') return '<span class="st later">Waiting for start</span>';
     if (st.s==='due') return '<span class="st wait">Result to come</span>';
     return '<span class="st later">Round '+(r+1)+'</span>';
@@ -1181,19 +1496,50 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   }
   function gamesWon(d,r,c){ var m = scores[mid(d,r,c)], a = 0, p = 0; if (m && m.games) m.games.forEach(function(g){ if (gameValid(g)){ if (g.a>g.p) a++; else p++; } }); return a+'\u2013'+p; }
   function callCard(st){
-    var at = DRAW[st.r][st.c][0], pt = DRAW[st.r][st.c][1], nw = isNew(st);
-    var fin = st.s==='done';
-    return '<div class="call dv'+(nw&&!fin?' new':'')+(fin?' fin':'')+'"'+dcs(st.d)+'><b class="ct">'+courtNo(st.d,st.c)+'</b><div><div class="t">'+tc('atp',at)+'vs'+tc('ps',pt)+''+(nw&&!fin?'<span class="flag">Go now</span>':'')+'</div><div class="sub">'+dname(st.d)+' \u00b7 Round '+(st.r+1)+(fin?' \u00b7 card in, games '+gamesWon(st.d,st.r,st.c):'')+'</div></div></div>';
+    var at = DRAW[st.r][st.c][0], pt = DRAW[st.r][st.c][1], nw = false, fin = false, g = st.g||0;
+    return '<div class="call dv'+(nw&&!fin?' new':'')+(fin?' fin':'')+'"'+dcs(st.d)+'><b class="ct">'+courtNo(st.d,st.c)+'</b><div><div class="t">'+tc('atp',at)+'vs'+tc('ps',pt)+''+(nw&&!fin?'<span class="flag">Go now</span>':'')+'</div><div class="sub">'+dname(st.d)+'</div><div class="cpair"><span class="atp-c">'+esc(pname(st.d,'atp',at,PAIRS[g][0]))+' &amp; '+esc(pname(st.d,'atp',at,PAIRS[g][1]))+'</span><i>v</i><span class="psb-c">'+esc(pname(st.d,'ps',pt,PAIRS[g][0]))+' &amp; '+esc(pname(st.d,'ps',pt,PAIRS[g][1]))+'</span></div></div></div>';
+  }
+  // Which game the screens show: the one on now, or once the clock hits time, the next game / next round
+  function showSlot(){
+    var ph = tPhase(), r = Math.max(0, Math.min(timer.round, ROUNDS-1)), g = timer.round<0 ? 0 : Math.max(0, Math.min(2, timer.game)), upNext = false;
+    if (ph==='time' && timer.round>=0){
+      if (timer.game<2){ g = timer.game+1; upNext = true; }
+      else if (timer.round<ROUNDS-1){ r = timer.round+1; g = 0; upNext = true; }
+    }
+    return {r:r, g:g, upNext:upNext || timer.round<0 || ph==='ready', notStarted: timer.round<0, ph:ph, newRound: upNext && r!==timer.round};
   }
   function renderCalls(){
-    var all = allStatus(), go = roundList(), done = all.filter(function(x){ return x.s==='done'; }).length;
-    var html = '<div class="top"><h3 class="display">On court now</h3><span class="msg">'+(isCmte() ? '<button type="button" class="tclock-link" data-go="timer">' : '<span>')+'<b class="tclock-label"></b> <span class="tclock"></span>'+(isCmte() ? '</button>' : '</span>')+' \u00b7 '+done+' of 48 score cards in</span></div>';
-    html += go.length ? '<div class="calls">'+go.map(callCard).join('')+'</div>' : '<p class="note">'+(done===48?'All matches finished.':!startedAt?'Play starts when the committee starts the tournament. Round 1 is on every court.':'No courts called right now.')+'</p>';
+    var sl = showSlot(), done = allStatus().filter(function(x){ return x.s==='done'; }).length;
+    var html = '<div class="top"><h3 class="display">On court</h3><span class="msg">'+(isCmte() ? '<button type="button" class="tclock-link" data-go="timer">' : '<span>')+'<b class="tclock-label"></b> <span class="tclock"></span>'+(isCmte() ? '</button>' : '</span>')+'</span></div>';
+    if (timer.phase==='finished'){ $('callbox').innerHTML = html+'<p class="note">All matches finished.</p>'; return; }
+    var badge = sl.upNext ? '<div class="cnow next"><b>'+(sl.notStarted ? 'First up' : 'Up next')+'</b> Round '+(sl.r+1)+' \u00b7 Game '+(sl.g+1)+(sl.newRound?' \u00b7 new courts':'')+(sl.ph==='time'?'<span>Get ready while scores go in</span>':'')+'</div>'
+                          : '<div class="cnow"><b>Playing now</b> Round '+(sl.r+1)+' \u00b7 Game '+(sl.g+1)+'</div>';
+    var list = [];
+    for (var di=0; di<DIVS; di++){ var d = DIVS-1-di; for (var c=0; c<COURTS; c++) list.push({d:d, r:sl.r, c:c, g:sl.g}); }
+    html += badge+'<div class="calls">'+list.map(callCard).join('')+'</div>';
     $('callbox').innerHTML = html;
   }
 
   // ---------- tug of war ----------
   // The photo slides toward the leading club: the trophy (centre of the photo) moves past the kitchen line.
+  // While the scores are hidden, the TV tug of war keeps heaving to and fro at random
+  setInterval(function(){
+    if (view.tab!=='tv' || revealed || tvMode!=='games') return;
+    var img = document.querySelector('#tug-tv img.ph'); if (!img) return;
+    var x = (Math.random()*2-1) * 12;
+    img.style.transform = 'translateX(calc(-50% - ' + x.toFixed(2) + '%))';
+  }, 1900);
+  // Shrink any long name on the TV tiles until it fits, so full names show without being cut off
+  function fitTvNames(){
+    // one size for every name on the screen; shrink a little if needed, then let the odd very long name wrap
+    var els = [].slice.call(document.querySelectorAll('#tv-calls .tvm-mu .nm i')); if (!els.length) return;
+    els.forEach(function(el){ el.style.fontSize = ''; el.classList.remove('nmwrap'); });
+    var fs = parseFloat(getComputedStyle(els[0]).fontSize), min = fs*0.72;
+    function over(){ return els.some(function(el){ return el.scrollWidth > el.clientWidth + 1; }); }
+    while (over() && fs > min){ fs -= 0.5; els.forEach(function(el){ el.style.fontSize = fs+'px'; }); }
+    els.forEach(function(el){ if (el.scrollWidth > el.clientWidth + 1) el.classList.add('nmwrap'); });
+  }
+  window.addEventListener('resize', function(){ if (view.tab==='tv') fitTvNames(); });
   function setTug(id, a, p){
     var el = $(id); if (!el) return;
     // 144 games = 144 points available; 73 wins outright. The pull is measured against the games still to play,
@@ -1206,17 +1552,20 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   }
 
   // ---------- scoreboard ----------
-  function renderMini(R){ R = R || compute(); $('mini-atp').textContent = R.atp.g; $('mini-ps').textContent = R.ps.g; }
+  function renderMini(R){ document.body.classList.toggle('veiled', !revealed); if (!revealed){ $('mini-atp').textContent = ''; $('mini-ps').textContent = ''; return; } R = R || compute(); $('mini-atp').textContent = R.atp.g; $('mini-ps').textContent = R.ps.g; }
   var WIN_AT = Math.floor(TOTAL_GAMES/2) + 1;   // 73 of 144
   function leadText(R, short){
     if (!R.played) return short ? 'All square \u00b7 first to '+WIN_AT+' wins' : 'All square. No games played yet. First to '+WIN_AT+' games wins.';
-    if (R.atp.g>=WIN_AT || R.ps.g>=WIN_AT) return (R.atp.g>R.ps.g?'ATP':'PSPC')+(short?' win the Kitchen!':' have won the Kitchen. They can\u2019t be caught.');
+    if (R.atp.g>=WIN_AT || R.ps.g>=WIN_AT) return (R.atp.g>R.ps.g?'ATP':'PSPC')+' win the Kitchen!';
     var d = R.atp.g - R.ps.g;
     if (d) return (d>0?'ATP':'PSPC')+' lead by '+Math.abs(d)+(short?'':' game'+(Math.abs(d)===1?'':'s')+'. '+(d>0?'ATP':'PSPC')+' need '+(WIN_AT-Math.max(R.atp.g,R.ps.g))+' more to clinch it.');
     var pd = R.atp.pf - R.ps.pf;
     if (pd) return short ? 'Level \u00b7 '+(pd>0?'ATP':'PSPC')+' ahead on points' : 'Level on games. '+(pd>0?'ATP':'PSPC')+' ahead on points scored.';
     return short ? 'Level' : 'Level on games and points.';
   }
+  var stView = 'all', stGender = '';
+  $('st-gender').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; stGender = b.dataset.v; renderBoard(); });
+  $('st-view').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; stView = b.dataset.v; renderBoard(); });
   function renderBoard(){
     var R = compute(); renderMini(R);
     $('tot-atp').textContent = R.atp.g; $('tot-ps').textContent = R.ps.g;
@@ -1228,23 +1577,33 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     var lead = leadText(R, false);
     $('lead').textContent = lead;
 
-    var html = '';
+    var html = '', showT = stView!=='players', showP = stView!=='teams';
+    $('st-gender').hidden = !showP;
+    [].forEach.call($('st-gender').children, function(b){ b.setAttribute('aria-pressed', String(b.dataset.v===stGender)); });
+    [].forEach.call($('st-view').children, function(b){ b.setAttribute('aria-pressed', String(b.dataset.v===stView)); });
+    var tHtml = '', pHtml = '';
+    function cardTop(dv, d){ return '<div class="divcard dv"'+dcs(d)+'><div class="top"><h3 class="display">'+dname(d)+'</h3>'+
+      '<div class="score"><span class="atp-c">'+dv.atp.g+'</span> <span style="color:var(--ink-soft);font-size:.7em">\u2013</span> <span class="psb-c">'+dv.ps.g+'</span></div></div>'; }
     R.divs.forEach(function(dv, d){
       var rows = [];
       ['atp','ps'].forEach(function(club){ dv.teams[club].forEach(function(x){ rows.push({club:club, x:x}); }); });
       rows.sort(function(a,b){ return (b.x.g-a.x.g) || ((b.x.pf-b.x.pa)-(a.x.pf-a.x.pa)) || (b.x.pf-a.x.pf); });
-      html += '<div class="divcard dv"'+dcs(d)+'><div class="top"><h3 class="display">'+dname(d)+'</h3>'+
-        '<div class="score"><span class="atp-c">'+dv.atp.g+'</span> <span style="color:var(--ink-soft);font-size:.7em">–</span> <span class="psb-c">'+dv.ps.g+'</span></div></div>'+
-        '<div class="tablewrap"><table class="teams"><thead><tr><th>Team</th><th title="Games won">W</th><th title="Games lost">L</th><th title="Points scored">For</th><th title="Points against">Agst</th><th>+/−</th></tr></thead><tbody>';
-      rows.forEach(function(r){
-        var diff = r.x.pf - r.x.pa;
-        html += '<tr><td>'+tc(r.club,r.x.t)+''+
-          '<span class="who">'+esc(team(d,r.club,r.x.t).filter(Boolean).join(', '))+'</span></td>'+
-          '<td><b>'+r.x.g+'</b></td><td>'+r.x.l+'</td><td>'+r.x.pf+'</td><td>'+r.x.pa+'</td><td>'+(diff>0?'+':'')+diff+'</td></tr>';
-      });
-      html += '</tbody></table></div></div>';
+      tHtml += cardTop(dv, d)+'<div class="tablewrap"><table class="teams"><thead><tr><th>Team</th><th title="Games won">W</th><th title="Games lost">L</th><th title="Points scored">For</th><th title="Points against">Agst</th><th>+/\u2212</th></tr></thead><tbody>'+
+        rows.map(function(r){ var diff = r.x.pf - r.x.pa;
+          return '<tr><td>'+tc(r.club,r.x.t)+'<span class="who">'+esc(team(d,r.club,r.x.t).filter(Boolean).join(', '))+'</span></td>'+
+            '<td><b>'+r.x.g+'</b></td><td>'+r.x.l+'</td><td>'+r.x.pf+'</td><td>'+r.x.pa+'</td><td>'+(diff>0?'+':'')+diff+'</td></tr>'; }).join('')+'</tbody></table></div></div>';
+      var ps = dv.players.filter(function(x){ return !stGender || pgender(d,x.club,x.t,x.p)===stGender; }).sort(function(a,b){ return (b.g-a.g) || ((b.pf-b.pa)-(a.pf-a.pa)) || (b.pf-a.pf) || pname(d,a.club,a.t,a.p).localeCompare(pname(d,b.club,b.t,b.p)); });
+      pHtml += cardTop(dv, d)+'<div class="tablewrap"><table class="teams players"><thead><tr><th>Player</th><th title="Games won">W</th><th title="Games lost">L</th><th title="Points scored">For</th><th title="Points against">Agst</th><th>+/\u2212</th></tr></thead><tbody>'+
+        (ps.map(function(x, i){ var diff = x.pf-x.pa;
+          return '<tr><td><span class="rk">'+(i+1)+'</span><b class="pn">'+esc(pname(d,x.club,x.t,x.p))+'</b><span class="who">'+(x.club==='atp'?'ATP':'PSPC')+' Team '+LET[x.t]+'</span></td><td><b>'+x.g+'</b></td><td>'+x.l+'</td><td>'+x.pf+'</td><td>'+x.pa+'</td><td>'+(diff>0?'+':'')+diff+'</td></tr>'; }).join('')
+         || '<tr><td colspan="6" class="msg">No '+(stGender==='M'?'male':'female')+' players marked in this division.</td></tr>')+'</tbody></table></div></div>';
     });
+    // All: every division's team table first, then the player tables underneath
+    var g = $('st-gender'); document.querySelector('.stctl').appendChild(g);
+    html = (showT ? (showP ? '<h3 class="sthd display">Teams</h3>' : '')+tHtml : '') +
+           (showP ? '<div class="sthd sthd-p">'+(showT ? '<h3 class="display">Players</h3>' : '')+'<span id="st-g-slot"></span></div>'+pHtml : '');
     $('divgrid').innerHTML = html;
+    if (showP) $('st-g-slot').appendChild(g);
   }
 
   // ---------- shared bits ----------
@@ -1264,6 +1623,17 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   }
 
   // ---------- draw ----------
+  // While the standings are hidden, the Draw only shows the scores of the game just played.
+  // Once the next game starts, earlier games just show as played.
+  function shownGame(){
+    if (timer.round<0) return null;
+    var ph = tPhase();
+    if (ph==='time') return {r:timer.round, g:timer.game};
+    if (ph==='ready'){ if (timer.game>0) return {r:timer.round, g:timer.game-1}; if (timer.round>0) return {r:timer.round-1, g:2}; return null; }
+    if (ph==='finished') return {r:ROUNDS-1, g:2};
+    return null;
+  }
+  function gameVisible(r, gi){ var sg = shownGame(); return !!(sg && sg.r===r && sg.g===gi); }
   function renderDraw(){
     segButtons($('draw-div'), divItems(true).map(function(it){ return it.v<0 ? {v:-1,label:'All divisions'} : {v:it.v,label:'DUPR '+it.label,dc:1}; }), view.drawDiv, function(v){ view.drawDiv=v; renderDraw(); });
     var q = view.search.trim().toLowerCase(), html = '';
@@ -1272,15 +1642,15 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       for (var di=0; di<DIVS; di++){ var d = DIVS-1-di;   // court order: courts 1-3 first
         if (view.drawDiv>=0 && view.drawDiv!==d) continue;
         if (view.drawDiv<0) html += '<div class="divlabel eyebrow">'+dname(d)+'</div>';
-        html += '<div class="resting top">Resting: <span class="chip rest">'+logo('atp')+' '+LET[r]+' · '+esc(team(d,'atp',r).filter(Boolean).join(', '))+'</span><span class="chip rest">'+logo('ps')+' '+LET[r]+' · '+esc(team(d,'ps',r).filter(Boolean).join(', '))+'</span></div>';
+        html += '<div class="resting top"><span class="rlab">Resting</span><span class="chip rest ra">'+logo('atp')+' '+LET[r]+' · '+esc(team(d,'atp',r).filter(Boolean).join(', '))+'</span><span class="chip rest rp">'+logo('ps')+' '+LET[r]+' · '+esc(team(d,'ps',r).filter(Boolean).join(', '))+'</span></div>';
         for (var c=0; c<COURTS; c++){
           var at = DRAW[r][c][0], pt = DRAW[r][c][1], m = scores[mid(d,r,c)];
           var hit = q && courtText(d,r,c).indexOf(q)>=0;
           html += '<div class="court dv'+(hit?' hit':'')+'"'+dcs(d)+'><div class="ct"><b>Court '+courtNo(d,c)+'</b>'+stChip(mstat(d,r,c),d,r,c)+'</div>'+
-            '<div class="matchup">'+tc('atp',at)+' vs '+tc('ps',pt)+'</div><ul class="games">';
+            '<div class="matchup">'+tc('atp',at)+'<span class="vs">vs</span>'+tc('ps',pt)+'</div><ul class="games">';
           for (var gi=0; gi<3; gi++){
-            var g = m && m.games && m.games[gi], done = gameValid(g);
-            html += '<li><span class="pr'+(done&&g.a>g.p?' won wa':'')+'">'+pairH(d,'atp',at,gi,q)+'</span><span class="s'+(done?' done':'')+'">'+(done? g.a+'–'+g.p : 'G'+(gi+1))+'</span><span class="pr r'+(done&&g.p>g.a?' won wp':'')+'">'+pairH(d,'ps',pt,gi,q)+'</span></li>';
+            var g = m && m.games && m.games[gi], played = gameValid(g), done = played && gameVisible(r, gi);
+            html += '<li><span class="pr atp-n'+(done&&g.a>g.p?' won wa':'')+'">'+pairH(d,'atp',at,gi,q)+'</span><span class="s'+(done?' done':played?' played':'')+'">'+(done? g.a+'–'+g.p : played ? 'Played' : 'G'+(gi+1))+'</span><span class="pr r ps-n'+(done&&g.p>g.a?' won wp':'')+'">'+pairH(d,'ps',pt,gi,q)+'</span></li>';
           }
           html += '</ul></div>';
         }
@@ -1336,7 +1706,8 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
         var opp = pairH(d,other,ot,gi);
         var g = m && m.games && m.games[gi], done = gameValid(g), mine = 0, theirs = 0;
         if (done){ mine = club==='atp'?g.a:g.p; theirs = club==='atp'?g.p:g.a; pf += mine; pa += theirs; if (mine>theirs) w++; else l++; }
-        html += '<div class="mgame"><span class="gn">G'+(gi+1)+'</span><span>with <b>'+esc(partner)+'</b></span><span class="sc">'+(done? mine+'–'+theirs+'<span class="res '+(mine>theirs?'w':'l')+'">'+(mine>theirs?'W':'L')+'</span>' : 'vs')+'</span><span class="r">'+opp+'</span></div>';
+        var see = revealed;   // My games stays hidden for everyone, committee too, until the reveal
+        html += '<div class="mgame"><span class="gn">G'+(gi+1)+'</span><span>with <b>'+esc(partner)+'</b></span><span class="sc'+(done&&!see?' played':'')+'">'+(done ? (see ? mine+'–'+theirs+'<span class="res '+(mine>theirs?'w':'l')+'">'+(mine>theirs?'W':'L')+'</span>' : 'Played') : 'vs')+'</span><span class="r">'+opp+'</span></div>';
       }
       html += '</div>';
     }
@@ -1349,10 +1720,10 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       else nx = '<div class="nextup"><b>Next: Round '+(r2+1)+' on Court '+courtNo(d,c2)+'</b>vs '+CLUB[other]+' '+LET[ot2]+(st2.s==='later' ? '' : ' \u00b7 '+esc(waitText(st2,d,r2,c2)))+'.</div>';
       break;
     }
-    if (!nx) nx = '<div class="nextup"><b>All your games are done</b>Thanks for playing. Check Standings for the final result.</div>';
+    if (!nx) nx = '<div class="nextup"><b>All your games are done</b>Thanks for playing. '+(revealed?'Check Standings for the final result.':'Results are revealed by the committee.')+'</div>';
     $('me-card').innerHTML = '<div class="me"><h2 class="display">'+esc(cur.name)+'</h2>'+
-      '<div class="who">'+tc(club,t)+dname(d)+'<span>· Team with '+esc(mates.join(' & ')||'two teammates')+'</span></div>'+
-      nx + '<div class="tally"><div><b>'+w+'</b><span>Won</span></div><div><b>'+l+'</b><span>Lost</span></div><div><b>'+pf+'</b><span>Points for</span></div><div><b>'+pa+'</b><span>Against</span></div></div>'+
+      '<div class="who">'+tc(club,t)+dname(d)+'<span>Team with '+esc(mates.join(' & ')||'two teammates')+'</span></div>'+
+      nx + (revealed ? '<div class="tally"><div><b>'+w+'</b><span>Won</span></div><div><b>'+l+'</b><span>Lost</span></div><div><b>'+pf+'</b><span>Points for</span></div><div><b>'+pa+'</b><span>Against</span></div></div>' : '<div class="tally veil">Your results show here once the committee reveals the standings.</div>')+
       html + '</div>';
   }
   $('me-search').addEventListener('input', function(){ view.mePick = null; view.meChosen = false; renderMe(); });
@@ -1548,6 +1919,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     if (!isCmte()){ renderRoster(); return; }
     var src = teamsDraft || setup, html = '';
     function tm(d,club,t){ var dv = src.divisions[d]; return (dv && dv[club] && dv[club][t]) || ['','','']; }
+    function tg(d,club,t,p){ var dv = src.divisions[d], g = dv && dv.gender && dv.gender[club] && dv.gender[club][t]; return (g && g[p]) || ''; }
     for (var d=0; d<DIVS; d++){
       var dv = src.divisions[d] || {name:defaultDivName(d)};
       var dvName = (dv.name && !/^Division \d$/.test(dv.name)) ? dv.name : defaultDivName(d);
@@ -1556,7 +1928,9 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
         html += '<div><div class="eyebrow '+(club==='atp'?'atp-c':'psb-c')+'">'+(club==='atp'?'ATP':'PSPC')+'</div>';
         for (var t=0;t<TEAMS;t++){
           html += '<div class="tteam">'+tc(club,t)+'';
-          for (var p=0;p<3;p++) html += '<input id="tn-'+d+'-'+club+'-'+t+'-'+p+'" value="'+esc(tm(d,club,t)[p])+'" placeholder="Player '+(p+1)+'" aria-label="'+CLUB[club]+' team '+LET[t]+' player '+(p+1)+'"'+(canWrite?'':' disabled')+'>';
+          for (var p=0;p<3;p++){ var gv = tg(d,club,t,p);
+            html += '<span class="tpl"><input id="tn-'+d+'-'+club+'-'+t+'-'+p+'" value="'+esc(tm(d,club,t)[p])+'" placeholder="Player '+(p+1)+'" aria-label="'+CLUB[club]+' team '+LET[t]+' player '+(p+1)+'"'+(canWrite?'':' disabled')+'>'+
+              '<select id="tg-'+d+'-'+club+'-'+t+'-'+p+'" class="gsel" aria-label="'+CLUB[club]+' team '+LET[t]+' player '+(p+1)+' male or female"'+(canWrite?'':' disabled')+'><option value=""'+(gv?'':' selected')+'>M/F</option><option value="M"'+(gv==='M'?' selected':'')+'>M</option><option value="F"'+(gv==='F'?' selected':'')+'>F</option></select></span>'; }
           html += '</div>';
         }
         html += '</div>';
@@ -1570,8 +1944,8 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   function readTeams(){
     var divs = [];
     for (var d=0; d<DIVS; d++){
-      var dv = {name: $('dn-'+d).value.trim() || defaultDivName(d), atp:[], ps:[]};
-      ['atp','ps'].forEach(function(club){ for (var t=0;t<TEAMS;t++){ var tm=[]; for (var p=0;p<3;p++) tm.push($('tn-'+d+'-'+club+'-'+t+'-'+p).value.trim()); dv[club].push(tm); } });
+      var dv = {name: $('dn-'+d).value.trim() || defaultDivName(d), atp:[], ps:[], gender:{atp:[], ps:[]}};
+      ['atp','ps'].forEach(function(club){ for (var t=0;t<TEAMS;t++){ var tm=[], gs=[]; for (var p=0;p<3;p++){ tm.push($('tn-'+d+'-'+club+'-'+t+'-'+p).value.trim()); gs.push($('tg-'+d+'-'+club+'-'+t+'-'+p).value); } dv[club].push(tm); dv.gender[club].push(gs); } });
       divs.push(dv);
     }
     return {divisions:divs, sample:false, updatedAt:new Date().toISOString()};
@@ -1643,31 +2017,32 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   }
   function xesc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,''); }
   function xlsxTemplate(){
-    var src = teamsDraft || setup, rows = [], merges = [], NC = 6;
+    var src = teamsDraft || setup, rows = [], merges = [], NC = 9;
     function band(st, text, ht){ var cells = [[text,st]]; for (var i=1;i<NC;i++) cells.push(['',st]); rows.push({ht:ht, cells:cells}); merges.push(rows.length); }
     band(1,'ATP V PSPC · DEFEND THE KITCHEN · TEAM NAMES',34);
     band(2,'Interclub II · Sun 31 Jan 2027 · Jonas Bradley Park',20);
-    band(3,'Type names in the white cells. Player 1 is the team captain. Leave Division, Club and Team as they are, then upload this file on the Teams tab.',32);
-    rows.push({ht:22, cells:[['Division',4],['Club',4],['Team',4],['Player 1 (captain)',5],['Player 2',12],['Player 3',12]]});
+    band(3,'Type names in the white cells and M or F beside each player. Player 1 is the team captain. Leave Division, Club and Team as they are, then upload this file on the Teams tab.',32);
+    rows.push({ht:22, cells:[['Division',4],['Club',4],['Team',4],['Player 1 (captain)',5],['M/F',12],['Player 2',12],['M/F',12],['Player 3',12],['M/F',12]]});
     for (var d=0; d<DIVS; d++){
       var dvn = (src.divisions[d] && src.divisions[d].name && !/^Division \d$/.test(src.divisions[d].name)) ? src.divisions[d].name : defaultDivName(d);
       band(6, dvn.toUpperCase()+' · COURTS '+courtNo(d,0)+'–'+courtNo(d,2), 22);
       ['atp','ps'].forEach(function(club){ for (var t=0;t<TEAMS;t++){
         var tm = (src.divisions[d] && src.divisions[d][club] && src.divisions[d][club][t]) || ['','',''], k = club==='atp'?7:8;
-        if (src.sample) tm = ['','',''];
-        rows.push({ht:20, cells:[[d+1,k,1],[CLUB[club],k],[LET[t],k],[tm[0]||'',10],[tm[1]||'',11],[tm[2]||'',11]]});
+        var gs = (src.divisions[d] && src.divisions[d].gender && src.divisions[d].gender[club] && src.divisions[d].gender[club][t]) || ['','',''];
+        if (src.sample){ tm = ['','','']; gs = ['','','']; }
+        rows.push({ht:20, cells:[[d+1,k,1],[CLUB[club],k],[LET[t],k],[tm[0]||'',10],[gs[0]||'',11],[tm[1]||'',11],[gs[1]||'',11],[tm[2]||'',11],[gs[2]||'',11]]});
       }});
     }
-    function col(i){ return 'ABCDEF'[i]; }
+    function col(i){ return 'ABCDEFGHI'[i]; }
     var sheet = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
       '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'+
       '<sheetPr><tabColor rgb="FFC3D22B"/><pageSetUpPr fitToPage="1"/></sheetPr>'+
       '<sheetViews><sheetView workbookViewId="0" showGridLines="0"><pane ySplit="4" topLeftCell="A5" activePane="bottomLeft" state="frozen"/><selection pane="bottomLeft" activeCell="D6" sqref="D6"/></sheetView></sheetViews>'+
       '<sheetFormatPr defaultRowHeight="15"/>'+
-      '<cols><col min="1" max="1" width="10" customWidth="1"/><col min="2" max="2" width="9" customWidth="1"/><col min="3" max="3" width="7" customWidth="1"/><col min="4" max="6" width="28" customWidth="1"/></cols>'+
+      '<cols><col min="1" max="1" width="10" customWidth="1"/><col min="2" max="2" width="9" customWidth="1"/><col min="3" max="3" width="7" customWidth="1"/><col min="4" max="4" width="28" customWidth="1"/><col min="5" max="5" width="6" customWidth="1"/><col min="6" max="6" width="28" customWidth="1"/><col min="7" max="7" width="6" customWidth="1"/><col min="8" max="8" width="28" customWidth="1"/><col min="9" max="9" width="6" customWidth="1"/></cols>'+
       '<sheetData>'+rows.map(function(r,ri){ return '<row r="'+(ri+1)+'" ht="'+r.ht+'" customHeight="1">'+r.cells.map(function(c,ci){ var ref = col(ci)+(ri+1), v = c[0], st = c[1];
         return c[2] ? '<c r="'+ref+'" s="'+st+'"><v>'+v+'</v></c>' : v==='' ? '<c r="'+ref+'" s="'+st+'"/>' : '<c r="'+ref+'" s="'+st+'" t="inlineStr"><is><t xml:space="preserve">'+xesc(v)+'</t></is></c>'; }).join('')+'</row>'; }).join('')+'</sheetData>'+
-      '<mergeCells count="'+merges.length+'">'+merges.map(function(r){ return '<mergeCell ref="A'+r+':F'+r+'"/>'; }).join('')+'</mergeCells>'+
+      '<mergeCells count="'+merges.length+'">'+merges.map(function(r){ return '<mergeCell ref="A'+r+':I'+r+'"/>'; }).join('')+'</mergeCells>'+
       '<pageMargins left="0.4" right="0.4" top="0.5" bottom="0.5" header="0.2" footer="0.2"/><pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/></worksheet>';
     function F(rgb, o){ o = o||''; return '<font>'+o+(/sz/.test(o)?'':'<sz val="11"/>')+'<color rgb="FF'+rgb+'"/><name val="Arial"/></font>'; }
     var styles = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
@@ -1758,8 +2133,11 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       var row = (rows[r]||[]).map(function(x){ return String(x==null?'':x).trim().toLowerCase(); });
       if (row.some(function(x){ return x.indexOf('div')===0 && x.length<12; }) && row.some(function(x){ return x.indexOf('club')===0; })){
         hi = r;
+        var lastP = null;
         row.forEach(function(x,i){
           var pm = x.match(/^player\s*([123])/);
+          if (pm) lastP = pm[1];
+          if (/^(m\s*\/\s*f|gender|sex)/.test(x)){ if (lastP) cols['g'+lastP] = i; return; }
           if (x.indexOf('div')===0 && cols.div==null) cols.div = i;
           else if (x.indexOf('club')===0) cols.club = i;
           else if (x.indexOf('team')===0 && cols.team==null) cols.team = i;
@@ -1771,7 +2149,9 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     }
     if (hi<0 || cols.team==null || (cols.player==null && cols.p1==null)) return {error:'Couldn’t find the column headings. The heading row needs Division, Club, Team and Player 1, Player 2, Player 3.'};
     var out = {divisions:[], sample:false};
-    for (var d=0; d<DIVS; d++) out.divisions.push({name: divName(d), atp:[['','',''],['','',''],['','',''],['','','']], ps:[['','',''],['','',''],['','',''],['','','']]});
+    function blank4(){ return [['','',''],['','',''],['','',''],['','','']]; }
+    for (var d=0; d<DIVS; d++) out.divisions.push({name: divName(d), atp:blank4(), ps:blank4(), gender:{atp:blank4(), ps:blank4()}});
+    function normG(x){ x = String(x==null?'':x).trim().toUpperCase(); return x[0]==='M' ? 'M' : x[0]==='F'||x[0]==='W' ? 'F' : ''; }
     var count = {}, skipped = [], loaded = 0;
     for (var i=hi+1; i<rows.length; i++){
       var row2 = rows[i] || [], line = row2.line || (i+1);
@@ -1784,7 +2164,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       var k = dv+cl+tm;
       if (cols.p1!=null){
         if (count[k]){ skipped.push('row '+line+' ('+CLUB[cl]+' '+LET[tm]+' in Division '+(dv+1)+' is listed twice)'); continue; }
-        count[k] = 3; names.forEach(function(n, pi){ out.divisions[dv][cl][tm][pi] = n; if (n) loaded++; });
+        count[k] = 3; names.forEach(function(n, pi){ out.divisions[dv][cl][tm][pi] = n; if (n) loaded++; var gc = cols['g'+(pi+1)]; if (gc!=null) out.divisions[dv].gender[cl][tm][pi] = normG(row2[gc]); });
       } else {
         count[k] = count[k]||0;
         if (count[k]>=3){ skipped.push('row '+line+' ('+CLUB[cl]+' '+LET[tm]+' in Division '+(dv+1)+' already has 3 players)'); continue; }
@@ -1951,7 +2331,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
           ty += rh;
         }
         doc.setFont('helvetica','normal'); doc.setFontSize(6.5); doc.setTextColor.apply(doc, C_MUTED);
-        doc.text('12-minute games - golden point if level at time', x+w/2, y+h-1.8, {align:'center'}); doc.setTextColor.apply(doc, C_INK);
+        doc.text('12-minute games - golden point if level - report every score to the desk', x+w/2, y+h-1.8, {align:'center'}); doc.setTextColor.apply(doc, C_INK);
       }
       pdfFoot(doc);
     }
@@ -2080,7 +2460,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   function buildPDF(JsPDF, kind){
     var doc = new JsPDF({unit:'mm', format:'a4'}); doc.__used = false;
     if (kind==='schedule' || kind==='all') pdfSchedule(doc);
-    if (kind==='cards' || kind==='all') pdfScoreCards(doc);
+    if (kind==='cards') pdfScoreCards(doc);
     if (kind==='courts' || kind==='all') pdfCourtSheets(doc);
     if (kind==='results') pdfResults(doc);
     if (doc.__dropFirst) doc.deletePage(1);
@@ -2099,9 +2479,17 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   });
 
   // ---------- test tools ----------
+  // Simulate is only allowed while no real scores are in
+  function updTools(){
+    var any = Object.keys(scores).length > 0, b = $('fill-btn');
+    b.disabled = any; b.title = any ? 'Scores have been entered. Reset first to simulate.' : '';
+    b.textContent = any ? 'Simulate half (scores already entered)' : 'Simulate half the rounds';
+  }
   $('fill-btn').addEventListener('click', function(){
+    if (Object.keys(scores).length) { updTools(); return; }
     var jobs = [];
-    for (var d=0; d<DIVS; d++) for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++){
+    // half the tournament: Rounds 1 and 2 only
+    for (var d=0; d<DIVS; d++) for (var r=0;r<Math.ceil(ROUNDS/2);r++) for (var c=0;c<COURTS;c++){
       var id = mid(d,r,c); if (scores[id] && scores[id].games && scores[id].games.filter(gameValid).length===3) continue;
       var games = [0,1,2].map(function(){ var a = 4+Math.floor(Math.random()*10), p = 4+Math.floor(Math.random()*10); if (a===p) a++; return {a:a, p:p}; });
       var doc = docFor(id, games); doc.test = true; jobs.push([id, doc]);
@@ -2109,29 +2497,16 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     $('tools-msg').textContent = 'Filling ' + jobs.length + ' courts…'; $('tools-msg').className='msg';
     var i = 0;
     (function next(){
-      if (i>=jobs.length){ $('tools-msg').textContent = 'Random scores filled. Clear them before the real day.'; $('tools-msg').className='msg ok'; afterScoresChange(); return; }
+      if (i>=jobs.length){ $('tools-msg').textContent = 'Rounds 1 and 2 filled with random scores. Reset before the real day.'; $('tools-msg').className='msg ok'; afterScoresChange(); updTools(); return; }
       var j = jobs[i++]; saveScore(j[0], j[1]).then(next, function(){ $('tools-msg').textContent='Stopped: couldn’t save.'; $('tools-msg').className='msg err'; });
     })();
   });
-  var clearArmed = false;
-  $('clear-btn').addEventListener('click', function(){
-    var btn = $('clear-btn');
-    if (!clearArmed){ clearArmed = true; btn.textContent = 'Tap again to delete every score'; btn.className='btn danger'; setTimeout(function(){ clearArmed=false; btn.textContent='Clear all scores'; btn.className='btn ghost'; }, 4000); return; }
-    clearArmed = false; btn.textContent='Clear all scores'; btn.className='btn ghost';
-    var ids = Object.keys(scores), i = 0;
-    $('tools-msg').textContent = 'Clearing…'; $('tools-msg').className='msg';
-    (function next(){
-      if (i>=ids.length){ drafts = {}; $('tools-msg').textContent='All scores cleared.'; $('tools-msg').className='msg ok'; afterScoresChange(); if (view.tab==='scores') renderScores(); return; }
-      deleteScore(ids[i++]).then(next, next);
-    })();
-  });
-
   // clears every score and the start time, ready for the real tournament (teams stay as they are)
   var resetArmed = false;
   $('reset-btn').addEventListener('click', function(){
     var btn = $('reset-btn');
-    if (!resetArmed){ resetArmed = true; btn.textContent = 'Tap again: delete all scores and the start'; btn.className='btn danger'; setTimeout(function(){ resetArmed=false; btn.textContent='Reset for the real day'; btn.className='btn ghost'; }, 5000); return; }
-    resetArmed = false; btn.textContent='Reset for the real day'; btn.className='btn ghost';
+    if (!resetArmed){ resetArmed = true; btn.textContent = 'Tap again: delete all scores and the start'; btn.className='btn danger'; setTimeout(function(){ resetArmed=false; btn.textContent='Reset scores and timer'; btn.className='btn ghost'; }, 5000); return; }
+    resetArmed = false; btn.textContent='Reset scores and timer'; btn.className='btn ghost';
     var ids = Object.keys(scores), i = 0;
     $('tools-msg').textContent = 'Resetting\u2026'; $('tools-msg').className='msg';
     (function next(){
@@ -2140,7 +2515,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       saveState({startedAt:null}).then(function(){}, function(){}).then(function(){
         drafts = {}; startedAt = null;
         $('tools-msg').textContent = 'Reset done. All scores cleared and the timer is back to \u201cNot started\u201d.'+(setup.sample?' Sample names are still loaded: upload the real teams on the Teams tab.':'');
-        $('tools-msg').className='msg ok'; afterScoresChange(); if (view.tab==='scores') renderScores();
+        $('tools-msg').className='msg ok'; afterScoresChange(); updTools(); if (view.tab==='scores') renderScores();
       });
     })();
   });
@@ -2174,8 +2549,8 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     $('cmte-link').hidden = isCmte();
     applyFront();
     document.querySelectorAll('.cmte').forEach(function(b){ b.hidden = !isCmte(); });
-    document.querySelectorAll('#tab-scores .tools').forEach(function(t){ t.hidden = !isCmte(); });
-    $('fill-btn').hidden = !!(startedAt && !setup.sample);
+    $('nav-board').hidden = !revealed;
+    document.body.classList.toggle('veiled', !revealed);
   }
 
   // ---------- tabs ----------
@@ -2236,11 +2611,13 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   function renderTimer(){
     var ph = tPhase();
     $('t-label').textContent = tLabel();
+    // keep the Adjust pickers on the current game, so "Go to this game" never jumps back to Round 1
+    if (timer.round>=0 && document.activeElement!==$('t-set-round') && document.activeElement!==$('t-set-game')){ $('t-set-round').value = String(timer.round); $('t-set-game').value = String(timer.game); }
     $('t-clock').className = 'tbig '+ph;
     $('t-state').textContent = timer.round<0 ? 'Every court plays the same round. Start Round 1 when everyone is on court.' :
       ph==='time' ? 'Time. Play the golden point on any court that\u2019s level, then press Next game.' :
       ph==='ready' ? (timer.game===0 ? 'Round '+(timer.round+1)+' is next. Teams '+LET[timer.round]+' rest. Start when everyone is on court.' : 'Swap to the next pair, then start Game '+(timer.game+1)+'.') :
-      ph==='finished' ? 'All 4 rounds are done. Make sure every score card is in.' : tStateText(ph);
+      ph==='finished' ? 'All 4 rounds are done. Make sure every score is in.' : tStateText(ph);
     var b = '';
     if (timer.round<0) b = '<button class="btn go" data-t="start-tournament">Start tournament \u00b7 Round 1</button>';
     else if (ph==='ready') b = '<button class="btn go" data-t="start">Start Game '+(timer.game+1)+'</button>';
@@ -2274,10 +2651,12 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   // light-weight clock refresh on every screen that shows the timer
   var lastPh = null, lastRem = 0;
   function tickClocks(force){
-    var ph = tPhase(), clock = fmtClock(remaining());
-    if (view.tab==='timer'){ $('t-clock').textContent = clock; if (ph!==lastPh || force){ $('t-clock').className = 'tbig '+ph; } }
+    var ph = tPhase(), clock = fmtClock(remaining()), r0 = remaining();
+    var ten = ph==='playing' && r0>0 && r0<=10000;   // last 10 seconds: amber flash before the red
+    if (view.tab==='timer'){ $('t-clock').textContent = clock; $('t-clock').className = 'tbig '+ph+(ten?' ten':''); }
+    document.body.classList.toggle('tenmode', ten && view.tab==='timer');   // the TV never flashes
     var tv = $('tv-clock');
-    if (tv){ tv.textContent = timer.round<0 ? '12:00' : clock; tv.className = 'clock '+ph; $('tv-tlabel').textContent = timer.round<0 ? 'Starting soon' : tLabel(); $('tv-tstate').textContent = timer.round<0 ? 'Round 1 is on every court' : ph==='time' ? '' : tStateText(ph); }
+    if (tv){ tv.textContent = timer.round<0 ? '12:00' : clock; tv.className = 'clock '+ph+(ten?' ten':''); var slT = showSlot(), nextUp = ph==='time' && timer.round>=0 && (timer.game<2 || timer.round<ROUNDS-1); $('tv-tlabel').textContent = timer.round<0 ? 'Starting soon' : nextUp ? 'Round '+(slT.r+1)+' \u00b7 Game '+(slT.g+1)+' of 3' : tLabel(); $('tv-tstate').textContent = timer.round<0 ? 'Round 1 is on every court' : nextUp ? 'Up next \u00b7 get ready while scores go in' : tStateText(ph); }
     document.querySelectorAll('.tclock').forEach(function(el){ el.textContent = timer.round<0 ? '' : (clock+' '+tStateText(ph).toLowerCase()).trim(); });
     document.querySelectorAll('.tclock-label').forEach(function(el){ el.textContent = timer.round<0 ? 'Not started' : tLabel(); });
     var rem = remaining(), loud = view.tab==='tv' || view.tab==='timer';
@@ -2286,6 +2665,9 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     lastRem = (ph==='playing') ? rem : 0;
     var changed = ph!==lastPh; lastPh = ph;
     if (changed && view.tab==='timer' && !force) renderTimer();
+    if (changed && !force && view.tab==='tv') renderTV();
+    if (changed && !force && view.tab==='court') renderCalls();
+    if (changed && !force && (view.tab==='draw' || view.tab==='me')) renderTab();
   }
   setInterval(function(){ tickClocks(false); }, 500);
 
@@ -2315,7 +2697,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   function buzz(p){ try { if (navigator.vibrate) navigator.vibrate(p); } catch(e){} }
   function alertEndOfGame(){
     beeps(10, .4, .12, 1800, 2400); buzz([700,200,700,200,700,200,1200]);
-    document.body.classList.add('tkflash'); setTimeout(function(){ document.body.classList.remove('tkflash'); }, 4000);
+    if (view.tab!=='tv') document.body.classList.add('tkflash'); setTimeout(function(){ document.body.classList.remove('tkflash'); }, 4000);
   }
   function alertTenSec(){ beeps(2, .12, .1, 1500); buzz([120,100,120]); }
   function setSound(on){
@@ -2327,20 +2709,57 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     var b = $('t-sound'); if (b){ b.textContent = soundOn ? '\ud83d\udd14 Sound on \u00b7 test' : '\ud83d\udd15 Tap to turn sound on'; b.className = soundOn ? 'btn ghost' : 'btn go'; }
   }
   function renderTV(){
-    var R = compute(), all = allStatus();
-    $('tv-atp').textContent = R.atp.g; $('tv-ps').textContent = R.ps.g;
-    $('tv-atp-pts').textContent = 'Points scored '+R.atp.pf;
-    $('tv-ps-pts').textContent = 'Points scored '+R.ps.pf;
-    $('tv-played').textContent = 'Games won \u00b7 '+R.played+' of 144 played \u00b7 '+WIN_AT+' wins it';
-    $('tv-lead').textContent = leadText(R, true);
-    setTug('tug-tv', R.atp.g, R.ps.g);
+    var R = compute(), all = allStatus(), alt = $('tv-alt'), main = $('tv-main');
+    if (window.__applyTvDay) window.__applyTvDay();
+    alt.hidden = tvMode==='games'; main.hidden = tvMode!=='games';
+    document.querySelector('#tab-tv .tv').classList.toggle('altmode', tvMode!=='games');
+    if (tvMode!=='games'){
+      var key = tvMode+'|'+(tvMode==='checkin' ? JSON.stringify(checkin)+JSON.stringify(setup.divisions) : '');
+      if (alt.dataset.key!==key){ alt.dataset.key = key; alt.innerHTML = tvMode==='checkin' ? tvCheckinHtml() : tvMode==='map' ? tvMapHtml() : tvQrHtml(); drawQRs(alt); }
+    } else alt.dataset.key = '';
+    // The TV is a public screen: scores only show once the committee reveals them
+    var veil = !revealed;
+    document.querySelector('#tab-tv .tv').classList.toggle('veiled', veil);
+    $('tv-lead').hidden = veil;
+    $('tv-atp').textContent = veil ? '' : R.atp.g; $('tv-ps').textContent = veil ? '' : R.ps.g;
+    $('tv-atp-pts').textContent = veil ? '' : 'Points scored '+R.atp.pf;
+    $('tv-ps-pts').textContent = veil ? '' : 'Points scored '+R.ps.pf;
+    $('tv-played').hidden = true;
+    $('tv-played').textContent = veil ? R.played+' of 144 games played \u00b7 '+WIN_AT+' wins it' : 'Games won \u00b7 '+R.played+' of 144 played \u00b7 '+WIN_AT+' wins it';
+    $('tv-lead').textContent = veil ? '' : leadText(R, true);
+    if (veil){ $('tug-tv').setAttribute('aria-label','Tug of war for the trophy'); }
+    else setTug('tug-tv', R.atp.g, R.ps.g);
     var go = timer.phase==='finished' ? [] : roundList();
     var done = all.filter(function(x){ return x.s==='done'; }).length;
-    $('tv-calls').innerHTML = go.length ? go.map(function(st){
-      var at = DRAW[st.r][st.c][0], pt = DRAW[st.r][st.c][1], fin = st.s==='done', nw = isNew(st) && !fin;
-      return '<div class="tv-call dv'+(nw?' new':'')+(fin?' fin':'')+'"'+dcs(st.d)+'><div class="ct">'+courtNo(st.d,st.c)+'</div><div><div class="t"><span class="a">'+logo('atp')+LET[at]+'</span><span class="v">v</span><span class="p">'+logo('ps')+LET[pt]+'</span>'+(nw?'<span class="flag">Go now</span>':'')+'</div><div class="sub">'+dname(st.d)+(fin?' \u00b7 games '+gamesWon(st.d,st.r,st.c):'')+'</div></div></div>';
-    }).join('') : '<div class="tv-empty" style="grid-column:1/-1">'+(done===48 ? 'All matches finished' : !startedAt ? 'Starting soon<br><span style="font-size:.5em">Round 1 is on every court. Check My games for your court.</span>' : 'Waiting for score cards')+'</div>';
-    $('tv-divs').innerHTML = R.divs.map(function(dv, d){
+    // What to show: the game on now, or, once the clock hits time, the next game / next round,
+    // so players can see where they're going while the scores are being reported.
+    var sl0 = showSlot(), dR = sl0.r, dG = sl0.g, upNext = sl0.ph==='time' && sl0.upNext;
+    if (go.length){
+      $('tv-upnext').hidden = true;
+      if (false) $('tv-upnext').innerHTML = '<b>Up next</b> Round '+(dR+1)+' \u00b7 Game '+(dG+1)+(dR!==timer.round ? ' \u00b7 new courts' : '')+'<span>Get ready while scores go in</span>';
+      var hdr = '';
+      $('tv-rest').hidden = false;
+      $('tv-rest').innerHTML = 'Resting'+(upNext && dR!==timer.round ? ' Rd '+(dR+1) : '')+' <span class="a">'+logo('atp')+LET[dR]+'</span><span class="p">'+logo('ps')+LET[dR]+'</span>';
+      var rowsH = '', gNow = dG;
+      for (var di=0; di<DIVS; di++){ var d0 = DIVS-1-di;
+        rowsH += '<div class="tvm-dv"'+dcs(d0)+'><i class="dvdot"></i>'+esc(divShort(d0))+'</div>';
+        for (var c1=0; c1<COURTS; c1++){
+          var st = upNext ? {s:'', r:dR} : go.filter(function(x){ return x.d===d0 && x.c===c1; })[0]; if (!st){ rowsH += '<div></div>'; continue; }
+          var fin = false, nw = false;   // TV tiles stay plain: no shading or pulsing
+          var at1 = DRAW[dR][c1][0], pt1 = DRAW[dR][c1][1];
+          rowsH += '<div class="tv-call tvm dv'+(nw?' new':'')+(fin?' fin':'')+(upNext?' nextup':'')+'"'+dcs(d0)+'><div class="ct">'+courtNo(d0,c1)+'</div><div class="tvm-mu"><div class="side"><span class="a">'+logo('atp')+LET[at1]+'</span><span class="nm"><i>'+esc(pname(d0,'atp',at1,PAIRS[gNow][0]))+'</i><i>'+esc(pname(d0,'atp',at1,PAIRS[gNow][1]))+'</i></span></div><span class="v">v</span><div class="side"><span class="p">'+logo('ps')+LET[pt1]+'</span><span class="nm"><i>'+esc(pname(d0,'ps',pt1,PAIRS[gNow][0]))+'</i><i>'+esc(pname(d0,'ps',pt1,PAIRS[gNow][1]))+'</i></span></div></div></div>';
+        }
+      }
+      $('tv-calls').className = 'tv-calls tvmatrix';
+      $('tv-calls').innerHTML = hdr + rowsH;
+      fitTvNames();
+    } else {
+      $('tv-upnext').hidden = true; $('tv-rest').hidden = true;
+      $('tv-calls').className = 'tv-calls';
+      $('tv-calls').innerHTML = '<div class="tv-empty" style="grid-column:1/-1">'+(done===48 ? 'All matches finished' : !startedAt ? 'Starting soon<br><span style="font-size:.5em">Round 1 is on every court. Check My games for your court.</span>' : 'Waiting for scores')+'</div>';
+    }
+    // court order: DUPR 3.5–3.99 (courts 1–3) at the top, down to 2.49 & under (courts 10–12)
+    $('tv-divs').innerHTML = R.divs.map(function(dv, d){ return [dv, d]; }).reverse().map(function(x){ var dv = x[0], d = x[1];
       var fin = 0; for (var r=0;r<ROUNDS;r++) for (var c=0;c<COURTS;c++) if (matchDone(d,r,c)) fin++;
       var line;
       if (timer.round<0) line = '<span>Round 1 on courts '+courtNo(d,0)+'\u2013'+courtNo(d,2)+' when play starts</span>';
@@ -2355,7 +2774,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
   $('tv-full').addEventListener('click', function(){ var el = document.documentElement; if (el.requestFullscreen) el.requestFullscreen().catch(function(){}); });
   $('tv-exit').addEventListener('click', function(){ show('draw'); });
 
-  var TABS = ['login','info','board','court','me','draw','tv','timer','scores','teams','print'], CMTE = ['timer','scores','print'];
+  var TABS = ['login','info','board','court','me','draw','tv','timer','scores','teams','print','results','checkin'], CMTE = ['timer','scores','print','results','checkin'];
   var backTab = 'court', wakeLock = null;
   function keepAwake(on){
     try {
@@ -2370,6 +2789,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     if (TABS.indexOf(tab)<0) tab = homeTab();
     if (CMTE.indexOf(tab)>=0 && !isCmte()){ if (asPlayer) tab = 'draw'; else { afterLogin = tab; tab = 'login'; } }
     if (tab==='login' && isCmte()) tab = afterLogin;
+    if (tab==='board' && !revealed) tab = isCmte() ? 'results' : 'draw';   // standings hidden until the reveal
     $('cmte-link').hidden = isCmte() || tab==='login';
     view.tab = tab;
     document.body.classList.toggle('tvmode', tab==='tv');
@@ -2395,14 +2815,18 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     if (view.tab==='teams') renderTeams();
     if (view.tab==='tv') renderTV();
     if (view.tab==='timer') renderTimer();
+    if (view.tab==='results') renderResults();
+    if (view.tab==='print'){ renderTvModes(); updTools(); }
+    if (view.tab==='checkin') renderCheckin();
     renderMini();
   }
   function renderAll(){ setStatus(); renderTab(); }
   // after scores change: refresh everything except rebuilding the score-entry form or team form
   function afterScoresChange(){
+    if (view.tab==='print') updTools();
     setStatus(); renderMini();
     if (view.tab==='scores') refreshScoreCards();
-    else if (view.tab!=='teams' && view.tab!=='print') renderTab();
+    else if (view.tab!=='teams' && view.tab!=='print' && view.tab!=='checkin') renderTab();
   }
 
   // TV screen
@@ -2462,6 +2886,242 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
     loggedIn = ''; canWrite = false; setStatus(); show('draw');
   });
 
+  // ---------- committee: results & reveal ----------
+  function saveReveal(on){
+    if (db) return db.doc('event/reveal').set({on:on, at:new Date().toISOString()});
+    revealed = on; setStatus(); renderTab(); return Promise.resolve();
+  }
+  function roundTotals(){
+    var out = []; for (var r=0;r<ROUNDS;r++) out.push({a:0,p:0,n:0});
+    for (var d=0; d<DIVS; d++) for (var r2=0;r2<ROUNDS;r2++) for (var c=0;c<COURTS;c++){
+      var m = scores[mid(d,r2,c)]; if (!m || !m.games) continue;
+      m.games.forEach(function(g){ if (!gameValid(g)) return; out[r2].n++; if (g.a>g.p) out[r2].a++; else out[r2].p++; });
+    }
+    return out;
+  }
+  function renderResults(){
+    var R = compute(), rt = roundTotals();
+    $('rv-toggle').setAttribute('aria-checked', String(revealed));
+    $('rv-toggle').querySelector('.lbl').textContent = revealed ? 'Standings revealed' : 'Standings hidden';
+    $('rv-state').textContent = revealed ? 'Showing to everyone' : 'Hidden from players';
+    $('rv-state').className = 'rvstate'+(revealed?' on':'');
+    var html = '<div class="rvtot"><div><b class="atp-c">'+R.atp.g+'</b><small>ATP · points '+R.atp.pf+'</small></div><div class="eyebrow">Games won</div><div><b class="psb-c">'+R.ps.g+'</b><small>PSPC · points '+R.ps.pf+'</small></div></div>';
+    html += '<p class="hint" style="text-align:center">'+esc(leadText(R,false))+' '+R.played+' of 144 games played.</p>';
+    html += '<table class="rvrounds"><thead><tr><th>Round</th><th>ATP</th><th>PSPC</th><th>Games in</th></tr></thead><tbody>'+
+      rt.map(function(x,r){ return '<tr><td>Round '+(r+1)+'</td><td><b class="atp-c">'+x.a+'</b></td><td><b class="psb-c">'+x.p+'</b></td><td>'+x.n+' of 36</td></tr>'; }).join('')+'</tbody></table>';
+    html += '<div class="rvdivs">'+R.divs.map(function(dv,d){ return '<div class="rvdiv">'+dname(d)+'<span class="s2"><span class="atp-c">'+dv.atp.g+'</span> <span style="color:var(--ink-soft);font-size:.7em">–</span> <span class="psb-c">'+dv.ps.g+'</span></span></div>'; }).join('')+'</div>';
+    $('rv-live').innerHTML = html;
+    renderLeaders(R);
+    renderRank(R);
+    renderTRank(R);
+    applyRvShut();
+    renderTvModes();
+  }
+  // ---------- leaders: best team and best player per club, per division and overall ----------
+  var ldGender = '';
+  function ldBest(list){
+    var played = list.filter(function(x){ return x.g + x.l > 0; });
+    if (!played.length) return [];
+    played.sort(function(a,b){ return (b.g-a.g) || ((b.pf-b.pa)-(a.pf-a.pa)); });
+    var top = played[0];
+    return played.filter(function(x){ return x.g===top.g && (x.pf-x.pa)===(top.pf-top.pa); });
+  }
+  function ldStat(x){ var df = x.pf-x.pa; return x.g+'W '+x.l+'L \u00b7 '+(df>0?'+':'')+df; }
+  function ldCell(best, label, overall){
+    if (!best.length) return '<td class="ld-none">\u2013</td>';
+    return '<td>'+best.map(function(x){ return '<div class="ld"><b>'+esc(label(x))+'</b><small>'+(overall?esc(divShort(x.d))+' \u00b7 ':'')+ldStat(x)+'</small></div>'; }).join('')+'</td>';
+  }
+  function renderLeaders(R){
+    var teamLab = function(x){ return 'Team '+LET[x.t]; };
+    var plLab = function(x){ return pname(x.d,x.club,x.t,x.p); };
+    var allT = {atp:[], ps:[]}, allP = {atp:[], ps:[]}, tRows = '', pRows = '';
+    for (var di=0; di<DIVS; di++){ var d = DIVS-1-di, dv = R.divs[d];
+      var tc2 = {}, pc = {};
+      ['atp','ps'].forEach(function(club){
+        tc2[club] = dv.teams[club].map(function(x){ return {d:d, club:club, t:x.t, g:x.g, l:x.l, pf:x.pf, pa:x.pa}; });
+        pc[club] = dv.players.filter(function(x){ return x.club===club && (!ldGender || pgender(d,club,x.t,x.p)===ldGender); }).map(function(x){ return {d:d, club:club, t:x.t, p:x.p, g:x.g, l:x.l, pf:x.pf, pa:x.pa}; });
+        allT[club] = allT[club].concat(tc2[club]); allP[club] = allP[club].concat(pc[club]);
+      });
+      var dh = '<th scope="row"><span class="dvt"'+dcs(d)+'><i class="dvdot"></i>'+esc(divShort(d))+'</span></th>';
+      tRows += '<tr>'+dh+ldCell(ldBest(tc2.atp), teamLab)+ldCell(ldBest(tc2.ps), teamLab)+'</tr>';
+      pRows += '<tr>'+dh+ldCell(ldBest(pc.atp), function(x){ return plLab(x); })+ldCell(ldBest(pc.ps), plLab)+'</tr>';
+    }
+    var oh = '<th scope="row">Overall</th>';
+    tRows += '<tr class="ld-all">'+oh+ldCell(ldBest(allT.atp), teamLab, true)+ldCell(ldBest(allT.ps), teamLab, true)+'</tr>';
+    pRows += '<tr class="ld-all">'+oh+ldCell(ldBest(allP.atp), plLab, true)+ldCell(ldBest(allP.ps), plLab, true)+'</tr>';
+    var head = '<thead><tr><th></th><th class="atp-c">ATP</th><th class="psb-c">PSPC</th></tr></thead>';
+    $('rv-leaders').innerHTML =
+      '<h4 class="ld-h">Top team</h4><div class="tablewrap"><table class="ldt">'+head+'<tbody>'+tRows+'</tbody></table></div>'+
+      '<div class="ld-h ld-hp"><h4>Top player</h4><div class="seg" id="ld-gender" role="group" aria-label="Players">'+
+        [['','All'],['M','Male'],['F','Female']].map(function(o){ return '<button type="button" data-v="'+o[0]+'" aria-pressed="'+(ldGender===o[0])+'">'+o[1]+'</button>'; }).join('')+'</div></div>'+
+      '<div class="tablewrap"><table class="ldt">'+head+'<tbody>'+pRows+'</tbody></table></div>'+
+      (ldGender && !Object.keys(setup.divisions).some(function(d){ var g = setup.divisions[d].gender; return g && JSON.stringify(g).indexOf('"'+ldGender+'"')>=0; }) ? '<p class="hint">No players are marked '+(ldGender==='M'?'male':'female')+' yet. Set M/F on the Teams tab.</p>' : '');
+  }
+  // ---------- player rankings (committee) ----------
+  var rkDiv = -1, rkG = '';   // -1 = all divisions (two columns on a computer)
+  function renderRank(R){
+    R = R || compute();
+    $('rk-div').innerHTML = '<button type="button" data-v="-1" aria-pressed="'+(rkDiv<0)+'">All divisions</button>'+[3,2,1,0].map(function(d){ return '<button type="button" data-v="'+d+'" aria-pressed="'+(rkDiv===d)+'"'+dcs(d)+'>'+esc(divShort(d))+'</button>'; }).join('');
+    [].forEach.call($('rk-g').children, function(b){ b.setAttribute('aria-pressed', String(b.dataset.v===rkG)); });
+    var divs = rkDiv<0 ? [3,2,1,0] : [rkDiv];
+    $('rv-rank').className = rkDiv<0 ? 'rkgrid' : '';
+    $('rv-rank').innerHTML = divs.map(function(d){
+      var dv = R.divs[d], rank = 0, prev = null;
+      var ps = dv.players.filter(function(x){ return !rkG || pgender(d,x.club,x.t,x.p)===rkG; })
+        .sort(function(a,b){ return (b.g-a.g) || ((b.pf-b.pa)-(a.pf-a.pa)) || (b.pf-a.pf) || pname(d,a.club,a.t,a.p).localeCompare(pname(d,b.club,b.t,b.p)); });
+      return '<div class="rkdiv"'+dcs(d)+'>'+(rkDiv<0 ? '<h4 class="rkh">'+dname(d)+'</h4>' : '')+
+        '<div class="tablewrap"><table class="teams players"><thead><tr><th>Player</th><th title="Games won">W</th><th title="Games lost">L</th><th title="Points scored">For</th><th title="Points against">Agst</th><th>+/\u2212</th></tr></thead><tbody>'+
+        (ps.map(function(x, i){ var diff = x.pf-x.pa, key = x.g+'|'+diff; if (key!==prev){ rank = i+1; prev = key; }
+          return '<tr><td><span class="rk">'+rank+'</span><b class="pn '+(x.club==='atp'?'atp-c':'psb-c')+'">'+esc(pname(d,x.club,x.t,x.p))+'</b><span class="who">'+(x.club==='atp'?'ATP':'PSPC')+' Team '+LET[x.t]+'</span></td><td><b>'+x.g+'</b></td><td>'+x.l+'</td><td>'+x.pf+'</td><td>'+x.pa+'</td><td>'+(diff>0?'+':'')+diff+'</td></tr>'; }).join('')
+         || '<tr><td colspan="6" class="msg">No '+(rkG==='M'?'male':'female')+' players marked in this division. Set M/F on the Teams tab.</td></tr>')+'</tbody></table></div></div>';
+    }).join('');
+  }
+  // ---------- team rankings (committee) ----------
+  var tkDiv = -1;
+  function renderTRank(R){
+    R = R || compute();
+    $('tk-div').innerHTML = '<button type="button" data-v="-1" aria-pressed="'+(tkDiv<0)+'">All divisions</button>'+[3,2,1,0].map(function(d){ return '<button type="button" data-v="'+d+'" aria-pressed="'+(tkDiv===d)+'"'+dcs(d)+'>'+esc(divShort(d))+'</button>'; }).join('');
+    var divs = tkDiv<0 ? [3,2,1,0] : [tkDiv];
+    $('rv-trank').className = tkDiv<0 ? 'rkgrid' : '';
+    $('rv-trank').innerHTML = divs.map(function(d){
+      var dv = R.divs[d], rows = [], rank = 0, prev = null;
+      ['atp','ps'].forEach(function(club){ dv.teams[club].forEach(function(x){ rows.push({club:club, x:x}); }); });
+      rows.sort(function(a,b){ return (b.x.g-a.x.g) || ((b.x.pf-b.x.pa)-(a.x.pf-a.x.pa)) || (b.x.pf-a.x.pf); });
+      return '<div class="rkdiv"'+dcs(d)+'>'+(tkDiv<0 ? '<h4 class="rkh">'+dname(d)+'</h4>' : '')+
+        '<div class="tablewrap"><table class="teams"><thead><tr><th>Team</th><th title="Games won">W</th><th title="Games lost">L</th><th title="Points scored">For</th><th title="Points against">Agst</th><th>+/\u2212</th></tr></thead><tbody>'+
+        rows.map(function(r, i){ var diff = r.x.pf-r.x.pa, key = r.x.g+'|'+diff; if (key!==prev){ rank = i+1; prev = key; }
+          return '<tr><td><span class="rk">'+rank+'</span>'+tc(r.club,r.x.t)+'<span class="who">'+esc(team(d,r.club,r.x.t).filter(Boolean).join(', '))+'</span></td><td><b>'+r.x.g+'</b></td><td>'+r.x.l+'</td><td>'+r.x.pf+'</td><td>'+r.x.pa+'</td><td>'+(diff>0?'+':'')+diff+'</td></tr>'; }).join('')+
+        '</tbody></table></div></div>';
+    }).join('');
+  }
+  $('tk-div').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; tkDiv = +b.dataset.v; renderTRank(); });
+
+  // ---------- hide / show each Results section (hidden by default, for prying eyes) ----------
+  var rvOpen = {};
+  try { rvOpen = JSON.parse(sessionStorage.getItem('dtk-rv-open') || '{}') || {}; } catch(e){ rvOpen = {}; }
+  function applyRvShut(){
+    document.querySelectorAll('#tab-results .rvtog').forEach(function(b){
+      var open = !!rvOpen[b.dataset.sec], card = b.closest('.rvcard');
+      card.classList.toggle('shut', !open); b.textContent = open ? 'Hide' : 'Show'; b.setAttribute('aria-expanded', String(open));
+    });
+  }
+  document.querySelectorAll('#tab-results .rvtog').forEach(function(b){
+    b.addEventListener('click', function(){ rvOpen[b.dataset.sec] = !rvOpen[b.dataset.sec]; try { sessionStorage.setItem('dtk-rv-open', JSON.stringify(rvOpen)); } catch(e){} applyRvShut(); });
+  });
+  $('rk-div').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; rkDiv = +b.dataset.v; renderRank(); });
+  $('rk-g').addEventListener('click', function(e){ var b = e.target.closest('button'); if (!b) return; rkG = b.dataset.v; renderRank(); });
+  $('rv-leaders').addEventListener('click', function(e){ var b = e.target.closest('#ld-gender button'); if (!b) return; ldGender = b.dataset.v; renderLeaders(compute()); });
+  $('rv-toggle').addEventListener('click', function(){
+    var b = $('rv-toggle');
+    if (!revealed && !b.dataset.armed){ b.dataset.armed = '1'; b.querySelector('.lbl').textContent = 'Tap again to show everyone'; setTimeout(function(){ delete b.dataset.armed; if (view.tab==='results') renderResults(); }, 4000); return; }
+    delete b.dataset.armed;
+    saveReveal(!revealed).then(function(){ renderResults(); }, function(){ renderResults(); });
+  });
+
+  // ---------- TV controls (shared via event/tv) ----------
+  function saveTv(){
+    renderTvModes(); if (view.tab==='tv') renderTV(); if (window.__applyTvDay) window.__applyTvDay();
+    if (db) return db.doc('event/tv').set({mode:tvMode, day:tvDay, at:new Date().toISOString()});
+    return Promise.resolve();
+  }
+  function renderTvModes(){
+    document.querySelectorAll('[data-tvmode]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.tvmode===tvMode)); });
+    document.querySelectorAll('[data-tvday]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.tvday===tvDay)); });
+  }
+  document.querySelectorAll('[data-tvmode]').forEach(function(b){ b.addEventListener('click', function(){ tvMode = b.dataset.tvmode; saveTv(); }); });
+  document.querySelectorAll('[data-tvday]').forEach(function(b){ b.addEventListener('click', function(){ tvDay = b.dataset.tvday; saveTv(); }); });
+  var SITE_URL = 'https://atpvsps.atppickleballclub.com.au';
+  var qrLibP = null;
+  function loadQR(){
+    if (window.QRCode) return Promise.resolve(window.QRCode);
+    if (!qrLibP) qrLibP = new Promise(function(res, rej){ var sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+      sc.onload = function(){ res(window.QRCode); }; sc.onerror = function(){ qrLibP = null; rej(new Error('load')); }; document.head.appendChild(sc); });
+    return qrLibP;
+  }
+  function qrCard(){ return '<div class="qrcard"><b>Scan me</b><div class="qr"><div class="qrc" data-qr="'+esc(SITE_URL)+'"></div><img class="qrlogo" src="images/atp-logo.png" alt=""></div><p>Draw, your games, courts and the player briefing.</p></div>'; }
+  function drawQRs(root){
+    var els = [].slice.call(root.querySelectorAll('[data-qr]')); if (!els.length) return;
+    loadQR().then(function(Q){ els.forEach(function(e){ e.innerHTML = ''; new Q(e, {text:e.dataset.qr, width:512, height:512, colorDark:'#081826', colorLight:'#ffffff', correctLevel:Q.CorrectLevel.H}); }); },
+      function(){ els.forEach(function(e){ e.innerHTML = '<div class="qrfail">QR code couldn’t load. Check the internet connection.</div>'; }); });
+  }
+  function tvCheckinHtml(){
+    var all = ciPlayers(), here = all.filter(function(p){ return checkin[p.k]; }).length, html = '';
+    for (var di=0; di<DIVS; di++){ var d = DIVS-1-di;
+      html += '<div class="tvci-div"><div class="dvh"><span class="dvt"'+dcs(d)+'><i class="dvdot"></i>'+esc(divShort(d))+'</span></div>';
+      ['atp','ps'].forEach(function(club){ for (var t=0;t<TEAMS;t++){
+        var ps = all.filter(function(p){ return p.d===d && p.club===club && p.t===t; }), allIn = ps.length && ps.every(function(p){ return checkin[p.k]; });
+        html += '<div class="tvci-team'+(allIn?' all':'')+'"><div class="tn '+(club==='atp'?'atp-c':'psb-c')+'">'+logo(club)+LET[t]+(allIn?'<em>ALL HERE</em>':'')+'</div>'+
+          ps.map(function(p){ return '<div class="pl'+(checkin[p.k]?' in':'')+'"><i></i>'+esc(p.name)+'</div>'; }).join('')+'</div>';
+      } });
+      html += '</div>';
+    }
+    return '<div class="tvci"><div class="tvci-main"><div class="tvci-hd"><h2 class="display">Welcome! Check in at the tournament desk</h2><div class="n">'+here+' / '+all.length+'<small>checked in</small></div></div><div class="tvci-divs">'+html+'</div></div>'+qrCard()+'</div>';
+  }
+  function tvMapHtml(){ return '<div class="tvmap"><figure><img src="images/court-map.jpg" alt="Court map"></figure>'+qrCard()+'</div>'; }
+  function tvQrHtml(){ return '<div class="tvqrbig"><h2 class="display">Scan for the draw and your games</h2>'+qrCard()+'</div>'; }
+
+  // ---------- committee: player check-in ----------
+  var ciHide = false, ciQuery = '';
+  try { ciHide = sessionStorage.getItem('dtk-ci-hide')==='1'; } catch(e){}
+  function ciPlayers(){
+    var out = [];
+    for (var d=0; d<DIVS; d++) ['atp','ps'].forEach(function(club){
+      for (var t=0;t<TEAMS;t++) for (var p=0;p<3;p++){ out.push({k:(d+1)+'-'+club+'-'+LET[t]+'-'+(p+1), name:pname(d,club,t,p), d:d, club:club, t:t, p:p}); }
+    });
+    return out;
+  }
+  function saveCheckin(k, on){
+    if (on) checkin[k] = true; else delete checkin[k];
+    renderCheckin(); if (view.tab==='tv') renderTV();
+    if (db) return on ? db.doc('checkin/'+k).set({on:true, at:new Date().toISOString()}) : db.doc('checkin/'+k).delete();
+    return Promise.resolve();
+  }
+  function renderCheckin(){
+    var all = ciPlayers(), done = all.filter(function(p){ return checkin[p.k]; }).length, q = ciQuery.trim().toLowerCase(), html = '';
+    $('ci-count').innerHTML = '<b class="num">'+done+'</b> of '+all.length+' checked in'+[3,2,1,0].map(function(d){ var ps = all.filter(function(p){ return p.d===d; }); return '<span class="dvt"'+dcs(d)+'><i class="dvdot"></i>'+esc(divShort(d))+' '+ps.filter(function(p){ return checkin[p.k]; }).length+'/'+ps.length+'</span>'; }).join('');
+    $('ci-hide').textContent = ciHide ? 'Show everyone' : 'Hide checked-in players';
+    $('ci-clear').hidden = !done;
+    // one section per club, everyone in alphabetical order
+    ['atp','ps'].forEach(function(club){
+      var ps = all.filter(function(p){ return p.club===club; }), n = ps.filter(function(p){ return checkin[p.k]; }).length;
+      var vis = ps.filter(function(p){ return !(ciHide && checkin[p.k]) && (!q || p.name.toLowerCase().indexOf(q)>=0); })
+        .sort(function(x,y){ return x.name.localeCompare(y.name,'en',{sensitivity:'base'}); });
+      if (q && !vis.length) return;
+      html += '<div class="ciclub"><h3 class="cidiv display '+(club==='atp'?'atp-c':'psb-c')+'">'+(club==='atp'?'ATP':'PSPC')+' <small>'+n+' of '+ps.length+' here</small></h3><div class="cilist">'+
+        (vis.map(function(p){ var on = !!checkin[p.k]; return '<button type="button" class="ci'+(on?' on':'')+'" data-ci="'+esc(p.k)+'" aria-pressed="'+on+'"><span class="box" aria-hidden="true"></span><span class="cin">'+hl(p.name,q)+'<small><span class="dvt"'+dcs(p.d)+'><i class="dvdot"></i>'+esc(divShort(p.d))+'</span> \u00b7 Team '+LET[p.t]+'</small></span></button>'; }).join('')
+         || '<span class="msg">Everyone is checked in.</span>')+'</div></div>';
+    });
+    html = html ? '<div class="ciclubs">'+html+'</div>' : '';
+    $('ci-body').innerHTML = html || '<p class="note">No player matches “'+esc(ciQuery)+'”.</p>';
+  }
+  $('ci-body').addEventListener('click', function(e){ var b = e.target.closest('[data-ci]'); if (b) saveCheckin(b.dataset.ci, !checkin[b.dataset.ci]); });
+  $('ci-search').addEventListener('input', function(){ ciQuery = this.value; renderCheckin(); });
+  $('ci-hide').addEventListener('click', function(){ ciHide = !ciHide; try { sessionStorage.setItem('dtk-ci-hide', ciHide?'1':'0'); } catch(e){} renderCheckin(); });
+  $('ci-clear').addEventListener('click', function(){
+    var b = this;
+    if (!b.dataset.armed){ b.dataset.armed = '1'; b.textContent = 'Tap again to clear every check-in'; b.className = 'btn danger sm'; setTimeout(function(){ delete b.dataset.armed; b.textContent = 'Clear all check-ins'; b.className = 'btn ghost sm'; }, 4000); return; }
+    delete b.dataset.armed; b.textContent = 'Clear all check-ins'; b.className = 'btn ghost sm';
+    var ks = Object.keys(checkin); checkin = {}; renderCheckin();
+    if (db) ks.forEach(function(k){ db.doc('checkin/'+k).delete(); });
+  });
+
+  // ---------- daylight mode (per phone) ----------
+  (function(){
+    var KEY = 'atp-outdoor', on = false; try { on = localStorage.getItem(KEY)==='1'; } catch(e){}
+    function apply(){ document.body.classList.toggle('outdoor', on); $('sun-btn').setAttribute('aria-pressed', on?'true':'false'); $('sun-lbl').textContent = on ? 'Night' : 'Daylight';
+      $('sun-btn').setAttribute('aria-label', on ? 'Daylight look on. Tap for the dark look' : 'Daylight look: easier to read in bright sun'); }
+    $('sun-btn').addEventListener('click', function(){ on = !on; try { localStorage.setItem(KEY, on?'1':'0'); } catch(e){} apply(); });
+    apply();
+  })();
+  // ---------- TV daylight (remembered on the TV's browser, or set for every TV by the committee) ----------
+  (function(){
+    var KEY = 'atp-tv-daylight', on = false; try { on = localStorage.getItem(KEY)==='1'; } catch(e){}
+    function apply(){ var forced = tvDay==='day' || tvDay==='night', eff = forced ? tvDay==='day' : on;
+      document.body.classList.toggle('tvday', eff); $('tv-day').hidden = forced; $('tv-day').setAttribute('aria-pressed', eff?'true':'false'); $('tv-day').textContent = eff ? 'Night' : 'Daylight'; }
+    $('tv-day').addEventListener('click', function(){ on = !on; try { localStorage.setItem(KEY, on?'1':'0'); } catch(e){} apply(); });
+    window.__applyTvDay = apply; apply();
+  })();
+
   // ---------- boot ----------
   setStatus(); show((location.hash||'').replace('#','') || homeTab());
 
@@ -2496,12 +3156,12 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
         for (var i=0;i<segs.length-1;i++){ cur[segs[i]] = {}; cur = cur[segs[i]]; }
         cur[segs[segs.length-1]] = val; return o;
       }
-      function fpFor(p){ var a = p.split('/'), segs = a[0]==='scores' ? ['scores', a[1]] : [a[1]];
+      function fpFor(p){ var a = p.split('/'), segs = a[0]==='event' ? [a[1]] : [a[0], a[1]];
         var fp = new (Function.prototype.bind.apply(firebase.firestore.FieldPath, [null].concat(segs)))(); fp.__dtkSegs = segs; return fp; }
       db = {
         doc: function(p){
-          var segs = p.split('/'), key = segs[0]==='scores' ? segs[1] : segs[1], isScore = segs[0]==='scores';
-          function cur(){ var d = evData||{}; return isScore ? (d.scores||{})[key] : d[key]; }
+          var segs = p.split('/'), key = segs[1], top = segs[0]==='event';
+          function cur(){ var d = evData||{}; return top ? d[key] : (d[segs[0]]||{})[key]; }
           return {
             set: function(v){ return evWrite(fpFor(p), v); },
             delete: function(){ return evRef.update(fpFor(p), firebase.firestore.FieldValue.delete()).catch(function(err){ if (err && err.code==='not-found') return; throw err; }); },
@@ -2522,7 +3182,7 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
       };
       connected = true; scores = {}; setStatus();
       db.doc('event/setup').onSnapshot(function(snap){
-        if (snap.exists){ var s = snap.data(); if (s && s.divisions && s.divisions.length===DIVS) setup = s; }
+        if (snap.exists){ var s = snap.data(); if (s && s.divisions && s.divisions.length===DIVS) setup = s.sample ? sampleSetup() : s; }
         else setup = sampleSetup();
         setStatus();
         if (view.tab==='teams'){ if (!teamsDraft) renderTeams(); }
@@ -2539,6 +3199,23 @@ body.briefonly header nav,body.briefonly .fpctl,body.briefonly .status{display:n
         var f = snap.exists ? snap.data() : null;
         frontOn = !(f && f.on===false);
         applyFront();
+      }, function(){});
+      db.doc('event/reveal').onSnapshot(function(snap){
+        var v = snap.exists ? snap.data() : null;
+        revealed = !!(v && v.on===true);
+        setStatus();
+        if (view.tab==='board' && !revealed) show('board'); else renderTab();
+      }, function(){});
+      db.doc('event/tv').onSnapshot(function(snap){
+        var v = snap.exists ? snap.data() : null;
+        tvMode = (v && v.mode && v.mode!=='checkin') ? v.mode : 'games'; tvDay = (v && typeof v.day==='string') ? v.day : '';
+        if (window.__applyTvDay) window.__applyTvDay(); renderTvModes();
+        if (view.tab==='tv') renderTV();
+      }, function(){});
+      db.collection('checkin').onSnapshot(function(qs){
+        var next = {}; qs.docs.forEach(function(doc){ var v = doc.data(); if (v && v.on) next[doc.id] = true; });
+        checkin = next;
+        if (view.tab==='checkin') renderCheckin(); if (view.tab==='tv') renderTV();
       }, function(){});
       db.doc('event/state').onSnapshot(function(snap){
         var st = snap.exists ? snap.data() : null;
