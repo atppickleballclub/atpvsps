@@ -3111,7 +3111,12 @@ body.outdoor:not(.tvmode) .tbig.ten{animation-name:tenflashday}
   // ---------- daylight mode (per phone) ----------
   (function(){
     var KEY = 'atp-outdoor', on = false; try { on = localStorage.getItem(KEY)==='1'; } catch(e){}
-    function apply(){ document.body.classList.toggle('outdoor', on); $('sun-btn').setAttribute('aria-pressed', on?'true':'false'); $('sun-lbl').textContent = on ? 'Night' : 'Daylight';
+    // Daylight is for phones and tablets out in the sun. Computers (mouse, no touch screen) always stay dark,
+    // and don't show the button. The TV screen has its own Daylight setting.
+    var mq = window.matchMedia ? window.matchMedia('(hover: hover) and (pointer: fine)') : null;
+    function isPC(){ return !!(mq && mq.matches); }
+    if (mq && mq.addEventListener) mq.addEventListener('change', function(){ apply(); });
+    function apply(){ document.body.classList.toggle('outdoor', on && !isPC()); $('sun-btn').hidden = isPC(); $('sun-btn').setAttribute('aria-pressed', on?'true':'false'); $('sun-lbl').textContent = on ? 'Night' : 'Daylight';
       $('sun-btn').setAttribute('aria-label', on ? 'Daylight look on. Tap for the dark look' : 'Daylight look: easier to read in bright sun'); }
     $('sun-btn').addEventListener('click', function(){ on = !on; try { localStorage.setItem(KEY, on?'1':'0'); } catch(e){} apply(); });
     apply();
