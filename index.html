@@ -806,6 +806,18 @@ body.outdoor:not(.tvmode) .tchip.ps,body.tvmode.tvday .tchip.ps{background:rgba(
 body.outdoor:not(.tvmode) header .atp .ch-sc b{color:var(--atp)}
 body.outdoor:not(.tvmode) .court,body.outdoor:not(.tvmode) .divcard,body.outdoor:not(.tvmode) .bcard,body.outdoor:not(.tvmode) .mround,body.outdoor:not(.tvmode) .call,body.outdoor:not(.tvmode) .rvcard,body.outdoor:not(.tvmode) .ci{box-shadow:0 1px 4px rgba(0,0,0,.1)}
 body.outdoor:not(.tvmode) input,body.outdoor:not(.tvmode) select{background:#fff;color:var(--ink)}
+/* ---------- Daylight on a computer: page stays dark, the cards turn white (like the Dural site) ---------- */
+body.daypc .totals,body.daypc .divcard,body.daypc .login,body.daypc .callbox,body.daypc .ccard,body.daypc .court,body.daypc .bcard,body.daypc .me,body.daypc .ecard,body.daypc .upload,body.daypc .tdiv,body.daypc .pcard,body.daypc .rvcard,body.daypc .ci{
+  color-scheme:light; --ground:#f2f4ee; --panel:#ffffff; --panel-2:#e6ebe2; --rule:rgba(8,24,38,.18); --line:#081826;
+  --ink:#06121c; --ink-soft:#4a5866; --ps-chip:#0b6aa3; --good:#11793a; --warn:#9a4f00;
+  background:#fff; color:var(--ink); border-color:#dce1e7}
+body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .atp-c,body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .tchip.atp,body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .games .pr.atp-n,body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .cnow.next b{color:#556100}
+body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .tchip.atp{background:rgba(195,210,43,.25);border-color:#8a9a00}
+body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .tchip.ps{background:rgba(24,156,216,.14)}
+body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .games .pr.ps-n,body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) .psb-c{color:#0b6aa3}
+body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) input,body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci) select{background:#fff;color:var(--ink)}
+body.daypc :is(.totals,.divcard,.login,.callbox,.ccard,.court,.bcard,.me,.ecard,.upload,.tdiv,.pcard,.rvcard,.ci){box-shadow:0 2px 10px rgba(0,0,0,.25)}
+
 body.tvmode.tvday .tv{background:linear-gradient(180deg,#e9eef2,#f6f7f2)}
 body.tvmode.tvday .tv-panel{background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 body.tvmode.tvday .tvci-team{background:#fff}
@@ -3111,12 +3123,12 @@ body.outdoor:not(.tvmode) .tbig.ten{animation-name:tenflashday}
   // ---------- daylight mode (per phone) ----------
   (function(){
     var KEY = 'atp-outdoor', on = false; try { on = localStorage.getItem(KEY)==='1'; } catch(e){}
-    // Daylight is for phones and tablets out in the sun. Computers (mouse, no touch screen) always stay dark,
-    // and don't show the button. The TV screen has its own Daylight setting.
+    // Daylight on phones/tablets: the whole page goes light for reading in the sun.
+    // On a computer (mouse, no touch screen) the page stays dark and just the cards turn white. The TV has its own setting.
     var mq = window.matchMedia ? window.matchMedia('(hover: hover) and (pointer: fine)') : null;
     function isPC(){ return !!(mq && mq.matches); }
     if (mq && mq.addEventListener) mq.addEventListener('change', function(){ apply(); });
-    function apply(){ document.body.classList.toggle('outdoor', on && !isPC()); $('sun-btn').hidden = isPC(); $('sun-btn').setAttribute('aria-pressed', on?'true':'false'); $('sun-lbl').textContent = on ? 'Night' : 'Daylight';
+    function apply(){ document.body.classList.toggle('outdoor', on && !isPC()); document.body.classList.toggle('daypc', on && isPC()); $('sun-btn').setAttribute('aria-pressed', on?'true':'false'); $('sun-lbl').textContent = on ? 'Night' : 'Daylight';
       $('sun-btn').setAttribute('aria-label', on ? 'Daylight look on. Tap for the dark look' : 'Daylight look: easier to read in bright sun'); }
     $('sun-btn').addEventListener('click', function(){ on = !on; try { localStorage.setItem(KEY, on?'1':'0'); } catch(e){} apply(); });
     apply();
