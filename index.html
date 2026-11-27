@@ -3280,6 +3280,14 @@ html.booting body>*{visibility:hidden}
     setStatus();
     $('login-forgot').hidden = true;
   }
+// ---------- usage counter (players only) ----------
+// Counts player visits in the ATP Events app stats. Waits for the login check, then skips
+// committee logins, the TV/timer screens and test copies so they don't add to the counts.
+(function(){ var done=false;
+  function usage(){ if (done) return; try{ if (!db || loggedIn || canWrite || view.tab==='tv' || view.tab==='timer' || document.body.classList.contains('tvmode') || document.body.classList.contains('tkmode')) return; }catch(e){ return; }
+    done=true; var s=document.createElement('script'); s.src='https://eventsapp.atppickleballclub.com.au/usage.js'; s.defer=true; s.setAttribute('data-site','atpvsps'); document.body.appendChild(s); }
+  setTimeout(usage,5000);
+})();
 })();
 </script>
 </body>
